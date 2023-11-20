@@ -44,22 +44,25 @@ void Collider::EnterCollision(Collider* _pOther)
 {
  	++m_check;
 	m_pOwner->EnterCollision(_pOther);
+	_pOther->m_isGrounded = true;
 }
 
 void Collider::ExitCollision(Collider* _pOther)
 {
 	--m_check;
 	m_pOwner->ExitCollision(_pOther);
+	_pOther->m_isGrounded = false;
 }
 
 void Collider::StayCollision(Collider* _pOther)
 {
 	m_pOwner->StayCollision(_pOther);
+	_pOther->m_isGrounded = true;
 }
 
 void Collider::FinalUpdate()
 {
-	// ObjectÀ§Ä¡¸¦ µû¶ó°¡¾ß ÇÏ´Â°Å¾ß.
+	// Objectï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ó°¡¾ï¿½ ï¿½Ï´Â°Å¾ï¿½.
 	Vec2 vObjPos = m_pOwner->GetPos();
 	m_vFinalPos = vObjPos + m_vOffsetPos;
 }

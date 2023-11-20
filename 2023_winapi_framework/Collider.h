@@ -25,14 +25,16 @@ public:
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
 	const Object* GetObj() const { return m_pOwner; }
+	const bool& IsGrounded() const { return m_isGrounded; }
 private:
 	UINT m_check;
 	Object* m_pOwner;
-	Vec2 m_vOffsetPos; // ¿ÀÇÁ¼Â
-	Vec2 m_vFinalPos; // ÆÄÀÌ³Î À§Ä¡
-	Vec2 m_vScale; // Å©±â
+	Vec2 m_vOffsetPos; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	Vec2 m_vFinalPos; // ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½Ä¡
+	Vec2 m_vScale; // Å©ï¿½ï¿½
+	bool m_isGrounded;
 	friend class Object;
-	UINT m_ID; // Ãæµ¹Ã¼ ID°ª
+	UINT m_ID; // ï¿½æµ¹Ã¼ IDï¿½ï¿½
 	static UINT m_sNextID;
 };
 

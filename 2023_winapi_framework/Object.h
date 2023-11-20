@@ -6,7 +6,7 @@ class Object
 public:
 	Object();
 	virtual ~Object();
-//public:	// Å©±â, À§Ä¡
+//public:	// Å©ï¿½ï¿½, ï¿½ï¿½Ä¡
 	//POINT m_ptPos;
 	//POINT m_ptScale;
 public:
@@ -38,10 +38,10 @@ public:
 	void CreateCollider();
 	void CreateAnimator();
 private:
-	Vec2 m_vPos; // À§Ä¡
-	Vec2 m_vScale; // Å©±â
+	Vec2 m_vPos; // ï¿½ï¿½Ä¡
+	Vec2 m_vScale; // Å©ï¿½ï¿½
 	Collider* m_pCollider;
-	wstring m_strName; // ÀÌ¸§.
+	wstring m_strName; // ï¿½Ì¸ï¿½.
 	bool m_IsAlive;
 	Animator* m_pAnimator;
 };

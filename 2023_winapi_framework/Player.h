@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+class Rigidbody2D;
 class Texture;
 class Player :
     public Object
@@ -14,5 +15,6 @@ private:
     void CreateBullet();
 private:
     Texture* m_pTex;
+    Rigidbody2D* m_pRigidbody2D;
 };
 

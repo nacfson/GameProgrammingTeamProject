@@ -4,8 +4,8 @@ class BaseWindow
 public:
 	BaseWindow(POINT _ptResolution);
 	~BaseWindow();
-	// ³»°¡ ÀÌ°Å´Â ²À ¸â¹öº¯¼ö·Î µé°í°¡¾ßÇÑ´Ù!
-	// 1. ÀÎ½ºÅÏ½º, À©µµ¿ì ÇÚµé
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°Å´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!
+	// 1. ï¿½Î½ï¿½ï¿½Ï½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 	int					Run(HINSTANCE _hInst, LPWSTR _lpCmdline, int _nCmdShow);
 	ATOM                MyRegisterClass();
 //	BOOL                InitInstance(HINSTANCE, int);

@@ -22,10 +22,10 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
 	const vector<Object*>& vecLeft = pCurScene->GetGroupObject(_eLeft);
 	const vector<Object*>& vecRight = pCurScene->GetGroupObject(_eRight);
-	// Ãæµ¹ °Ë»ç¸¦ ÇØº¸ÀÚ.
+	// ï¿½æµ¹ ï¿½Ë»ç¸¦ ï¿½Øºï¿½ï¿½ï¿½.
 	for (size_t i = 0; i < vecLeft.size(); ++i)
 	{
-		// Ãæµ¹Ã¼°¡ ¾ø´Â °æ¿ì
+		// ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (vecLeft[i]->GetCollider() == nullptr)
 			continue;
 		for (size_t j = 0; j < vecRight.size(); ++j)
@@ -39,23 +39,23 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 			colID.left_ID = pLeftCol->GetID();
 			colID.right_ID = pRightCol->GetID();
 
-			// Ã£¾Æ¶ó.
+			// Ã£ï¿½Æ¶ï¿½.
 			auto iter = m_mapColInfo.find(colID.ID);
-			// ¾ø¾î¿ë
+			// ï¿½ï¿½ï¿½ï¿½ï¿½
 			if (iter == m_mapColInfo.end())
 			{
-				// ³Ö¾î¶ó
+				// ï¿½Ö¾ï¿½ï¿½
 				m_mapColInfo.insert({ colID.ID, false });
-				// ³ÖÀº°Å Àâ¾Æ¶ó.
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¶ï¿½.
 				iter = m_mapColInfo.find(colID.ID);
 			}
-			// Ãæµ¹ÇÏ³×?
+			// ï¿½æµ¹ï¿½Ï³ï¿½?
 			if (IsCollision(pLeftCol, pRightCol))
 			{
-				// ÀÌÀü¿¡µµ Ãæµ¹ Áß
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½
 				if (iter->second)
 				{
-					// µÑÁß ÇÏ³ª »èÁ¦ ¿¹Á¤ÀÌ¶ó¸é
+					// ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
 					if(vecLeft[i]->GetIsDead() || vecRight[j]->GetIsDead())
 					{
 						pLeftCol->ExitCollision(pRightCol);
@@ -68,7 +68,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 						pRightCol->StayCollision(pLeftCol);
 					}
 				}
-				// ÀÌÀü¿¡ Ãæµ¹x
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹x
 				else
 				{
 					//if()
@@ -77,7 +77,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 					iter->second = true;
 				}
 			}
-			// ¾ÈÇÏ³×?
+			// ï¿½ï¿½ï¿½Ï³ï¿½?
 			else
 			{
 				if (iter->second)
@@ -93,7 +93,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 
 bool CollisionMgr::IsCollision(Collider* _pLeft, Collider* _pRight)
 {
-	// Ãæµ¹°Ë»ç ¾Ë°í¸®Áò
+	// ï¿½æµ¹ï¿½Ë»ï¿½ ï¿½Ë°ï¿½ï¿½ï¿½ï¿½
 	// AABB 
 	Vec2 vLeftPos = _pLeft->GetFinalPos();
 	Vec2 vRightPos = _pRight->GetFinalPos();
@@ -110,18 +110,18 @@ bool CollisionMgr::IsCollision(Collider* _pLeft, Collider* _pRight)
 
 void CollisionMgr::CheckGroup(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight)
 {
-	// ÀÛÀºÂÊÀ» ÇàÀ¸·Î ¾¹½Ã´Ù.
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã´ï¿½.
 	UINT Row = (UINT)_eLeft;
 	UINT Col = (UINT)_eRight;
 	Row = min(Row, Col);
 
-	//// ºñÆ® ¿¬»ê
-	// Ã¼Å©°¡ µÇ¾îÀÖ´Ù¸é
+	//// ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+	// Ã¼Å©ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö´Ù¸ï¿½
 	if (m_arrCheck[Row] & (1 << Col))
 	{
 		m_arrCheck[Row] &= ~(1 << Col);
 	}
-	// Ã¼Å©°¡ ¾ÈµÇ¾îÀÖ´Ù¸ér
+	// Ã¼Å©ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ï¿½Ö´Ù¸ï¿½r
 	else
 	{
 		m_arrCheck[Row] |= (1 << Col);

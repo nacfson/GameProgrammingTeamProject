@@ -11,6 +11,7 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "Rigidbody2D.h"
 Player::Player()
 	: m_pTex(nullptr)
 {
@@ -24,7 +25,7 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	
-	// ¾û¾û¾û ³» 20ºÐ ¤Ð¤Ð¤Ð ¤±³¯¾î;¤Ó³²·¯;¤±³ª¾ó
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 20ï¿½ï¿½ ï¿½Ð¤Ð¤ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;ï¿½Ó³ï¿½ï¿½ï¿½;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
@@ -38,17 +39,20 @@ Player::Player()
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
 
-	//// ¿ÀÇÁ¼Â °Çµå¸®±â
+	//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Çµå¸®ï¿½ï¿½
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
-	//// ÇÏ³ª¸¸
+	//// ï¿½Ï³ï¿½ï¿½ï¿½
 	//pAnim->SetFrameOffset(0, Vec2(0.f, 20.f));
 
-	//// ÇÁ·¹ÀÓ ´Ù 
+	//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
+
+	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 }
 Player::~Player()
 {
+	delete m_pRigidbody2D;
 	//if (nullptr != m_pTex)
 	//	delete m_pTex;
 }
@@ -85,6 +89,7 @@ void Player::Update()
 		GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
 	SetPos(vPos);
 	GetAnimator()->Update();
+	m_pRigidbody2D->Update();
 }
 
 void Player::CreateBullet()
@@ -107,29 +112,29 @@ void Player::Render(HDC _dc)
 	//Vec2 vScale = GetScale();
 	//int Width = m_pTex->GetWidth();
 	//int Height = m_pTex->GetHeight();
-	//// 1. ±âº» ¿Å±â±â
+	//// 1. ï¿½âº» ï¿½Å±ï¿½ï¿½
 	//BitBlt(_dc
 	//	,(int)(vPos.x - vScale.x /2)
 	//	,(int)(vPos.y - vScale.y /2)
 	//	, Width,Height, m_pTex->GetDC()
 	//	,0,0,SRCCOPY);
 
-	//// 2. »ö»ó °È¾î³»±â
+	//// 2. ï¿½ï¿½ï¿½ï¿½ ï¿½È¾î³»ï¿½ï¿½
 	//TransparentBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width,Height, RGB(255,0,255));
 
-	//// 3. È®´ë ¹× Ãà¼Ò
+	//// 3. È®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	//StretchBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width ,Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, SRCCOPY);
 
-	// 4. È¸Àü
-	// »ï°¢ÇÔ¼ö, È¸ÀüÇà·Ä
+	// 4. È¸ï¿½ï¿½
+	// ï¿½ï°¢ï¿½Ô¼ï¿½, È¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	//Plgblt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)

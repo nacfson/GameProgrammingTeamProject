@@ -17,10 +17,10 @@ public:
 	void SetMoveDis(float _f) { m_fMaxDis = _f; }
 	const float& GetSpeed() const { return m_fSpeed; }
 private:
-	float m_fSpeed; // ¸ó½ºÅÍ ½ºÇÇµå
-	Vec2 m_vCenterPos; // Áß½É À§Ä¡
-	float m_fMaxDis; // ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ÃÖ´ë °Å¸®
-	float m_fDir; // ¹æÇâ(-1: ¿ÞÂÊ, 1: ¿À¸¥ÂÊ)
-	int   m_iHp; // Ã¼·Â
+	float m_fSpeed; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Çµï¿½
+	Vec2 m_vCenterPos; // ï¿½ß½ï¿½ ï¿½ï¿½Ä¡
+	float m_fMaxDis; // ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½
+	float m_fDir; // ï¿½ï¿½ï¿½ï¿½(-1: ï¿½ï¿½ï¿½ï¿½, 1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+	int   m_iHp; // Ã¼ï¿½ï¿½
 };
 
