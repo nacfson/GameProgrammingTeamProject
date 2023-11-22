@@ -37,13 +37,13 @@ void Start_Scene::Init()
 		AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	}
 
-	Ground* ground = new Ground;
-	ground->SetPos(Vec2(
-		0.f
-		, 1000.f));
-	ground->SetScale(Vec2(fMonsterScale, fMonsterScale));	
+	Vec2 groundScale = Vec2(fMonsterScale, fMonsterScale);
 
-	AddObject(ground, OBJECT_GROUP::GROUND);
+	Ground *pGround = new Ground(groundScale);
+	pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
+	pGround->SetScale(groundScale);
+
+	AddObject(pGround, OBJECT_GROUP::GROUND);
 
 	// ���� ����
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);

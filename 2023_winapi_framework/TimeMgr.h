@@ -8,16 +8,16 @@ public:
 public:
 	const float& GetDT() const { return m_dT; }
 private:
-	// DT(1ÇÁ·¹ÀÓ´ç ½Ã°£: Delta time)
-	LARGE_INTEGER m_llPrevCount; // ÀÌÀü½Ã°£
-	LARGE_INTEGER m_llCurCount; // ÇöÀç½Ã°£
-	LARGE_INTEGER m_llFrequency; // ÁÖÆÄ¼ö
-	float m_dT; // ÇÁ·¹ÀÓ°£ÀÇ ½Ã°£ °ª
+	// DT(1ï¿½ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ ï¿½Ã°ï¿½: Delta time)
+	LARGE_INTEGER m_llPrevCount; // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
+	LARGE_INTEGER m_llCurCount; // ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
+	LARGE_INTEGER m_llFrequency; // ï¿½ï¿½ï¿½Ä¼ï¿½
+	float m_dT; // ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½
 
 	// FPS
 	UINT  m_fps; // FPS
-	UINT  m_frameCount; // ÇÁ·¹ÀÓ È£Ãâ Ã¼Å©
-	float m_accFrameTime; // ½Ã°£ ´©Àû
+	UINT  m_frameCount; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ Ã¼Å©
+	float m_accFrameTime; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 };
 

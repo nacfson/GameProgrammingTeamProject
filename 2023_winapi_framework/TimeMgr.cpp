@@ -10,13 +10,13 @@ void TimeMgr::Init()
 	m_frameCount = 0;
 	m_fps = 0;
 	m_accFrameTime = 0.f;
-	// ÇöÀç Ä«¿îÆ®ÀÇ Æ½À» °¡Á®¿Â´Ù.(Áö³­½Ã°£)
-	// 1ÃÊ 2ÃÊ ÀÌ·± ÃÊ°¡ ¾Æ´Ï¾ß. Frequency·Î ¾Ë¾Æ¾ßÇØ.
+	// ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®ï¿½ï¿½ Æ½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½)
+	// 1ï¿½ï¿½ 2ï¿½ï¿½ ï¿½Ì·ï¿½ ï¿½Ê°ï¿½ ï¿½Æ´Ï¾ï¿½. Frequencyï¿½ï¿½ ï¿½Ë¾Æ¾ï¿½ï¿½ï¿½.
 	QueryPerformanceCounter(&m_llPrevCount);
 
-	// ÃÊ´ç Ä«¿îÆ® È½¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
-	// ÇöÀç Å¸ÀÌ¸Ó°¡ µ¿ÀÛÇÏ´Â ÁÖÆÄ¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù. 
-	// <-> ÁÖ±â: ÇÑ¹ø Áøµ¿ÇÏ´Âµ¥ °É¸®´Â ½Ã°£
+	// ï¿½Ê´ï¿½ Ä«ï¿½ï¿½Æ® È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Õ´Ï´ï¿½.
+	// ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸Ó°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Õ´Ï´ï¿½. 
+	// <-> ï¿½Ö±ï¿½: ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 	QueryPerformanceFrequency(&m_llFrequency);
 }
 
@@ -24,15 +24,15 @@ void TimeMgr::Update()
 {
 	QueryPerformanceCounter(&m_llCurCount);
 
-	// Delta Time: ÇÑ ÇÁ·¹ÀÓ¿¡ °É¸° ½Ã°£.
+	// Delta Time: ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½É¸ï¿½ ï¿½Ã°ï¿½.
 	m_dT = (float)(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (float)m_llFrequency.QuadPart;
 
 	// FPS: Frame Per Second
 	m_llPrevCount = m_llCurCount;
 	//	1. / m_dT;
-	m_frameCount++; // ÇÁ·¹ÀÓ È£Ãâ ´©Àû
-	m_accFrameTime += m_dT; // ½Ã°£ ´©Àû
-	if (m_accFrameTime >= 1.f) // 1ÃÊ
+	m_frameCount++; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	m_accFrameTime += m_dT; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
+	if (m_accFrameTime >= 1.f) // 1ï¿½ï¿½
 	{
 		m_fps = (UINT)(m_frameCount / m_accFrameTime);
 		m_accFrameTime = 0.f;
@@ -40,7 +40,7 @@ void TimeMgr::Update()
 		static wchar_t titlebuf[50] = {};		
 		swprintf_s(titlebuf, L"FPS: %d, DT: %f", m_fps, m_dT);
 		//wsprintf();
-		//SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
+		SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
 	}
 
 

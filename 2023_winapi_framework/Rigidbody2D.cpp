@@ -8,11 +8,14 @@ Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
 	m_object = _object;
 	m_collider = _collider;
+
+	m_velocity = Vec2(0.f, 0.f);
 }
 
 Rigidbody2D::~Rigidbody2D()
 {
-
+	//delete m_collider;
+	//delete m_object;
 }
 
 void Rigidbody2D::Update()
@@ -22,11 +25,24 @@ void Rigidbody2D::Update()
 	{
 		ApplyGravity();
 	}
+	else
+	{
+		m_velocity.y = 0.f;
+	}
+	ApplyVelocity();
 }
 
 void Rigidbody2D::ApplyGravity()
 {
+	float dt = TimeMgr::GetInst()->GetDT();
+	float temp = m_gravity * m_gravityMultiply;
+	m_velocity.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
+}
+
+void Rigidbody2D::ApplyVelocity()
+{
 	Vec2 curPos = m_object->GetPos();
-	curPos.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
+	//curPos.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
+	curPos = curPos + m_velocity;
 	m_object->SetPos(curPos);
 }

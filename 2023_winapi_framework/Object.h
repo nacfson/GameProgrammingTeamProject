@@ -37,7 +37,7 @@ private:
 public:
 	void CreateCollider();
 	void CreateAnimator();
-private:
+protected:
 	Vec2 m_vPos; // ��ġ
 	Vec2 m_vScale; // ũ��
 	Collider* m_pCollider;

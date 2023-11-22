@@ -5,9 +5,9 @@ class Texture;
 class Ground : public Object
 {
 public:
-	Ground();
+	Ground(Vec2& const _colScale);
 	~Ground();
-	void Render(HDC _dc) override;
+//	void Render(HDC _dc) override;
 
 private:
 	Texture* m_pTex;
