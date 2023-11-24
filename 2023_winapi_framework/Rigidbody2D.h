@@ -9,6 +9,8 @@ private :
 	float m_gravity = 9.81f;
 	float m_gravityMultiply = 0.01f;
 
+	float m_deAcceleration = 4.f;
+
 	Collider* m_collider;
 	Object* m_object;
 	Vec2 m_velocity;
@@ -25,5 +27,6 @@ public:
 private:
 	void ApplyGravity();
 	void ApplyVelocity();
+	void ApplyDeAccel();
 };
 

@@ -23,7 +23,7 @@ Player::Player()
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
-	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
+	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 	
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
@@ -62,12 +62,18 @@ void Player::Update()
 
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
-		vPos.x -= 100.f * fDT;
+		Vec2 curVelocity = m_pRigidbody2D->GetVelocity();
+		curVelocity.x = -10.f * TimeMgr::GetInst()->GetDT();
+		m_pRigidbody2D->SetVelocity(curVelocity);
+		//vPos.x -= 100.f * fDT;
 		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
-		vPos.x += 100.f * fDT;
+		Vec2 curVelocity = m_pRigidbody2D->GetVelocity();
+		curVelocity.x = 10.f * TimeMgr::GetInst()->GetDT();
+		m_pRigidbody2D->SetVelocity(curVelocity);
+		//vPos.x += 100.f * fDT;
 		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))

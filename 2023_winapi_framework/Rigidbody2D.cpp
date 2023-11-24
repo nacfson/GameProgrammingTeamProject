@@ -29,6 +29,8 @@ void Rigidbody2D::Update()
 	{
 		m_velocity.y = 0.f;
 	}
+
+	ApplyDeAccel();
 	ApplyVelocity();
 }
 
@@ -45,4 +47,16 @@ void Rigidbody2D::ApplyVelocity()
 	//curPos.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
 	curPos = curPos + m_velocity;
 	m_object->SetPos(curPos);
+}
+
+void Rigidbody2D::ApplyDeAccel()
+{
+	if (m_velocity.x > 0)
+	{
+		m_velocity.x -= m_deAcceleration * TimeMgr::GetInst()->GetDT();
+	}
+	else if (m_velocity.x < 0)
+	{
+		m_velocity.x += m_deAcceleration * TimeMgr::GetInst()->GetDT();
+	}
 }
