@@ -88,9 +88,12 @@ void Player::Update()
 	}
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
-		CreateBullet();
+		m_pRigidbody2D->AddForce(Vec2(1.0f,1.0f),10.f);
+		//CreateBullet();
 		ResMgr::GetInst()->Play(L"Shoot");
 	}
+
+	
 	if(KEY_PRESS(KEY_TYPE::CTRL))
 		GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
 	SetPos(vPos);

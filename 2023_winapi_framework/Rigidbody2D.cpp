@@ -4,6 +4,18 @@
 #include "Object.h"
 #include "TimeMgr.h"
 
+void Rigidbody2D::AddForce(Vec2&& direction, float power)
+{
+	m_velocity = m_velocity + (direction * power);
+}
+
+void Rigidbody2D::AddForce(Vec2& direction, float power)
+{
+	m_velocity = m_velocity + (direction * power);
+}
+
+
+
 Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
 	m_object = _object;
@@ -35,7 +47,7 @@ void Rigidbody2D::Update()
 }
 
 void Rigidbody2D::ApplyGravity()
-{
+{              
 	float dt = TimeMgr::GetInst()->GetDT();
 	float temp = m_gravity * m_gravityMultiply;
 	m_velocity.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();

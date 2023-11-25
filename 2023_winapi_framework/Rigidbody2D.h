@@ -17,6 +17,8 @@ private :
 public:
 	void SetGravityMultiply(float _value) { m_gravityMultiply = _value; }
 	void SetVelocity(Vec2& const _value) { m_velocity = _value; }
+	void AddForce(Vec2&& direction, float power);
+	void AddForce(Vec2& direction, float power);
 
 	const Vec2& GetVelocity() const { return m_velocity; }
 
