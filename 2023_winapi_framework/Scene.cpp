@@ -61,3 +61,8 @@ void Scene::Release()
 		m_vecObj[i].clear();
 	}
 }
+
+void Scene::ChangeNextScene()
+{
+
+}

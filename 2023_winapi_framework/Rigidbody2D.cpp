@@ -32,12 +32,11 @@ Rigidbody2D::~Rigidbody2D()
 
 void Rigidbody2D::Update()
 {
-	//주석다는척.
 	if (0 == m_collider->IsGrounded())
 	{
 		ApplyGravity();
 	}
-	else
+	else if(m_velocity.y >= 0.1f)
 	{
 		m_velocity.y = 0.f;
 	}

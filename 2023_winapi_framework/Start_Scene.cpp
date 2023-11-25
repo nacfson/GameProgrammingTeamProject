@@ -8,9 +8,10 @@
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 #include "Ground.h"
+#include "Slider.h"
 void Start_Scene::Init()
 {
-	Object* pObj = new Player;
+	Player* pObj = new Player;
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
@@ -45,6 +46,12 @@ void Start_Scene::Init()
 
 	AddObject(pGround, OBJECT_GROUP::GROUND);
 
+
+	Slider *pSlider = new Slider;
+
+	pObj->SetSlider(pSlider);
+	AddObject(pSlider, OBJECT_GROUP::UI);
+
 	// ���� ����
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
@@ -72,4 +79,9 @@ void Start_Scene::Release()
 {
 	Scene::Release();
 	CollisionMgr::GetInst()->CheckReset();
+}
+
+bool Start_Scene::CanChangeNextScene()
+{
+	
 }

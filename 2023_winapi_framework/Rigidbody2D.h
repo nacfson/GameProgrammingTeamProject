@@ -9,7 +9,7 @@ private :
 	float m_gravity = 9.81f;
 	float m_gravityMultiply = 0.01f;
 
-	float m_deAcceleration = 4.f;
+	float m_deAcceleration = 1.f;
 
 	Collider* m_collider;
 	Object* m_object;

@@ -29,6 +29,7 @@ void KeyMgr::Update()
 				else // 이전에 안눌렸어. 지금 딱!!! 누름
 				{
 					m_vecKey[i].eState = KEY_STATE::DOWN;
+					m_prevPressKey = static_cast<KEY_TYPE>(i);
 				}
 				m_vecKey[i].IsPrevCheck = true;
 			}

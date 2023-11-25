@@ -24,6 +24,10 @@ private:
 public:
 	void Init();
 	void Update();
+
+	const KEY_TYPE& GetPrevKey() const { return m_prevPressKey; }
+private:
+	KEY_TYPE m_prevPressKey;
 public:
 	const KEY_STATE& GetKey(KEY_TYPE _eKey) const
 	{
