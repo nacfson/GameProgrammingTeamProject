@@ -11,7 +11,7 @@ void PlayerMgr::Init()
 	{
 		m_pPlayer = new Player();
 
-		m_pPlayer->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+		m_pPlayer->SetPos((Vec2({(float) Core::GetInst()->GetResolution().x / 2, (float)Core::GetInst()->GetResolution().y / 2  + 100.f})));
 		m_pPlayer->SetScale(Vec2(100.f, 100.f));
 	}
 	m_pPlayer->Init();
@@ -27,12 +27,12 @@ void PlayerMgr::Init()
 void PlayerMgr::Update()
 {
 	auto curScene = SceneMgr::GetInst()->GetCurScene();
+
 	if(curScene->CanChangeNextScene())
 	{
 		SceneMgr::GetInst()->LoadScene(curScene->GetNextSceneName());
 
 		Vec2 pos = m_pPlayer->GetPos();
-		auto resolution = Core::GetInst()->GetResolution();
 		pos.y = 0.f;
 
 		m_pPlayer->SetPos(pos);
@@ -40,7 +40,7 @@ void PlayerMgr::Update()
 
 	if(curScene->CanChangePrevScene())
 	{
-		wstring sceneName = curScene->GetNextSceneName();
+		const wstring sceneName = curScene->GetNextSceneName();
 		if(sceneName == L"")
 		{
 			return;

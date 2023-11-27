@@ -10,6 +10,9 @@ private :
 	float m_gravityMultiply = 0.01f;
 
 	float m_deAcceleration = .1f;
+	float m_fApplyDeAcceleration = .0f;
+	float m_fGroundedDeAcceleration = .5f;
+
 
 	float m_fResolutionMaxY = 0.f;
 	float m_fResolutionMaxX = 0.f;

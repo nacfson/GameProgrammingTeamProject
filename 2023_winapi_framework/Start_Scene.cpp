@@ -25,7 +25,18 @@ void Start_Scene::Init()
 	pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
 	pGround->SetScale(groundScale);
 
+	Ground* pGround1 = new Ground(groundScale);
+	pGround1->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f + 300.f, 500.f));
+	pGround1->SetScale(groundScale);
+
+	Ground* pGround2 = new Ground(groundScale);
+	pGround2->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 420.f));
+	pGround2->SetScale(groundScale);
+	
+
 	AddObject(pGround, OBJECT_GROUP::GROUND);
+	AddObject(pGround1, OBJECT_GROUP::GROUND);
+	AddObject(pGround2, OBJECT_GROUP::GROUND);
 
 
 	// ���� ����

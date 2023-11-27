@@ -10,6 +10,8 @@ void Rigidbody2D::Init()
 	POINT resolution = Core::GetInst()->GetResolution();
 	m_fResolutionMaxX = resolution.x;
 	m_fResolutionMaxY = resolution.y;
+
+	m_fApplyDeAcceleration = m_deAcceleration;
 }
 
 void Rigidbody2D::AddForce(Vec2&& direction, float power)
@@ -21,8 +23,6 @@ void Rigidbody2D::AddForce(Vec2& direction, float power)
 {
 	m_velocity = m_velocity + Vec2((float)direction.x * power, (float)direction.y * power);
 }
-
-
 
 Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
@@ -42,10 +42,12 @@ void Rigidbody2D::Update()
 {
 	if (0 == m_collider->IsGrounded())
 	{
+		m_fApplyDeAcceleration = m_deAcceleration;
 		ApplyGravity();
 	}
 	else if(m_velocity.y >= 0.1f)
 	{
+		m_fApplyDeAcceleration = m_fGroundedDeAcceleration;
 		m_velocity.y = 0.f;
 	}
 
@@ -83,10 +85,10 @@ void Rigidbody2D::ApplyDeAccel()
 {
 	if (m_velocity.x > 0)
 	{
-		m_velocity.x -= m_deAcceleration * TimeMgr::GetInst()->GetDT();
+		m_velocity.x -= m_fApplyDeAcceleration * TimeMgr::GetInst()->GetDT();
 	}
 	else if (m_velocity.x < 0)
 	{
-		m_velocity.x += m_deAcceleration * TimeMgr::GetInst()->GetDT();
+		m_velocity.x += m_fApplyDeAcceleration * TimeMgr::GetInst()->GetDT();
 	}
 }
