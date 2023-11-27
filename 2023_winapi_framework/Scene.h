@@ -7,7 +7,7 @@ public:
 	Scene();
 	virtual ~Scene();
 	// Init(), Update(), Render(), Release();
-	virtual void Init() abstract;
+	virtual void Init();
 
 	virtual void Update();
 	virtual void FinalUpdate();

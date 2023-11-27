@@ -12,6 +12,8 @@ public:
     Player(Player& player);
     ~Player();
 public:
+    void Init();
+
     void Update() override;
     void Render(HDC _dc) override;
 

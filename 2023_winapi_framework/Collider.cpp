@@ -3,6 +3,12 @@
 #include "Object.h"
 #include "SelectGDI.h"
 UINT Collider::m_sNextID = 0;
+
+void Collider::Init()
+{
+	m_isGrounded = false;
+}
+
 Collider::Collider()
 	: m_pOwner(nullptr)
 	, m_vScale(Vec2(40.f,40.f))

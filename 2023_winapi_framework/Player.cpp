@@ -68,6 +68,14 @@ Player::~Player()
 	//if (nullptr != m_pTex)
 	//	delete m_pTex;
 }
+
+void Player::Init()
+{
+	m_pRigidbody2D->Init();
+	m_pCollider->Init();
+	m_pSlider = nullptr;
+}
+
 void Player::Update()
 {
 	KEY_TYPE prevPressKey = KeyMgr::GetInst()->GetPrevKey();

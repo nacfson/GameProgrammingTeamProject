@@ -6,15 +6,20 @@ class PlayerMgr
 	SINGLE(PlayerMgr);
 
 public:
-	const Player GetPlayer() const { return m_player; }
+	const Player* GetPlayer() const { return m_pPlayer; }
+
 	void Init();
-	void LoadPlayer(Player& const player)
+
+	void Release();
+
+	void Render(HDC _dc);
+	void LoadPlayer(Player* const player)
 	{
-		m_player = player;
+		m_pPlayer = player;
 		IsChanged = true;
 	}
 	bool IsChanged = false;
 private:
-	Player m_player;
+	Player* m_pPlayer;
 };
 

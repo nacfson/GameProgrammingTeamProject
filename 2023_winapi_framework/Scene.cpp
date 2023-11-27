@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
+#include "PlayerMgr.h"
 #include "Object.h"
 Scene::Scene()
 {
@@ -10,6 +11,11 @@ Scene::Scene()
 Scene::~Scene()
 {
 	Release();
+}
+
+void Scene::Init()
+{
+	PlayerMgr::GetInst()->Init();
 }
 
 void Scene::SetNextScene(wstring _nextSceneName, wstring _prevSceneName)
@@ -58,11 +64,12 @@ void Scene::Render(HDC _dc)
 	}
 }
 
+
 void Scene::Release()
 {
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
-		//if (i == static_cast<UINT>(OBJECT_GROUP::PLAYER)) continue;
+		if (i == static_cast<UINT>(OBJECT_GROUP::PLAYER)) continue;
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
 		{
 			delete m_vecObj[i][j];

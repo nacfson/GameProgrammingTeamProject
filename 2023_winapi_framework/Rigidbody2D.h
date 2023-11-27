@@ -14,7 +14,11 @@ private :
 	Collider* m_collider;
 	Object* m_object;
 	Vec2 m_velocity;
+
+
 public:
+	void Init();
+
 	void SetGravityMultiply(float _value) { m_gravityMultiply = _value; }
 	void SetVelocity(Vec2& const _value) { m_velocity = _value; }
 	void AddForce(Vec2&& direction, float power);

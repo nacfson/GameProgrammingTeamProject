@@ -4,6 +4,11 @@
 #include "Object.h"
 #include "TimeMgr.h"
 
+void Rigidbody2D::Init()
+{
+
+}
+
 void Rigidbody2D::AddForce(Vec2&& direction, float power)
 {
 	m_velocity = m_velocity + Vec2((float)direction.x * power, (float)direction.y * power);

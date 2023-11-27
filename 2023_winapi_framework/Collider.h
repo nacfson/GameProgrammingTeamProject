@@ -4,7 +4,9 @@ class Object;
 class Collider
 {
 public:
+	void Init();
 	Collider();
+
 	Collider(const Collider& _origin);
 	~Collider();
 	Collider& operator = (Collider& _origin) = delete;
