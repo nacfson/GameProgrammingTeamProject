@@ -8,12 +8,15 @@ public:
 	virtual ~Scene();
 	// Init(), Update(), Render(), Release();
 	virtual void Init() abstract;
+
 	virtual void Update();
 	virtual void FinalUpdate();
 	virtual void Render(HDC _dc);
 	virtual void Release();
 
-	virtual bool CanChangeNextScene();
+	virtual bool CanChangeNextScene() abstract;
+protected:
+	void SetNextScene(wstring _nextSceneName, wstring _prevSceneName = L"");
 public:
 	const vector<Object*>& GetGroupObject(OBJECT_GROUP _etype) const
 	{
@@ -29,6 +32,8 @@ public:
 protected:
 //	Object*  m_obj;
 	vector<Object*> m_vecObj[(UINT)OBJECT_GROUP::END];
-	Scene* m_nextScene;
+
+	wstring m_nextSceneName;
+	wstring m_prevSceneName;
 };
 

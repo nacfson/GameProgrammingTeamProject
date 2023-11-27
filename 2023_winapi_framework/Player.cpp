@@ -17,8 +17,8 @@ Player::Player()
 	: m_pTex(nullptr),
 	m_fPlusJumpPower(.3f),
 	m_fCurJumpPower(0.f),
-	m_fMinJumpPower(.3f),
-	m_fMaxJumpPower(1.f)
+	m_fMinJumpPower(0.f),
+	m_fMaxJumpPower(.8f)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
@@ -56,6 +56,12 @@ Player::Player()
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
 }
+
+Player::Player(Player& player)
+{
+	
+}
+
 Player::~Player()
 {
 	delete m_pRigidbody2D;
@@ -102,25 +108,21 @@ void Player::Update()
 		{
 			if (m_fCurJumpPower >= m_fMinJumpPower)
 			{
-				Vec2 jumpDirection = Vec2(1.0f,-1.0f);
+				Vec2 jumpDirection = Vec2(.5f,-1.0f);
 				switch(m_prevPressMoveKey)
 				{
 				case KEY_TYPE::LEFT:
-					jumpDirection = Vec2(-1.0f, -1.0f).Normalize();
+					jumpDirection = Vec2(-.5f, -1.0f).Normalize();
 					break;
 				case KEY_TYPE::RIGHT:
-					jumpDirection = Vec2(1.0f, -1.0f).Normalize();
+					jumpDirection = Vec2(.5f, -1.0f).Normalize();
 					break;
-				//default:
-				//	jumpDirection = Vec2(1.0f, -1.0f).Normalize();
-				//	break;
 				}
-
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
 			}
 
 			m_fCurJumpPower = 0.f;
-			m_pSlider->SetSlider(m_fCurJumpPower / m_fMaxJumpPower);
+			m_pSlider->SetSlider(0.f);
 		}
 	}
 

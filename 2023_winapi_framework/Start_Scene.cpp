@@ -9,36 +9,33 @@
 #include "ResMgr.h"
 #include "Ground.h"
 #include "Slider.h"
+#include "SceneMgr.h"
+#include "EventMgr.h"
+#include "PlayerMgr.h"
 void Start_Scene::Init()
 {
-	Player* pObj = new Player;
-	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
-	pObj->SetScale(Vec2(100.f,100.f));
-	AddObject(pObj, OBJECT_GROUP::PLAYER);
+	if(PlayerMgr::GetInst()->IsChanged == false)
+	{
+		Player* pObj = new Player;
+		pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+		pObj->SetScale(Vec2(100.f, 100.f));
+		AddObject(pObj, OBJECT_GROUP::PLAYER);
+	}
+	else
+	{
+		Player* pObj = new Player;
+	}
+
+
+	//EventMgr::GetInst()->AddPlayer(pObj);
 
 	// ���� ���� �������� ��ġ�� �غ��ô�.
 
 	Vec2 vResolution = Core::GetInst()->GetResolution();
-	Monster* pMonster = nullptr;
-	int iMonster = 10;		// ���� �� 
-	float fMoveDist = 30.f; // ������ �Ÿ�
-	float fMonsterScale = 50.f; // ���� ũ��
-	// �ػ�x - ( ������ �Ÿ� + ������Ʈ ũ�� /2) * 2 / ���ͼ� -1 
-	float fTerm = (vResolution.x - (fMoveDist + fMonsterScale / 2.f) * 2) 
-					/ (float)(iMonster -1);
-	for (int i = 0; i < iMonster; ++i)
-	{
-		pMonster = new Monster;
-		pMonster->SetPos(Vec2(
-			(fMoveDist + fMonsterScale / 2.f) + i* fTerm
-			,300.f));
-		pMonster->SetScale(Vec2(fMonsterScale, fMonsterScale));
-		pMonster->SetCenterPos(pMonster->GetPos());
-		pMonster->SetMoveDis(fMoveDist);
-		AddObject(pMonster, OBJECT_GROUP::MONSTER);
-	}
 
-	Vec2 groundScale = Vec2(fMonsterScale, fMonsterScale);
+
+	float fGroundScale = 50.f; // ���� ũ��
+	Vec2 groundScale = Vec2(fGroundScale, fGroundScale);
 
 	Ground *pGround = new Ground(groundScale);
 	pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
@@ -56,19 +53,22 @@ void Start_Scene::Init()
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->Play(L"BGM");
-	
+
 
 	// �浹üũ�ؾߵǴ°͵��� ��������.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
+
+	SetNextScene(L"First_Scene");
 }
 
 void Start_Scene::Update()
 {
 	Scene::Update();
-	//if(KEY_DOWN(KEY_TYPE::ENTER))
-	//	// �� ����
-}
+
+	if (KEY_DOWN(KEY_TYPE::ENTER))
+		SceneMgr::GetInst()->LoadScene(m_nextSceneName);
+}	
 
 void Start_Scene::Render(HDC _dc)
 {
@@ -83,5 +83,5 @@ void Start_Scene::Release()
 
 bool Start_Scene::CanChangeNextScene()
 {
-	
+	return false;
 }

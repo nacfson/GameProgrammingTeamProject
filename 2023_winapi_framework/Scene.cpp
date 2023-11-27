@@ -3,11 +3,19 @@
 #include "Object.h"
 Scene::Scene()
 {
+
 }
+
 
 Scene::~Scene()
 {
 	Release();
+}
+
+void Scene::SetNextScene(wstring _nextSceneName, wstring _prevSceneName)
+{
+	m_nextSceneName = _nextSceneName;
+	m_prevSceneName = _prevSceneName;
 }
 
 void Scene::Update()
@@ -54,12 +62,18 @@ void Scene::Release()
 {
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
+		//if (i == static_cast<UINT>(OBJECT_GROUP::PLAYER)) continue;
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
 		{
 			delete m_vecObj[i][j];
 		}
 		m_vecObj[i].clear();
 	}
+}
+
+bool Scene::CanChangeNextScene()
+{
+	return false;
 }
 
 void Scene::ChangeNextScene()

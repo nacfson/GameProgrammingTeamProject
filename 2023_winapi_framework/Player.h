@@ -9,6 +9,7 @@ class Player :
 {
 public:
     Player();
+    Player(Player& player);
     ~Player();
 public:
     void Update() override;

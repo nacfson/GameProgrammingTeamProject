@@ -3,6 +3,10 @@
 class Game_Scene :
     public Scene
 {
-    virtual void Init() override;
+public :
+	Game_Scene();
+	~Game_Scene();
+	virtual void Init() override;
+	bool CanChangeNextScene() override;
 };
 

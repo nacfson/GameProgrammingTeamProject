@@ -1,10 +1,14 @@
-﻿  Player.cpp
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Player.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Rigidbody2D.h(19,37): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-  Slider.cpp
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Slider.h(23): warning C4172: 지역 변수 또는 임시의 주소를 반환하고 있습니다.
-  2023_winapi_framework.vcxproj -> D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\Output\bin_debug\2023_winapi_framework.exe
+﻿  Core.cpp
+  EventMgr.cpp
+  Monster.cpp
+  PlayerMgr.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\PlayerMgr.h(11,24): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  Scene.cpp
+  Start_Scene.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\PlayerMgr.h(11,24): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp(17,42): error C2059: 구문 오류: ')'
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp(19,2): error C2065: 'pObj': 선언되지 않은 식별자입니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp(20,2): error C2065: 'pObj': 선언되지 않은 식별자입니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp(21,12): error C2065: 'pObj': 선언되지 않은 식별자입니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp(42,2): error C2065: 'pObj': 선언되지 않은 식별자입니다.

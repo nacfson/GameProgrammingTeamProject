@@ -18,25 +18,25 @@ void KeyMgr::Update()
 	{
 		for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)
 		{
-			// Å°°¡ ´­·È´Ù.
+			// Å°ï¿½ï¿½ ï¿½ï¿½ï¿½È´ï¿½.
 			if (GetAsyncKeyState(m_arrVKKey[i]))
 			{
-				// ÀÌÀü¿¡ ´­·È¾î
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¾ï¿½
 				if (m_vecKey[i].IsPrevCheck)
 				{
 					m_vecKey[i].eState = KEY_STATE::PRESS;
 				}
-				else // ÀÌÀü¿¡ ¾È´­·È¾î. Áö±Ý µü!!! ´©¸§
+				else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½ï¿½È¾ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!!! ï¿½ï¿½ï¿½ï¿½
 				{
 					m_vecKey[i].eState = KEY_STATE::DOWN;
 					m_prevPressKey = static_cast<KEY_TYPE>(i);
 				}
 				m_vecKey[i].IsPrevCheck = true;
 			}
-			// Å°°¡ ¾È´­·È´Ù.
+			// Å°ï¿½ï¿½ ï¿½È´ï¿½ï¿½È´ï¿½.
 			else
 			{
-				// ÀÌÀü¿¡ ´­·ÁÀÖ¾ú´Ù.
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½.
 				if (m_vecKey[i].IsPrevCheck)
 				{
 					m_vecKey[i].eState = KEY_STATE::UP;
@@ -49,12 +49,12 @@ void KeyMgr::Update()
 			}
 		}
 		// Mouse
-		GetCursorPos(&m_ptMouse); // ¸¶¿ì½º Ä¿¼­ ÁÂÇ¥ ¹Þ±â
-		// ¿ì¸®°¡ °¡Áø À©µµ¿ì Ã¢ ±âÁØÀ¸·Î ÁÂÇ¥ º¯°æ
+		GetCursorPos(&m_ptMouse); // ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½Þ±ï¿½
+		// ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
 		ScreenToClient(Core::GetInst()->GetHwnd(), &m_ptMouse);
 	}
 
-	// Æ÷Ä¿½Ì ÇØÁ¦ alt + tap
+	// ï¿½ï¿½Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ alt + tap
 	else
 	{
 		for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)

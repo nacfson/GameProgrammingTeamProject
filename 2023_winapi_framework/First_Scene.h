@@ -7,6 +7,6 @@ public:
 	First_Scene();
 	~First_Scene();
 
-	
-;
+
+};
 
