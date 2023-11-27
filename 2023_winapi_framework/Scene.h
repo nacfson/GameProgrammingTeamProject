@@ -15,6 +15,8 @@ public:
 	virtual void Release();
 
 	virtual bool CanChangeNextScene() abstract;
+	virtual bool CanChangePrevScene() abstract;
+
 protected:
 	void SetNextScene(wstring _nextSceneName, wstring _prevSceneName = L"");
 public:
@@ -27,7 +29,8 @@ public:
 	{
 		m_vecObj[(UINT)_eType].push_back(_pObj);
 	}
-	void ChangeNextScene();
+	const wstring GetNextSceneName() const { return m_nextSceneName; }
+	const wstring GetPrevSceneName() const { return m_prevSceneName; }
 	
 protected:
 //	Object*  m_obj;

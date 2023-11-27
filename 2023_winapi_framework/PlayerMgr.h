@@ -9,7 +9,7 @@ public:
 	const Player* GetPlayer() const { return m_pPlayer; }
 
 	void Init();
-
+	void Update();
 	void Release();
 
 	void Render(HDC _dc);

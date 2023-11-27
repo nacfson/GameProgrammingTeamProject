@@ -55,15 +55,17 @@ Player::Player()
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
+	m_pRigidbody2D->Init();
 }
 
 Player::Player(Player& player)
 {
-	
+
 }
 
 Player::~Player()
 {
+	delete m_pSlider;
 	delete m_pRigidbody2D;
 	//if (nullptr != m_pTex)
 	//	delete m_pTex;

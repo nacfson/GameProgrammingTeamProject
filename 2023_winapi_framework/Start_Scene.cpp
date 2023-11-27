@@ -38,7 +38,7 @@ void Start_Scene::Init()
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
 
-	SetNextScene(L"First_Scene");
+	SetNextScene(L"First_Scene",L"First_Scene");
 }
 
 void Start_Scene::Update()
@@ -62,5 +62,28 @@ void Start_Scene::Release()
 
 bool Start_Scene::CanChangeNextScene()
 {
-	return false;
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if(PlayerMgr::GetInst()->GetPlayer()->GetPos().y <= 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Start_Scene::CanChangePrevScene()
+{
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if (PlayerMgr::GetInst()->GetPlayer()->GetPos().y >= resolution.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

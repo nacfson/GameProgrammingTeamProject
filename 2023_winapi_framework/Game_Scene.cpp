@@ -17,3 +17,7 @@ bool Game_Scene::CanChangeNextScene()
 {
 	return Scene::CanChangeNextScene();
 }
+bool Game_Scene::CanChangePrevScene()
+{
+	return Scene::CanChangePrevScene();
+}

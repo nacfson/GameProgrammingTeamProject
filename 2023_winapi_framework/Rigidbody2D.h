@@ -11,6 +11,9 @@ private :
 
 	float m_deAcceleration = .1f;
 
+	float m_fResolutionMaxY = 0.f;
+	float m_fResolutionMaxX = 0.f;
+
 	Collider* m_collider;
 	Object* m_object;
 	Vec2 m_velocity;
@@ -18,7 +21,7 @@ private :
 
 public:
 	void Init();
-
+	
 	void SetGravityMultiply(float _value) { m_gravityMultiply = _value; }
 	void SetVelocity(Vec2& const _value) { m_velocity = _value; }
 	void AddForce(Vec2&& direction, float power);

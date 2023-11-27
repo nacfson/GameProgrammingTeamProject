@@ -3,10 +3,13 @@
 #include "Collider.h"
 #include "Object.h"
 #include "TimeMgr.h"
+#include "Core.h"
 
 void Rigidbody2D::Init()
 {
-
+	POINT resolution = Core::GetInst()->GetResolution();
+	m_fResolutionMaxX = resolution.x;
+	m_fResolutionMaxY = resolution.y;
 }
 
 void Rigidbody2D::AddForce(Vec2&& direction, float power)
@@ -62,8 +65,19 @@ void Rigidbody2D::ApplyVelocity()
 	Vec2 curPos = m_object->GetPos();
 	//curPos.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
 	curPos = curPos + m_velocity;
+
+	if(curPos.x >= m_fResolutionMaxX)
+	{
+		curPos.x = m_fResolutionMaxX;
+	}
+	if((curPos.x <= 0.f))
+	{
+		curPos.x = 0.f;
+	}
+
 	m_object->SetPos(curPos);
 }
+
 
 void Rigidbody2D::ApplyDeAccel()
 {

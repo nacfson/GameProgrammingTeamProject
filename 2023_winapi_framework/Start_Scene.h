@@ -9,5 +9,6 @@ public:
     virtual void Render(HDC _dc) override;
     virtual void Release() override;
     virtual bool CanChangeNextScene() override;
+    virtual bool CanChangePrevScene() override;
 };
 

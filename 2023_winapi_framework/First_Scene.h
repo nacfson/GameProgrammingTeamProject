@@ -7,5 +7,6 @@ public:
 	First_Scene();
 	~First_Scene();
 	bool CanChangeNextScene() override;
+	bool CanChangePrevScene() override;
 };
 
