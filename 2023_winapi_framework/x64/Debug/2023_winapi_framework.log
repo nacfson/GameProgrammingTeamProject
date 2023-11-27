@@ -1,2 +1,3 @@
-﻿  Player.cpp
-  2023_winapi_framework.vcxproj -> C:\Users\user\Downloads\2023_winapi_framework\Output\bin_debug\2023_winapi_framework.exe
+﻿  Start_Scene.cpp
+  LINK : D:\GitHubDesktop\GameProgrammingTeamProject\Output\bin_debug\2023_winapi_framework.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  2023_winapi_framework.vcxproj -> D:\GitHubDesktop\GameProgrammingTeamProject\Output\bin_debug\2023_winapi_framework.exe
