@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
+
+#include "Core.h"
 #include "PlayerMgr.h"
 #include "Object.h"
 Scene::Scene()
@@ -80,10 +82,28 @@ void Scene::Release()
 
 bool Scene::CanChangeNextScene()
 {
-	return false;
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if (PlayerMgr::GetInst()->GetPlayer()->GetPos().y <= 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool Scene::CanChangePrevScene()
 {
-	return false;
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if (PlayerMgr::GetInst()->GetPlayer()->GetPos().y >= resolution.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

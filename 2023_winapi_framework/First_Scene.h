@@ -8,5 +8,6 @@ public:
 	~First_Scene();
 	bool CanChangeNextScene() override;
 	bool CanChangePrevScene() override;
+	void Init() override;
 };
 

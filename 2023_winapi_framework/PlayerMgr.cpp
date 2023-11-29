@@ -14,6 +14,7 @@ void PlayerMgr::Init()
 		m_pPlayer->SetPos((Vec2({(float) Core::GetInst()->GetResolution().x / 2, (float)Core::GetInst()->GetResolution().y / 2  + 100.f})));
 		m_pPlayer->SetScale(Vec2(100.f, 100.f));
 	}
+
 	m_pPlayer->Init();
 
 	Slider* pSlider = new Slider;
@@ -28,30 +29,31 @@ void PlayerMgr::Update()
 {
 	auto curScene = SceneMgr::GetInst()->GetCurScene();
 
-	if(curScene->CanChangeNextScene())
+	if(curScene->CanChangePrevScene())
 	{
-		SceneMgr::GetInst()->LoadScene(curScene->GetNextSceneName());
+		const wstring sceneName = curScene->GetPrevSceneName();
+		if (sceneName == L"")
+			return;
+
+		SceneMgr::GetInst()->LoadScene(sceneName);
 
 		Vec2 pos = m_pPlayer->GetPos();
 		pos.y = 0.f;
 
 		m_pPlayer->SetPos(pos);
+		return;
 	}
 
-	if(curScene->CanChangePrevScene())
+	if(curScene->CanChangeNextScene())
 	{
-		const wstring sceneName = curScene->GetNextSceneName();
-		if(sceneName == L"")
-		{
-			return;
-		}
 		SceneMgr::GetInst()->LoadScene(curScene->GetNextSceneName());
 
 		Vec2 pos = m_pPlayer->GetPos();
 		auto resolution = Core::GetInst()->GetResolution();
-		pos.y = -resolution.y * 0.5f;
+		pos.y = resolution.y;
 
 		m_pPlayer->SetPos(pos);
+		return;
 	}
 }
 

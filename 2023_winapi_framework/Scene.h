@@ -24,6 +24,7 @@ public:
 	{
 		return m_vecObj[(UINT)_etype];
 	}
+	const bool& GetIsInit() const { return m_bIsInit; }
 public:
 	void AddObject(Object* _pObj, OBJECT_GROUP _eType)
 	{
@@ -38,5 +39,7 @@ protected:
 
 	wstring m_nextSceneName;
 	wstring m_prevSceneName;
+
+	bool m_bIsInit;
 };
 

@@ -34,8 +34,7 @@ Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 
 Rigidbody2D::~Rigidbody2D()
 {
-	//delete m_collider;
-	//delete m_object;
+
 }
 
 void Rigidbody2D::Update()
@@ -51,14 +50,13 @@ void Rigidbody2D::Update()
 		m_velocity.y = 0.f;
 	}
 
+
 	ApplyDeAccel();
 	ApplyVelocity();
 }
 
 void Rigidbody2D::ApplyGravity()
 {              
-	float dt = TimeMgr::GetInst()->GetDT();
-	float temp = m_gravity * m_gravityMultiply;
 	m_velocity.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
 }
 
