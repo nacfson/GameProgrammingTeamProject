@@ -3,6 +3,7 @@
 #include "Start_Scene.h"
 #include "Game_Scene.h"
 #include "First_Scene.h"
+#include "PlayerMgr.h"
 
 void SceneMgr::Init()
 {
