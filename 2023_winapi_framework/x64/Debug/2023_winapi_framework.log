@@ -1,2 +1,249 @@
-﻿  PlayerMgr.cpp
-  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe
+﻿  Animation.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Animation.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Animation.cpp'을(를) 컴파일하는 중)
+  
+  Animator.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Animator.cpp'을(를) 컴파일하는 중)
+  
+  BaseWindow.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\BaseWindow.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'BaseWindow.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\BaseWindow.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'BaseWindow.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'BaseWindow.cpp'을(를) 컴파일하는 중)
+  
+  Bullet.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Bullet.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Bullet.cpp'을(를) 컴파일하는 중)
+  
+  Collider.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Collider.cpp'을(를) 컴파일하는 중)
+  
+  CollisionMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\CollisionMgr.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'CollisionMgr.cpp'을(를) 컴파일하는 중)
+  
+  Core.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Core.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Core.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Core.cpp'을(를) 컴파일하는 중)
+  
+  EventMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'EventMgr.cpp'을(를) 컴파일하는 중)
+  
+  First_Scene.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'First_Scene.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  (소스 파일 'First_Scene.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'First_Scene.cpp'을(를) 컴파일하는 중)
+  
+  Game_Scene.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Game_Scene.cpp'을(를) 컴파일하는 중)
+  
+  Ground.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Ground.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  (소스 파일 'Ground.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Ground.cpp(5,20): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  KeyMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'KeyMgr.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'KeyMgr.cpp'을(를) 컴파일하는 중)
+  
+  Monster.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Monster.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+  Object.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Object.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Object.cpp'을(를) 컴파일하는 중)
+  
+  PathMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'PathMgr.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'PathMgr.cpp'을(를) 컴파일하는 중)
+  
+  Player.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Player.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Player.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Player.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Rigidbody2D.h(29,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  (소스 파일 'Player.cpp'을(를) 컴파일하는 중)
+  
+  PlayerMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'PlayerMgr.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'PlayerMgr.cpp'을(를) 컴파일하는 중)
+  
+  Res.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Res.cpp'을(를) 컴파일하는 중)
+  
+  ResMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'ResMgr.cpp'을(를) 컴파일하는 중)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53): warning C4244: '인수': 'wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53): warning C4244:             _Elem=char
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53): warning C4244:         ]
+  (소스 파일 'ResMgr.cpp'을(를) 컴파일하는 중)
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2749,53):
+  템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+  	D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\ResMgr.cpp(77,8):
+  	컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::assign<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(const _Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>
+          ]
+  		D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\ResMgr.cpp(77,15):
+  		'ResMgr::LoadSound'에서 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::assign'에 대한 첫 번째 참조를 확인하세요.
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(3424,32):
+  	컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<wchar_t*,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=wchar_t *,
+              _Alloc=std::allocator<char>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(2590,17):
+  	컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+  
+  Rigidbody2D.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Rigidbody2D.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Rigidbody2D.h(29,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  (소스 파일 'Rigidbody2D.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Rigidbody2D.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Rigidbody2D.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Rigidbody2D.cpp(11,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Rigidbody2D.cpp(12,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Scene.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Scene.cpp'을(를) 컴파일하는 중)
+  
+  SceneMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\SceneMgr.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'SceneMgr.cpp'을(를) 컴파일하는 중)
+  
+  SelectGDI.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'SelectGDI.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'SelectGDI.cpp'을(를) 컴파일하는 중)
+  
+  Slider.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Slider.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Slider.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Slider.h(23): warning C4172: 지역 변수 또는 임시의 주소를 반환하고 있습니다.
+  Start_Scene.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Start_Scene.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Start_Scene.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  (소스 파일 'Start_Scene.cpp'을(를) 컴파일하는 중)
+  
+  Texture.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Texture.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Texture.cpp'을(를) 컴파일하는 중)
+  
+  TimeMgr.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'TimeMgr.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'TimeMgr.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'TimeMgr.cpp'을(를) 컴파일하는 중)
+  
+  Turtle.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Turtle.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\TimeMgr.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Turtle.cpp'을(를) 컴파일하는 중)
+  
+  Vec2.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Vec2.cpp'을(를) 컴파일하는 중)
+  
+  main.cpp
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'main.cpp'을(를) 컴파일하는 중)
+  
+D:\GitHubDesktop\GameProgrammingTeamProject\2023_winapi_framework\BaseWindow.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'main.cpp'을(를) 컴파일하는 중)
+  
+  2023_winapi_framework.vcxproj -> D:\GitHubDesktop\GameProgrammingTeamProject\Output\bin_debug\2023_winapi_framework.exe

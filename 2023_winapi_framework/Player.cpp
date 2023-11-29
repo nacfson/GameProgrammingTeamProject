@@ -14,35 +14,48 @@
 #include "Slider.h"
 #include "Rigidbody2D.h"
 Player::Player()
-	: m_pTex(nullptr),
+	: m_pTexL(nullptr),
+	m_pTexR(nullptr),
 	m_fPlusJumpPower(.3f),
 	m_fCurJumpPower(0.f),
 	m_fMinJumpPower(0.f),
-	m_fMaxJumpPower(.8f)
+	m_fMaxJumpPower(.8f),
+	m_curDir(DIRECTION_TYPE::LEFT)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
+	m_pTexL = ResMgr::GetInst()->TexLoad(L"PlayerL", L"Texture\\rabbitL.bmp");
+	m_pTexR = ResMgr::GetInst()->TexLoad(L"PlayerR", L"Texture\\rabbitR.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 	
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
+
+	GetAnimator()->CreateAnim(L"RabbitL", m_pTexL, Vec2(32.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitR", m_pTexR, Vec2(0.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitL_Jump", m_pTexL, Vec2(0.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitR_Jump", m_pTexR, Vec2(64.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	GetAnimator()->PlayAnim(L"RabbitL", true); 
+	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
 
 	//// ������ �ǵ帮��
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
@@ -94,12 +107,14 @@ void Player::Update()
 		if (KEY_PRESS(KEY_TYPE::LEFT))
 		{
 			vPos.x -= 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+			GetAnimator()->PlayAnim(L"RabbitL", true);
+			m_curDir = DIRECTION_TYPE::LEFT;
 		}
 		if (KEY_PRESS(KEY_TYPE::RIGHT))
 		{
 			vPos.x += 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+			GetAnimator()->PlayAnim(L"RabbitR", true);
+			m_curDir = DIRECTION_TYPE::RIGHT;
 		}
 
 
@@ -123,9 +138,13 @@ void Player::Update()
 				{
 				case KEY_TYPE::LEFT:
 					jumpDirection = Vec2(-.5f, -1.0f).Normalize();
+					GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
+					m_curDir = DIRECTION_TYPE::LEFT;
 					break;
 				case KEY_TYPE::RIGHT:
 					jumpDirection = Vec2(.5f, -1.0f).Normalize();
+					GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
+					m_curDir = DIRECTION_TYPE::RIGHT;
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
@@ -199,4 +218,28 @@ void Player::Render(HDC _dc)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
 	Component_Render(_dc);
+}
+
+void Player::EnterCollision(Collider* _pOther)
+{
+	if (m_curDir == DIRECTION_TYPE::LEFT)
+	{
+		GetAnimator()->PlayAnim(L"RabbitL", true);
+	}
+	else
+	{
+		GetAnimator()->PlayAnim(L"RabbitR", true);
+	}
+}
+
+void Player::ExitCollision(Collider* _pOther)
+{
+	if (m_curDir == DIRECTION_TYPE::LEFT) 
+	{
+		GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
+	}
+	else 
+	{
+		GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
+	}
 }
