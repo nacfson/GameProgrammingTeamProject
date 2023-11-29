@@ -28,6 +28,9 @@ void PlayerMgr::Update()
 {
 	auto curScene = SceneMgr::GetInst()->GetCurScene();
 
+	if (curScene == nullptr) return;
+
+
 	if(curScene->CanChangeNextScene())
 	{
 		SceneMgr::GetInst()->LoadScene(curScene->GetNextSceneName());

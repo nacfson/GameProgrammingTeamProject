@@ -25,7 +25,6 @@ void Scene::SetNextScene(wstring _nextSceneName, wstring _prevSceneName)
 
 void Scene::Update()
 {
-	PlayerMgr::GetInst()->Update();
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
