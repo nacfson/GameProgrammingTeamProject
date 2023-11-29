@@ -1,14 +1,5 @@
-﻿  CollisionMgr.cpp
-  First_Scene.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-  Game_Scene.cpp
-  Player.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.h(29,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-  PlayerMgr.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\PlayerMgr.cpp(53,21): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Scene.cpp
-  SceneMgr.cpp
-  Start_Scene.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-  Turtle.cpp
-  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe
+﻿  First_Scene.cpp
+D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\enums.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Ground.h(8,8): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\2023_winapi_framework\Core.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  2023_winapi_framework.vcxproj -> D:\c++\CppStudy\cpp_Practice\CppStudy\GameP\GameProgrammingTeamProject\Output\bin_debug\2023_winapi_framework.exe

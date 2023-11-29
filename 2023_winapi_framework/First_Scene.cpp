@@ -15,6 +15,7 @@ First_Scene::~First_Scene()
 
 void First_Scene::Init()
 {
+	Scene::Init();
 		Vec2 groundScale = Vec2(100.f, 100.f);
 		Ground* pGround = new Ground(groundScale);
 		pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
