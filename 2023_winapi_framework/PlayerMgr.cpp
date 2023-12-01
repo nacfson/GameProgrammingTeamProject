@@ -38,7 +38,7 @@ void PlayerMgr::Update()
 		SceneMgr::GetInst()->LoadScene(sceneName);
 
 		Vec2 pos = m_pPlayer->GetPos();
-		pos.y = 0.f;
+		pos.y = 19.f;
 
 		m_pPlayer->SetPos(pos);
 		return;
@@ -48,9 +48,10 @@ void PlayerMgr::Update()
 	{
 		SceneMgr::GetInst()->LoadScene(curScene->GetNextSceneName());
 
+
 		Vec2 pos = m_pPlayer->GetPos();
 		auto resolution = Core::GetInst()->GetResolution();
-		pos.y = resolution.y;
+		pos.y = resolution.y - 10.f;
 
 		m_pPlayer->SetPos(pos);
 		return;
@@ -59,6 +60,7 @@ void PlayerMgr::Update()
 
 void PlayerMgr::Release()
 {
-
+	if (m_pPlayer != nullptr)
+		delete m_pPlayer;
 }
 

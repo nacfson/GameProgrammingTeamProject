@@ -71,10 +71,12 @@ void Scene::Release()
 {
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
-		if (i == static_cast<UINT>(OBJECT_GROUP::PLAYER)) continue;
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+		if(i != (UINT)OBJECT_GROUP::PLAYER)
 		{
-			delete m_vecObj[i][j];
+			for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+			{
+				delete m_vecObj[i][j];
+			}
 		}
 		m_vecObj[i].clear();
 	}
