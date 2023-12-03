@@ -34,32 +34,25 @@ void Start_Scene::Init()
 
 	if(document.HasParseError())
 	{
-		//assert("Can't Parse Json");
+		assert("Can't Parse Json");
 		return;
-		//Core::GetInst()->GetHwnd()
 	}
 
-	for(int i = 0; i < document["layers"].MemberCount(); i++)
+	const rapidjson::Value& layers = document["layers"];
+
+	for(int i = 0; i < layers.Size(); i++)
 	{
-		const rapidjson::Value& layer = document["layers"][i];
+		const rapidjson::Value& layer = layers[i];
 
-		const rapidjson::Value& chunks = layer["chunks"];
-
-		if(chunks.Size() > 0)
+		//if(layer.)
+		//{
+		//	assert("dd");
+		//}
+		if(layer.HasMember("layer"))
 		{
-			for(int j = 0; j < chunks.Size(); j++)
-			{
-				const rapidjson::Value& chunk = chunks[j];
-
-				Vec2 scale = Vec2(50.f, 50.f);
-				Ground* pGround = new Ground(scale);
-				pGround->SetPos(Vec2(chunk[0].GetInt(), chunk[1].GetInt()));
-			}
+			std::string name = layer["name"].GetString();
 		}
 	}
-
-	//Tile tile = TileMgr::GetInst()->GetTilePosition(document,layerIndex,tileGID,mapWidth);
-
 
 
 
