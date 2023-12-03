@@ -65,6 +65,9 @@
     <Filter Include="Engine\09.Hyungjoo">
       <UniqueIdentifier>{b3fea450-7ce8-4b6b-8cfd-13c8cb6fbd37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\TileMgr">
+      <UniqueIdentifier>{b7d4e278-5c7e-4190-9837-dfaba2b9b014}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -162,6 +165,8 @@
     <ClInclude Include="Slider.h" />
     <ClInclude Include="First_Scene.h" />
     <ClInclude Include="PlayerMgr.h" />
+    <ClInclude Include="Turtle.h" />
+    <ClInclude Include="TileMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -254,5 +259,7 @@
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="First_Scene.cpp" />
     <ClCompile Include="PlayerMgr.cpp" />
+    <ClCompile Include="Turtle.cpp" />
+    <ClCompile Include="TileMgr.cpp" />
   </ItemGroup>
 </Project>

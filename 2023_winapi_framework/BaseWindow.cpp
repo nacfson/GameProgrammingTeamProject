@@ -11,6 +11,7 @@ BaseWindow::BaseWindow(POINT _ptResolution)
 
 BaseWindow::~BaseWindow()
 {
+
 }
 
 int BaseWindow::Run(HINSTANCE _hInst, LPWSTR _lpCmdline, int _nCmdShow)
