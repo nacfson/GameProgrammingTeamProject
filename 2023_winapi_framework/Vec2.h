@@ -41,6 +41,10 @@ public:
 	{
 		return Vec2(x * (float)_i, y * (float)_i);
 	}
+	bool operator !=(Vec2 _vOther)
+	{
+		return (x == _vOther.x && y == _vOther.y);
+	}
 public:
 	float x;
 	float y;

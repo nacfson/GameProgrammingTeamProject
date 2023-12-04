@@ -172,6 +172,7 @@
     <ClInclude Include="Animator.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Core.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Game_Scene.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="MapMgr.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PathMgr.h" />
@@ -203,6 +205,7 @@
     <ClInclude Include="TileMgr.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Turtle.h" />
+    <ClInclude Include="UI_Scene.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +213,7 @@
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />
@@ -219,6 +223,7 @@
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapMgr.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PathMgr.cpp" />
@@ -236,6 +241,7 @@
     <ClCompile Include="TileMgr.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Turtle.cpp" />
+    <ClCompile Include="UI_Scene.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>

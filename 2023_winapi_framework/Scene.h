@@ -16,7 +16,6 @@ public:
 
 	virtual bool CanChangeNextScene() abstract;
 	virtual bool CanChangePrevScene() abstract;
-
 protected:
 	void SetNextScene(wstring _nextSceneName, wstring _prevSceneName = L"");
 public:

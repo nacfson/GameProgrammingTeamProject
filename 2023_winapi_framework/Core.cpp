@@ -7,6 +7,7 @@
 #include "ResMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
+#include "MapMgr.h"
 #include "TileMgr.h"
 
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
@@ -18,13 +19,10 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	m_hbackbit = 0;
 
 
-	// ������۸�
 	m_hDC = GetDC(m_hWnd);	
-	// 1. ����
 	m_hbackbit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
 	m_hbackDC = CreateCompatibleDC(m_hDC);
 
-	// 2. ����
 	SelectObject(m_hbackDC, m_hbackbit);
 
 //	m_obj.SetPos(Vec2({ m_ptResolution.x / 2, m_ptResolution.y / 2 }));
@@ -39,6 +37,10 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	ResMgr::GetInst()->Init();
 	SceneMgr::GetInst()->Init();
 	TileMgr::GetInst()->Init();
+	//MapMgr::GetInst()->Init();
+
+	HFONT hFont = CreateFont(20, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, L"한국기계연구원_bold");
+	SelectObject(m_hDC, hFont);
 
 	return true;
 }

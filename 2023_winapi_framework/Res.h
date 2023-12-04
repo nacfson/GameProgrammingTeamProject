@@ -16,6 +16,6 @@ public:
 
 private:
 	wstring m_strKey; // Å°
-	wstring m_strRelativePath; // »ó´ë°æ·Î
+	wstring m_strRelativePath; // ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 

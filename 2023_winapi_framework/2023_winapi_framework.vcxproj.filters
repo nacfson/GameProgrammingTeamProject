@@ -68,6 +68,9 @@
     <Filter Include="Engine\03. Manager\TileMgr">
       <UniqueIdentifier>{b7d4e278-5c7e-4190-9837-dfaba2b9b014}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\MapMgr">
+      <UniqueIdentifier>{f106ed82-e1ae-4877-93d8-5b1a02836c3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -167,6 +170,9 @@
     <ClInclude Include="PlayerMgr.h" />
     <ClInclude Include="Turtle.h" />
     <ClInclude Include="TileMgr.h" />
+    <ClInclude Include="UI_Scene.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="MapMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -261,5 +267,8 @@
     <ClCompile Include="PlayerMgr.cpp" />
     <ClCompile Include="Turtle.cpp" />
     <ClCompile Include="TileMgr.cpp" />
+    <ClCompile Include="UI_Scene.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="MapMgr.cpp" />
   </ItemGroup>
 </Project>

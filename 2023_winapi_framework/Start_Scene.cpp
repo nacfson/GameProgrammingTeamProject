@@ -9,19 +9,18 @@
 #include "TileMgr.h"
 #include <fstream>
 #include <iostream>
-#include "rapidjson-master/include/rapidjson/document.h"
-
-
+#include "tileson.hpp"
 void Start_Scene::Init()
 {
 	PlayerMgr::GetInst()->Init();
 
 	Vec2 vResolution = Core::GetInst()->GetResolution();
-	std::string pMapPath = "D:\\C++\\CppStudy\\GameP\\GameProgrammingProject\\2023_winapi_framework\\Map\\Start_Scene.json";
+	std::string pMapPath =
+		"D:\\C++\\CppStudy\\GameP\\GameProgrammingProject\\2023_winapi_framework\\Map\\Start_Scene.json";
 
 	std::ifstream file(pMapPath);
 
-	if(!file.is_open())
+	if (!file.is_open())
 	{
 		std::cerr << "파일을 열 수 없습니다." << std::endl;
 		return;
@@ -29,29 +28,13 @@ void Start_Scene::Init()
 
 	std::string jsonString((std::istreambuf_iterator(file)), std::istreambuf_iterator<char>());
 
-	rapidjson::Document document;
+	rapidjson::Document document{};
 	document.Parse(jsonString.c_str());
 
-	if(document.HasParseError())
+	if (document.HasParseError())
 	{
 		assert("Can't Parse Json");
 		return;
-	}
-
-	const rapidjson::Value& layers = document["layers"];
-
-	for(int i = 0; i < layers.Size(); i++)
-	{
-		const rapidjson::Value& layer = layers[i];
-
-		//if(layer.)
-		//{
-		//	assert("dd");
-		//}
-		if(layer.HasMember("layer"))
-		{
-			std::string name = layer["name"].GetString();
-		}
 	}
 
 
@@ -59,6 +42,7 @@ void Start_Scene::Init()
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
 	SetNextScene(L"First_Scene");
 }
+
 
 void Start_Scene::Update()
 {

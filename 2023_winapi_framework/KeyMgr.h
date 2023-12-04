@@ -3,8 +3,8 @@
 
 struct tKeyInfo
 {
-	KEY_STATE eState; // е╟ ╩Себ
-	bool	  IsPrevCheck; // юлюЭ©║ ╢╜╥хЁд
+	KEY_STATE eState; // е╟ О©╫О©╫О©╫О©╫
+	bool	  IsPrevCheck; // О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫хЁО©╫
 };
 
 class KeyMgr // InputMgr

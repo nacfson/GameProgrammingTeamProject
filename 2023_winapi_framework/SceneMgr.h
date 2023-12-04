@@ -8,7 +8,7 @@ public:
 	void Update();
 	void Render(HDC _dc);
 public:
-	void LoadScene(const wstring& _scenename);
+	void LoadScene(const wstring _scenename);
 	void RegisterScene(const wstring& _scenename, std::shared_ptr<Scene> _scene);
 public:
 	const std::shared_ptr<Scene>& GetCurScene() const
