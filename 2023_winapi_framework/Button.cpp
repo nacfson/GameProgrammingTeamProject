@@ -5,6 +5,7 @@
 #include "SceneMgr.h"
 #include "KeyMgr.h"
 #include "SelectGDI.h"
+#include "Texture.h"
 #include "TimeMgr.h"
 
 
@@ -16,13 +17,12 @@ Button::Button()
 {
 	Vec2 btnScale = Vec2(100.f, 50.f);
 
-	Object::SetScale(btnScale);
-
 	m_vScale = btnScale;
 	m_vCurScale = m_vScale;
 	m_vTargetScale = Vec2(120.f, 50.f);
 
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\jiwoo.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\StartBtn.bmp");
+
 	CreateCollider();
 	GetCollider()->SetScale(btnScale);
 	GetCollider()->SetOffSetPos(Vec2(0.f, 0.f));
@@ -38,80 +38,98 @@ void Button::OnMouseEnter()
 	m_bOnTimer = true;
 
 	m_fTimer = 0.f;
-	m_fTargetTime = CalculateTime(m_vScale, m_vTargetScale);
+	m_vCurTargetScale = m_vTargetScale;
 }
+
+
 
 void Button::OnMouseExit()
 {
 	m_bOnMouse = false;
-	m_bOnTimer = false;
+	m_bOnTimer = true;
 
 	m_fTimer = 0.f;
-	m_fTargetTime = CalculateTime(m_vTargetScale, m_vScale);
-	//SetScaleByValue(m_vScale, m_vTargetScale, (float)m_fTimer / m_fTargetTime);
+	m_vCurTargetScale = m_vScale;
 }
 
 void Button::OnMouseClicked()
 {
 	if(m_bOnMouse)
 	{
-		SceneMgr::GetInst()->LoadScene(m_sceneName);
+		Callback();
 	}
 }
 
 void Button::Update()
 {
-	if (m_fTimer <= m_fTargetTime)
-	{
-		m_fTimer += TimeMgr::GetInst()->GetDT();
-		SetScaleByValue(m_vScale, m_vTargetScale, (float)m_fTimer / m_fTargetTime);
-	}
-
 	POINT mousePos = KeyMgr::GetInst()->GetMousePos();
 
-	if( m_vPos.x - m_vScale.x * 0.5f <= mousePos.x &&
+	if (m_vPos.x - m_vScale.x * 0.5f <= mousePos.x &&
 		m_vPos.x + m_vScale.x * 0.5f >= mousePos.x &&
 		m_vPos.y - m_vScale.y * 0.5f <= mousePos.y &&
 		m_vPos.y + m_vScale.y * 0.5f >= mousePos.y)
 	{
-		if(m_bOnMouse == false)
+		if (m_bOnMouse == false)
 		{
 			OnMouseEnter();
 		}
 	}
 	else
 	{
-		OnMouseExit();
+		if(m_bOnMouse)
+		{
+			OnMouseExit();
+		}
 	}
 
-	if(m_bOnMouse && KEY_UP(KEY_TYPE::LBUTTON))
+	if (m_bOnMouse && KEY_UP(KEY_TYPE::LBUTTON))
 	{
 		OnMouseClicked();
 	}
 
 
+	if(m_bOnTimer)
+	{
+		if (m_fTimer <= m_fTargetTime)
+		{
+			m_fTimer += TimeMgr::GetInst()->GetDT();
+			SetScaleByValue(m_vCurScale, m_vCurTargetScale, (float)m_fTimer / m_fTargetTime);
+		}
+	}
 }
 
 void Button::Render(HDC _dc)
 {
-	Vec2 textMargin = Vec2(5.f, 5.f);
+	//Vec2 textMargin = Vec2(5.f, 5.f);
+	//Vec2 vTextSize = Vec2(.05f * m_sText.length(),.5f);
+	//Vec2 vTextPos = Vec2(m_vPos.x - vTextSize.x * 0.5f,m_vPos.y + vTextSize.y * 0.5f);
 
-	TextOut(_dc, m_vPos.x - m_vScale.x * 0.5f + textMargin.x, m_vPos.y, m_sText.c_str(), m_sText.length());
+	//TextOut(_dc, vTextPos.x, vTextPos.y, m_sText.c_str(), m_sText.length());
 
-	PEN_TYPE ePen = PEN_TYPE::GREEN;
+	PEN_TYPE ePen = PEN_TYPE::BLUE;
 
 	if(m_bOnMouse)
 	{
-		ePen = PEN_TYPE::RED;
+		ePen = PEN_TYPE::GREEN;
 	}
 	else
 	{
-		ePen = PEN_TYPE::GREEN;
+		ePen = PEN_TYPE::BLUE;
 	}
 
 	SelectGDI pen(_dc, ePen);
 	SelectGDI brush(_dc, BRUSH_TYPE::HOLLOW);
+	
 
+	//float fWidth = m_pTex->GetWidth();
+	//float fHeight = m_pTex->GetHeight();
+
+
+	//BitBlt(_dc
+	//,(int)(m_vPos.x - m_vCurScale.x / 2)
+	//,(int)(m_vPos.y - m_vCurScale.y / 2)
+	//, fWidth, fHeight, m_pTex->GetDC()
+	//,0,0,SRCCOPY);
 	RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
 }
 
@@ -120,11 +138,6 @@ void Button::SetScaleByValue(Vec2 _startScale, Vec2 _targetScale, float _value)
 {
 	Vec2 applyValue = (_targetScale - _startScale);
 	m_vCurScale = _startScale + Vec2(applyValue.x * _value,applyValue.y * _value);
-}
-
-float Button::CalculateTime(Vec2 _startScale, Vec2 _targetScale)
-{
-	return (_targetScale.x - m_vCurScale.x) / m_vCurScale.x;
 }
 
 
