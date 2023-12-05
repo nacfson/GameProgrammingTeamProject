@@ -1,3 +1,1 @@
-﻿  Player.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.h(31,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe
+﻿  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe

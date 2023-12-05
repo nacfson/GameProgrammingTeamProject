@@ -54,7 +54,7 @@ Player::Player()
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
-	m_pRigidbody2D->SetGravityMultiply(0.f);
+	m_pRigidbody2D->SetGravityMultiply(0.1f);
 	m_pRigidbody2D->Init();
 }
 

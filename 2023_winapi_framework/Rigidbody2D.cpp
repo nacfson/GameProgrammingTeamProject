@@ -29,23 +29,9 @@ void Rigidbody2D::AddForce(Vec2& direction, float power)
 void Rigidbody2D::EnterCollision(Collider* _pOther)
 {
 	//땅 오브젝트 그룹인 경우
-	Object* pOtherObj = _pOther->GetObj();
-
 	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
 	{
 		m_pOtherCol = _pOther;
-
-		Vec2 vMyPos = m_pCollider->GetFinalPos();
-		Vec2 vMyScale = m_pCollider->GetScale();
-
-		Vec2 vOtherPos = _pOther->GetFinalPos();
-		Vec2 vOtherScale = _pOther->GetScale();
-
-		float fLen = abs(vOtherPos.y - vMyPos.y);
-		(vOtherPos.y * 0.5f + vMyScale.y * 0.5f) - fLen;
-
-		vOtherPos = pOtherObj->GetPos();
-		vOtherPos.y += fLen;
 	}
 }
 
@@ -59,8 +45,39 @@ void Rigidbody2D::ExitCollision(Collider* _pOther)
 
 void Rigidbody2D::StayCollision(Collider* _pOther)
 {
+	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
+	{
+		Vec2 vOriginPos = m_pCollider->GetFinalPos();
+		Vec2 vOriginScale = m_pCollider->GetScale();
 
+		Vec2 vOtherPos = _pOther->GetFinalPos();
+		Vec2 vOtherScale = _pOther->GetScale();
+
+		float fXInterpolation;
+		float fYInterpolation; 
+
+		if(vOriginPos.x > vOtherPos.x)
+		{
+			fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
+		}
+		else if(vOriginPos.x < vOtherPos.x)
+		{
+			fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
+		}
+
+		if(vOriginPos.y > vOtherPos.y)
+		{
+			fYInterpolation = vOtherPos.y + vOtherScale.y * 0.5f + vOriginScale.y * 0.5f;
+		}
+		else if(vOriginPos.y < vOtherPos.y)
+		{
+			fYInterpolation = vOtherPos.y - vOtherScale.y * 0.5f - vOriginScale.y * 0.5f;
+		}
+
+		m_object->SetPos(Vec2(fXInterpolation,fYInterpolation));
+	}
 }
+
 
 Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
@@ -95,9 +112,7 @@ void Rigidbody2D::Update()
 
 void Rigidbody2D::FinalUpdate()
 {
-	if(nullptr != m_pOtherCol)
-	{
-	}
+	
 }
 
 void Rigidbody2D::ApplyGravity()
@@ -119,7 +134,6 @@ void Rigidbody2D::ApplyVelocity()
 	{
 		curPos.x = 0.f;
 	}
-
 	m_object->SetPos(curPos);
 }
 
