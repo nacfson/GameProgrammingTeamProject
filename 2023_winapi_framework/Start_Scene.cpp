@@ -10,34 +10,35 @@
 #include <fstream>
 #include <iostream>
 #include "tileson.hpp"
+
 void Start_Scene::Init()
 {
 	PlayerMgr::GetInst()->Init();
 
 	Vec2 vResolution = Core::GetInst()->GetResolution();
-	std::string pMapPath =
-		"D:\\C++\\CppStudy\\GameP\\GameProgrammingProject\\2023_winapi_framework\\Map\\Start_Scene.json";
 
-	std::ifstream file(pMapPath);
+	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Start_Scene.json");
 
-	if (!file.is_open())
+	int cnt = 0;
+	for(const Tile& tile : mapVec)
 	{
-		std::cerr << "파일을 열 수 없습니다." << std::endl;
-		return;
+		//Vec2 groundScale = Vec2(100, 100);
+		Vec2 groundScale = Vec2(tile.width, tile.height);
+		Ground* pGround = new Ground(groundScale);
+		Vec2 tilePos = Vec2(tile.x, tile.y);
+
+		pGround->SetPos(tilePos);
+		pGround->SetObjGroup(OBJECT_GROUP::GROUND);
+
+		AddObject(pGround, OBJECT_GROUP::GROUND);
+		cnt++;
+
+		if(cnt == 10)
+		{
+			std::cout << "100";
+		}
 	}
-
-	std::string jsonString((std::istreambuf_iterator(file)), std::istreambuf_iterator<char>());
-
-	rapidjson::Document document{};
-	document.Parse(jsonString.c_str());
-
-	if (document.HasParseError())
-	{
-		assert("Can't Parse Json");
-		return;
-	}
-
-
+	
 
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
 	SetNextScene(L"First_Scene");

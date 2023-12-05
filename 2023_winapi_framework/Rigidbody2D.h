@@ -17,7 +17,9 @@ private :
 	float m_fResolutionMaxY = 0.f;
 	float m_fResolutionMaxX = 0.f;
 
-	Collider* m_collider;
+	Collider* m_pCollider;
+	Collider* m_pOtherCol;
+
 	Object* m_object;
 	Vec2 m_velocity;
 
@@ -30,12 +32,19 @@ public:
 	void AddForce(Vec2&& direction, float power);
 	void AddForce(Vec2& direction, float power);
 
+	void MoveInterpolation(const Collider* _pOther);
+
 	const Vec2& GetVelocity() const { return m_velocity; }
+
+	void EnterCollision(Collider* _pOther);
+	void ExitCollision(Collider* _pOther);
+	void StayCollision(Collider* _pOther);
 
 	Rigidbody2D(Object* _object, Collider* _collider);
 	~Rigidbody2D();
 
 	void Update();
+	void FinalUpdate();
 private:
 	void ApplyGravity();
 	void ApplyVelocity();

@@ -13,6 +13,16 @@ Object::Object()
 {
 }
 
+Object::Object(OBJECT_GROUP _eGroup)
+	: m_pCollider(nullptr)
+	, m_vPos{}
+	, m_vScale{}
+	, m_IsAlive(true)
+	, m_pAnimator(nullptr)
+	, m_eGroup(_eGroup)
+{
+}
+
 Object::~Object()
 {
 	if (nullptr != m_pCollider)

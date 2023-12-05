@@ -26,7 +26,7 @@ public:
 	const Vec2& GetFinalPos() const 
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
-	const Object* GetObj() const { return m_pOwner; }
+	Object* GetObj() const { return m_pOwner; }
 	const bool& IsGrounded() const { return m_isGrounded; }
 private:
 	UINT m_check;

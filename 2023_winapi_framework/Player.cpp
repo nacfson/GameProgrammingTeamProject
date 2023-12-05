@@ -54,7 +54,7 @@ Player::Player()
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
-	m_pRigidbody2D->SetGravityMultiply(0.1f);
+	m_pRigidbody2D->SetGravityMultiply(0.f);
 	m_pRigidbody2D->Init();
 }
 
@@ -86,21 +86,29 @@ void Player::Update()
 		m_prevPressMoveKey = prevPressKey;
 	}
 	Vec2 vPos = GetPos();
-
+	if (KEY_PRESS(KEY_TYPE::LEFT))
+	{
+		vPos.x -= 100.f * fDT;
+		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+	}
+	if (KEY_PRESS(KEY_TYPE::RIGHT))
+	{
+		vPos.x += 100.f * fDT;
+		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+	}
+	if (KEY_PRESS(KEY_TYPE::UP))
+	{
+		vPos.y -= 100.f * fDT;
+	}
+	if (KEY_PRESS(KEY_TYPE::DOWN))
+	{
+		vPos.y += 100.f * fDT;
+	}
 
 
 	if (true == m_pCollider->IsGrounded())
 	{
-		if (KEY_PRESS(KEY_TYPE::LEFT))
-		{
-			vPos.x -= 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
-		}
-		if (KEY_PRESS(KEY_TYPE::RIGHT))
-		{
-			vPos.x += 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
-		}
+
 
 
 
@@ -150,19 +158,7 @@ void Player::Update()
 }
 
 
-//void Player::CreateBullet()
-//{
-//	Bullet* pBullet = new Bullet;
-//	Vec2 vBulletPos = GetPos();
-//	vBulletPos.y -= GetScale().y / 2.f;
-//	pBullet->SetPos(vBulletPos);
-//	pBullet->SetScale(Vec2(25.f,25.f));
-////	pBullet->SetDir(M_PI / 4 * 7);
-////	pBullet->SetDir(120* M_PI / 180);
-//	pBullet->SetDir(Vec2(-10.f,-15.f));
-//	pBullet->SetName(L"Player_Bullet");
-//	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
-//}
+
 
 void Player::Render(HDC _dc)
 {
@@ -199,4 +195,29 @@ void Player::Render(HDC _dc)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
 	Component_Render(_dc);
+}
+
+void Player::FinalUpdate()
+{
+	Object::FinalUpdate();
+	m_pRigidbody2D->FinalUpdate();
+}
+
+void Player::EnterCollision(Collider* _pOther)
+{
+	Object::EnterCollision(_pOther);
+	m_pRigidbody2D->EnterCollision(_pOther);
+}
+
+void Player::ExitCollision(Collider* _pOther)
+{
+	Object::ExitCollision(_pOther);
+	m_pRigidbody2D->ExitCollision(_pOther);
+
+}
+
+void Player::StayCollision(Collider* _pOther)
+{
+	Object::StayCollision(_pOther);
+	m_pRigidbody2D->StayCollision(_pOther);
 }

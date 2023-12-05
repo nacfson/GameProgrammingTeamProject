@@ -49,8 +49,16 @@ void Collider::Render(HDC _dc)
 void Collider::EnterCollision(Collider* _pOther)
 {
  	++m_check;
-	m_pOwner->EnterCollision(_pOther);
-	_pOther->m_isGrounded = true;
+    m_pOwner->EnterCollision(_pOther);
+
+
+	float fOtherPosY = _pOther->GetFinalPos().y - _pOther->GetScale().y * 0.5f;
+	float fMyPosY = GetFinalPos().y - GetScale().y * 0.5f;
+
+	if(fOtherPosY > fMyPosY)
+	{
+		_pOther->m_isGrounded = true;
+	}
 }
 
 void Collider::ExitCollision(Collider* _pOther)

@@ -7,6 +7,7 @@ void MapMgr::Init()
 	tson::Tileson m_tson;
 
 	m_uptrMap = m_tson.parse(fs::path("Map/Start_Scene.json"));
+
 	if(m_uptrMap->getStatus() != tson::ParseStatus::OK)
 	{
 		std::cout << "json file error" << std::endl;
