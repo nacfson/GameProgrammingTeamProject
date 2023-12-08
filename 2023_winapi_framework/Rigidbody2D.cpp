@@ -4,6 +4,7 @@
 #include "Object.h"
 #include "TimeMgr.h"
 #include "Core.h"
+#include "Raycast2D.h"
 
 void Rigidbody2D::Init()
 {
@@ -12,6 +13,9 @@ void Rigidbody2D::Init()
 	m_fResolutionMaxY = resolution.y;
 
 	m_fApplyDeAcceleration = m_deAcceleration;
+
+	const Vec2& finalPos = m_pCollider->GetFinalPos();
+	const Vec2& colScale = m_pCollider->GetScale();
 }
 
 void Rigidbody2D::AddForce(Vec2&& direction, float power)
@@ -24,6 +28,38 @@ void Rigidbody2D::AddForce(Vec2& direction, float power)
 	m_velocity = m_velocity + Vec2((float)direction.x * power, (float)direction.y * power);
 }
 
+void Rigidbody2D::MoveInterpolation(const Collider* _pOther)
+{
+	Vec2 vOriginPos = m_pCollider->GetFinalPos();
+	Vec2 vOriginScale = m_pCollider->GetScale();
+
+
+	Vec2 vOtherPos = _pOther->GetFinalPos();
+	Vec2 vOtherScale = _pOther->GetScale();
+
+	float fXInterpolation;
+	float fYInterpolation;
+
+	if (vOriginPos.x > vOtherPos.x)
+	{
+		fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
+	}
+	else if (vOriginPos.x < vOtherPos.x)
+	{
+		fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
+	}
+
+	if (vOriginPos.y > vOtherPos.y)
+	{
+		fYInterpolation = vOtherPos.y + vOtherScale.y * 0.5f + vOriginScale.y * 0.5f;
+	}
+	else if (vOriginPos.y < vOtherPos.y)
+	{
+		fYInterpolation = vOtherPos.y - vOtherScale.y * 0.5f - vOriginScale.y * 0.5f;
+	}
+
+	m_object->SetPos(Vec2(fXInterpolation, fYInterpolation));
+}
 
 
 void Rigidbody2D::EnterCollision(Collider* _pOther)
@@ -47,34 +83,7 @@ void Rigidbody2D::StayCollision(Collider* _pOther)
 {
 	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
 	{
-		Vec2 vOriginPos = m_pCollider->GetFinalPos();
-		Vec2 vOriginScale = m_pCollider->GetScale();
 
-		Vec2 vOtherPos = _pOther->GetFinalPos();
-		Vec2 vOtherScale = _pOther->GetScale();
-
-		float fXInterpolation;
-		float fYInterpolation; 
-
-		if(vOriginPos.x > vOtherPos.x)
-		{
-			fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
-		}
-		else if(vOriginPos.x < vOtherPos.x)
-		{
-			fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
-		}
-
-		if(vOriginPos.y > vOtherPos.y)
-		{
-			fYInterpolation = vOtherPos.y + vOtherScale.y * 0.5f + vOriginScale.y * 0.5f;
-		}
-		else if(vOriginPos.y < vOtherPos.y)
-		{
-			fYInterpolation = vOtherPos.y - vOtherScale.y * 0.5f - vOriginScale.y * 0.5f;
-		}
-
-		m_object->SetPos(Vec2(fXInterpolation,fYInterpolation));
 	}
 }
 
@@ -108,6 +117,12 @@ void Rigidbody2D::Update()
 
 	ApplyDeAccel();
 	ApplyVelocity();
+
+	Collider* pGroundCol = m_pGroundRay->ShootRay(m_pCollider->GetFinalPos(),Vec2(0.f, 1.f), m_pCollider->GetScale().x + 0.1f);
+	if(nullptr != pGroundCol)
+	{
+		MoveInterpolation(pGroundCol);
+	}
 }
 
 void Rigidbody2D::FinalUpdate()

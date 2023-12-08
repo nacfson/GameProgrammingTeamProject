@@ -1,8 +1,7 @@
 #pragma once
-
 class Object;
 class Collider;
-
+class Raycast2D;
 class Rigidbody2D
 {
 private :
@@ -13,6 +12,14 @@ private :
 	float m_fApplyDeAcceleration = .0f;
 	float m_fGroundedDeAcceleration = .5f;
 
+	Raycast2D* m_pGroundRay;
+	Raycast2D* m_pLeftRay;
+	Raycast2D* m_pRightRay;
+
+
+
+
+	std::vector<Raycast2D*> m_rayVec;
 
 	float m_fResolutionMaxY = 0.f;
 	float m_fResolutionMaxX = 0.f;

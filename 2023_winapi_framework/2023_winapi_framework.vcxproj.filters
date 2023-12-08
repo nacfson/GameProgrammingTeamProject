@@ -173,6 +173,7 @@
     <ClInclude Include="UI_Scene.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="MapMgr.h" />
+    <ClInclude Include="Raycast2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -270,5 +271,6 @@
     <ClCompile Include="UI_Scene.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="MapMgr.cpp" />
+    <ClCompile Include="Raycast2D.cpp" />
   </ItemGroup>
 </Project>

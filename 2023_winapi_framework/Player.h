@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Slider.h"
 class Rigidbody2D;
+class Raycast2D;
 class Texture;
 class Slider;
 class Player :
@@ -35,6 +36,11 @@ private:
     Texture* m_pTex;
     Rigidbody2D* m_pRigidbody2D;
     Slider* m_pSlider;
+
+
+    Collider* m_pGroundRayCol;
+    Collider* m_pLeftRayCol;
+    Collider* m_pRightRayCol;
 
     float m_fMaxJumpPower;
     float m_fMinJumpPower;

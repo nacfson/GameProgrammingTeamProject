@@ -13,6 +13,7 @@
 #include "Animation.h"
 #include "Slider.h"
 #include "Rigidbody2D.h"
+#include "Raycast2D.h"
 Player::Player()
 	: m_pTex(nullptr),
 	m_fPlusJumpPower(.3f),
@@ -25,11 +26,32 @@ Player::Player()
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
+
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
-	
+
+
+
+
+	m_pGroundRayCol = new Collider();
+	m_pGroundRayCol->SetScale(Vec2(1.f,30.f));
+	m_pGroundRayCol->SetOffSetPos(Vec2(0.f, 0.f));
+
+
+
+	m_pLeftRayCol = new Collider();
+	m_pLeftRayCol->SetScale(Vec2(-20.f, 1.f));
+	m_pLeftRayCol->SetOffSetPos(Vec2(0.f, 0.f));
+
+
+
+	m_pRightRayCol = new Collider();
+	m_pRightRayCol->SetScale(Vec2(20.f, 1.f));
+	m_pRightRayCol->SetOffSetPos(Vec2(0.f, 0.f));
+
+
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
@@ -108,10 +130,6 @@ void Player::Update()
 
 	if (true == m_pCollider->IsGrounded())
 	{
-
-
-
-
 		if (KEY_PRESS(KEY_TYPE::SPACE))
 		{
 			if (m_fCurJumpPower <= m_fMaxJumpPower)

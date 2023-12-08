@@ -1,1 +1,3 @@
-﻿  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe
+﻿  Raycast2D.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Raycast2D.cpp(40,44): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe
