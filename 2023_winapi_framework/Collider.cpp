@@ -51,13 +51,14 @@ void Collider::EnterCollision(Collider* _pOther)
  	++m_check;
     m_pOwner->EnterCollision(_pOther);
 
-
-	float fOtherPosY = _pOther->GetFinalPos().y - _pOther->GetScale().y * 0.5f;
+	float fOtherPosMaxY = _pOther->GetFinalPos().y + _pOther->GetScale().y * 0.5f;
 	float fMyPosY = GetFinalPos().y - GetScale().y * 0.5f;
 
-	if(fOtherPosY > fMyPosY)
+	if(fOtherPosMaxY > fMyPosY)
 	{
 		_pOther->m_isGrounded = true;
+		
+		m_pOwner->SetPos(Vec2(GetFinalPos().x,fOtherPosMaxY + GetScale().y * 0.5f));
 	}
 }
 

@@ -37,8 +37,8 @@ void Rigidbody2D::MoveInterpolation(const Collider* _pOther)
 	Vec2 vOtherPos = _pOther->GetFinalPos();
 	Vec2 vOtherScale = _pOther->GetScale();
 
-	float fXInterpolation;
-	float fYInterpolation;
+	float fXInterpolation = m_pCollider->GetFinalPos().x;
+	float fYInterpolation = m_pCollider->GetFinalPos().y;
 
 	if (vOriginPos.x > vOtherPos.x)
 	{
@@ -83,10 +83,9 @@ void Rigidbody2D::StayCollision(Collider* _pOther)
 {
 	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
 	{
-
+		//MoveInterpolation(_pOther);
 	}
 }
-
 
 Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
@@ -118,11 +117,11 @@ void Rigidbody2D::Update()
 	ApplyDeAccel();
 	ApplyVelocity();
 
-	Collider* pGroundCol = m_pGroundRay->ShootRay(m_pCollider->GetFinalPos(),Vec2(0.f, 1.f), m_pCollider->GetScale().x + 0.1f);
-	if(nullptr != pGroundCol)
-	{
-		MoveInterpolation(pGroundCol);
-	}
+	//Collider* pGroundCol = m_pGroundRay->ShootRay(m_pCollider->GetFinalPos(),Vec2(0.f, 1.f), m_pCollider->GetScale().x + 0.1f);
+	//if(nullptr != pGroundCol)
+	//{
+	//	MoveInterpolation(pGroundCol);
+	//}
 }
 
 void Rigidbody2D::FinalUpdate()

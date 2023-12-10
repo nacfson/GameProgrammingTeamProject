@@ -1,10 +1,14 @@
 #pragma once
+#include "Collider.h"
 #include "Object.h"
 #include "Slider.h"
 class Rigidbody2D;
 class Raycast2D;
 class Texture;
 class Slider;
+class RayCollider;
+
+
 class Player :
     public Object
 {
@@ -23,6 +27,12 @@ public:
     void ExitCollision(Collider* _pOther) override;
     void StayCollision(Collider* _pOther) override;
 
+    void EnterCollision(Collider* _pOther, ERAY_DIR _dir ) ;
+    void ExitCollision(Collider* _pOther,  ERAY_DIR _dir) ;
+    void StayCollision(Collider* _pOther,  ERAY_DIR _dir) ;
+
+    //void 
+
     void SetSlider(Slider* _pSlider)
     {
         m_pSlider = _pSlider;
@@ -38,13 +48,8 @@ private:
     Slider* m_pSlider;
 
 
-    Collider* m_pGroundRayCol;
-    Collider* m_pLeftRayCol;
-    Collider* m_pRightRayCol;
-
-    float m_fMaxJumpPower;
     float m_fMinJumpPower;
-
+    float m_fMaxJumpPower;
     float m_fPlusJumpPower;
     float m_fCurJumpPower;
 

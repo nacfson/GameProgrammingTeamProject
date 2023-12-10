@@ -16,9 +16,10 @@ Raycast2D::Raycast2D(OBJECT_GROUP _eObjectGroup)
 
 Raycast2D::~Raycast2D()
 {
+
 }
 
-Collider* Raycast2D::ShootRay(Vec2 _pos,Vec2 _dir, float _distance)
+Collider* Raycast2D::ShootRay(Vec2 _pos,Vec2 _scale,Vec2 _dir, float _distance)
 {
 	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
 	std::vector<Object*> _objects = pCurScene->GetGroupObject(OBJECT_GROUP::GROUND);

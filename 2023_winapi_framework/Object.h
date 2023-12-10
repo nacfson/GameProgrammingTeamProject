@@ -18,6 +18,7 @@ public:
 	virtual void EnterCollision(Collider* _pOther);
 	virtual void ExitCollision(Collider* _pOther);
 	virtual void StayCollision(Collider* _pOther);
+	
 	void Component_Render(HDC _dc);
 	void SetObjGroup(const OBJECT_GROUP _eGroup) { m_eGroup = _eGroup; }
 

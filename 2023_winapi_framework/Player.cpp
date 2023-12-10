@@ -14,6 +14,7 @@
 #include "Slider.h"
 #include "Rigidbody2D.h"
 #include "Raycast2D.h"
+#include "RayCollider.h"
 Player::Player()
 	: m_pTex(nullptr),
 	m_fPlusJumpPower(.3f),
@@ -34,22 +35,6 @@ Player::Player()
 
 
 
-
-	m_pGroundRayCol = new Collider();
-	m_pGroundRayCol->SetScale(Vec2(1.f,30.f));
-	m_pGroundRayCol->SetOffSetPos(Vec2(0.f, 0.f));
-
-
-
-	m_pLeftRayCol = new Collider();
-	m_pLeftRayCol->SetScale(Vec2(-20.f, 1.f));
-	m_pLeftRayCol->SetOffSetPos(Vec2(0.f, 0.f));
-
-
-
-	m_pRightRayCol = new Collider();
-	m_pRightRayCol->SetScale(Vec2(20.f, 1.f));
-	m_pRightRayCol->SetOffSetPos(Vec2(0.f, 0.f));
 
 
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
@@ -82,7 +67,6 @@ Player::Player()
 
 Player::Player(Player& player)
 {
-
 }
 
 Player::~Player()
@@ -126,7 +110,7 @@ void Player::Update()
 	{
 		vPos.y += 100.f * fDT;
 	}
-
+	
 
 	if (true == m_pCollider->IsGrounded())
 	{
@@ -156,7 +140,6 @@ void Player::Update()
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
 			}
-
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);
 		}
@@ -218,7 +201,8 @@ void Player::Render(HDC _dc)
 void Player::FinalUpdate()
 {
 	Object::FinalUpdate();
-	m_pRigidbody2D->FinalUpdate();
+	if(m_pRigidbody2D)
+		m_pRigidbody2D->FinalUpdate();
 }
 
 void Player::EnterCollision(Collider* _pOther)
@@ -231,7 +215,6 @@ void Player::ExitCollision(Collider* _pOther)
 {
 	Object::ExitCollision(_pOther);
 	m_pRigidbody2D->ExitCollision(_pOther);
-
 }
 
 void Player::StayCollision(Collider* _pOther)
@@ -239,3 +222,4 @@ void Player::StayCollision(Collider* _pOther)
 	Object::StayCollision(_pOther);
 	m_pRigidbody2D->StayCollision(_pOther);
 }
+

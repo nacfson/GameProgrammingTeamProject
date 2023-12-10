@@ -1,6 +1,6 @@
 #pragma once
+#include "Collider.h"
 class Object;
-class Collider;
 class Raycast2D;
 class Rigidbody2D
 {
@@ -47,6 +47,8 @@ public:
 	void ExitCollision(Collider* _pOther);
 	void StayCollision(Collider* _pOther);
 
+
+	
 	Rigidbody2D(Object* _object, Collider* _collider);
 	~Rigidbody2D();
 

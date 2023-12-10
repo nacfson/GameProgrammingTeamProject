@@ -21,13 +21,13 @@ void Animation::Update()
 	if (m_pAnimator->GetRepeatcnt() <= 0)
 		return;
 	m_fAccTime += fDT;
-	// ´©ÀûÇÑ ½Ã°£ÀÌ ³»°¡ ÀÌ ÇÁ·¹ÀÓ¿¡ ÁøÇàÇÑ ½Ã°£À» ³Ñ¾î¼¹³Ä?
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ñ¾î¼¹ï¿½ï¿½?
 	if (m_fAccTime >= m_vecAnimFrame[m_CurFrame].fDuration)
 	{
-		// ÀÏ´Ü ¸ðÀº ½Ã°£¿¡¼­ ÇöÀç ÁøÇàÇÑ ½Ã°£À» »©°í
+		// ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		m_fAccTime -= m_vecAnimFrame[m_CurFrame].fDuration;
-		++m_CurFrame; // ´ÙÀ½ÇÁ·¹ÀÓÀ¸·Î ¿Å±â±â
-		if (m_CurFrame >= m_vecAnimFrame.size()) // ÇÑ¹ÙÄû µ¹°ÔÇÏ°í½Í¾î
+		++m_CurFrame; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ï¿½
+		if (m_CurFrame >= m_vecAnimFrame.size()) // ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½Í¾ï¿½
 		{
 			if (!m_pAnimator->GetRepeat())
 				m_pAnimator->SetRepeatcnt();
@@ -43,7 +43,7 @@ void Animation::Render(HDC _dc)
 	Object* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
 
-	// ¿ÀÇÁ¼Â Àû¿ë
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
 	TransparentBlt(_dc
 		,(int)(vPos.x - m_vecAnimFrame[m_CurFrame].vSlice.x /2.f)

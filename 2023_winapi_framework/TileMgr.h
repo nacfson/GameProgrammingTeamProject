@@ -1,9 +1,9 @@
 #pragma once
 #include "tileson.hpp"
 
-enum EIMAGE_TYPE
+enum class EIMAGE_TYPE
 {
-	NORMAL,
+	NORMAL = 0,
 	END = 30
 };
 struct Tile
