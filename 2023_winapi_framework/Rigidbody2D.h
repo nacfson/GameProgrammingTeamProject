@@ -12,14 +12,6 @@ private :
 	float m_fApplyDeAcceleration = .0f;
 	float m_fGroundedDeAcceleration = .5f;
 
-	Raycast2D* m_pGroundRay;
-	Raycast2D* m_pLeftRay;
-	Raycast2D* m_pRightRay;
-
-
-
-
-	std::vector<Raycast2D*> m_rayVec;
 
 	float m_fResolutionMaxY = 0.f;
 	float m_fResolutionMaxX = 0.f;
@@ -29,6 +21,7 @@ private :
 
 	Object* m_object;
 	Vec2 m_velocity;
+	bool m_bIsGrounded;
 
 
 public:
@@ -39,9 +32,10 @@ public:
 	void AddForce(Vec2&& direction, float power);
 	void AddForce(Vec2& direction, float power);
 
-	void MoveInterpolation(const Collider* _pOther);
-
+	void MoveInterpolation();
+	
 	const Vec2& GetVelocity() const { return m_velocity; }
+	const bool& IsGrounded() const {return m_bIsGrounded;}
 
 	void EnterCollision(Collider* _pOther);
 	void ExitCollision(Collider* _pOther);

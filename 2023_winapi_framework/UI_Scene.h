@@ -8,6 +8,7 @@ public:
 
 	bool CanChangeNextScene() override;
 	bool CanChangePrevScene() override;
+	void Render(HDC _dc) override;
 };
 
 

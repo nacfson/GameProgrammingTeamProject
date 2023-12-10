@@ -9,12 +9,12 @@
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;
-	// �� ���
+	
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
 	RegisterScene(L"First_Scene", std::make_shared<First_Scene>());
 	RegisterScene(L"UI_Scene", std::make_shared<UI_Scene>());
-	// ù �� ����
+	
 	LoadScene(L"UI_Scene");
 }
 

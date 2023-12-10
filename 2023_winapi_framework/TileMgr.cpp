@@ -33,13 +33,16 @@ std::vector<Tile> TileMgr::GetTileVec(const std::string& _path)
 		{
 			Tile tile;
 			int size = layer.getTileObjects().size();
-			int a = 3;
+			//int a = 3;
 			for (auto& [pos, tileObject] : layer.getTileObjects())
 			{
-				//tson::Tileset* tileset = tileObject.getTile()->getTileset();
 				tson::Rect drawingRect = tileObject.getDrawingRect();
 				tson::Vector2f position = tileObject.getPosition();
 				//tson::Vector2i imageSize = tileset->getImageSize();
+				tson::Tileset* tileset = tileObject.getTile()->getTileset();
+				
+				tson::Tile* d = tileObject.getTile();
+				//auto id = d->getId();
 
 				tile.x = position.x;
 				tile.y = position.y;

@@ -19,27 +19,7 @@ void Start_Scene::Init()
 
 	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Start_Scene.json");
 
-	int cnt = 0;
-	for(const Tile& tile : mapVec)
-	{
-		//Vec2 groundScale = Vec2(100, 100);
-		Vec2 groundScale = Vec2(tile.width, tile.height);
-		Ground* pGround = new Ground(groundScale);
-		Vec2 tilePos = Vec2(tile.x, tile.y);
-
-		pGround->SetPos(tilePos);
-		pGround->SetObjGroup(OBJECT_GROUP::GROUND);
-
-		AddObject(pGround, OBJECT_GROUP::GROUND);
-		cnt++;
-
-		if(cnt == 10)
-		{
-			std::cout << "100";
-		}
-	}
-	
-
+	CreateMapObjects(mapVec);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
 	SetNextScene(L"First_Scene");
 }

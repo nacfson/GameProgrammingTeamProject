@@ -22,6 +22,7 @@ Player::Player()
 	m_fMinJumpPower(0.f),
 	m_fMaxJumpPower(.8f)
 {
+	
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
@@ -30,13 +31,12 @@ Player::Player()
 
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
+	//GetCollider()->SetScale(Vec2(5.f,10.f));
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
-
-
-
-
+	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
+	
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
@@ -63,6 +63,8 @@ Player::Player()
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
 	m_pRigidbody2D->Init();
+
+	m_eGroup = OBJECT_GROUP::PLAYER;
 }
 
 Player::Player(Player& player)
@@ -112,7 +114,7 @@ void Player::Update()
 	}
 	
 
-	if (true == m_pCollider->IsGrounded())
+	if (true == m_pRigidbody2D->IsGrounded())
 	{
 		if (KEY_PRESS(KEY_TYPE::SPACE))
 		{
@@ -139,6 +141,7 @@ void Player::Update()
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
+				ResMgr::GetInst()->Play(L"Jump");
 			}
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);

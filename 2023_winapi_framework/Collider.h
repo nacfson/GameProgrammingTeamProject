@@ -36,7 +36,6 @@ public:
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
 	Object* GetObj() const { return m_pOwner; }
-	const bool& IsGrounded() const { return m_isGrounded; }
 
 	void SetOwner(Object* _owner) {m_pOwner = _owner;}
 private:
@@ -45,7 +44,6 @@ private:
 	Vec2 m_vOffsetPos; // ������
 	Vec2 m_vFinalPos; // ���̳� ��ġ
 	Vec2 m_vScale; // ũ��
-	bool m_isGrounded;
 	friend class Object;
 	UINT m_ID; // �浹ü ID��
 	static UINT m_sNextID;

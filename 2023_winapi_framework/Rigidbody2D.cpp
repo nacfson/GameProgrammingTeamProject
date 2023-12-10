@@ -28,70 +28,45 @@ void Rigidbody2D::AddForce(Vec2& direction, float power)
 	m_velocity = m_velocity + Vec2((float)direction.x * power, (float)direction.y * power);
 }
 
-void Rigidbody2D::MoveInterpolation(const Collider* _pOther)
+void Rigidbody2D::MoveInterpolation()
 {
+	if(nullptr == m_pOtherCol)
+	{
+		return;
+	}
+	
 	Vec2 vOriginPos = m_pCollider->GetFinalPos();
 	Vec2 vOriginScale = m_pCollider->GetScale();
 
+	Vec2 vOtherPos = m_pOtherCol->GetFinalPos();
+	Vec2 vOtherScale = m_pOtherCol->GetScale();
 
-	Vec2 vOtherPos = _pOther->GetFinalPos();
-	Vec2 vOtherScale = _pOther->GetScale();
+	float fXInterpolation = 0.f;
+	float fYInterpolation = 0.f;
 
-	float fXInterpolation = m_pCollider->GetFinalPos().x;
-	float fYInterpolation = m_pCollider->GetFinalPos().y;
-
-	if (vOriginPos.x > vOtherPos.x)
-	{
-		fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
-	}
-	else if (vOriginPos.x < vOtherPos.x)
-	{
-		fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
-	}
-
-	if (vOriginPos.y > vOtherPos.y)
-	{
-		fYInterpolation = vOtherPos.y + vOtherScale.y * 0.5f + vOriginScale.y * 0.5f;
-	}
-	else if (vOriginPos.y < vOtherPos.y)
-	{
-		fYInterpolation = vOtherPos.y - vOtherScale.y * 0.5f - vOriginScale.y * 0.5f;
-	}
-
-	m_object->SetPos(Vec2(fXInterpolation, fYInterpolation));
+		
+	m_object->SetPos(Vec2(vOriginPos.x + fXInterpolation,vOriginPos.y + fYInterpolation));
 }
-
 
 void Rigidbody2D::EnterCollision(Collider* _pOther)
 {
-	//땅 오브젝트 그룹인 경우
-	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
-	{
-		m_pOtherCol = _pOther;
-	}
+	m_pOtherCol = _pOther;
 }
 
 void Rigidbody2D::ExitCollision(Collider* _pOther)
 {
-	if (_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
-	{
-		m_pOtherCol = nullptr;
-	}
+	m_pOtherCol = nullptr;
 }
 
 void Rigidbody2D::StayCollision(Collider* _pOther)
 {
-	if(_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::GROUND)
-	{
-		//MoveInterpolation(_pOther);
-	}
 }
 
 Rigidbody2D::Rigidbody2D(Object* _object, Collider* _collider)
 {
 	m_object = _object;
 	m_pCollider = _collider;
-
+	
 	m_velocity = Vec2(0.f, 0.f);
 }
 
@@ -102,26 +77,38 @@ Rigidbody2D::~Rigidbody2D()
 
 void Rigidbody2D::Update()
 {
-	if (false == m_pCollider->IsGrounded())
+	if(nullptr == m_pOtherCol)
 	{
+		m_bIsGrounded = false;
+	}
+	else
+	{
+		float fOtherPosY = m_pOtherCol->GetFinalPos().y + m_pOtherCol->GetScale().y * 0.5f;
+		float fMyPosY = m_pCollider->GetFinalPos().y - m_pCollider->GetScale().y * 0.5f;
+		
+		m_bIsGrounded = fOtherPosY >= fMyPosY;
+	}
+	
+	if(m_bIsGrounded)
+	{
+		m_bIsGrounded = true;
+		
+		m_fApplyDeAcceleration = m_fGroundedDeAcceleration;
+		m_velocity.y = 0.f;
+
+	}
+	else
+	{
+		m_bIsGrounded = false;
+
 		m_fApplyDeAcceleration = m_deAcceleration;
 		ApplyGravity();
 	}
-	else if(m_velocity.y >= 0.1f)
-	{
-		m_fApplyDeAcceleration = m_fGroundedDeAcceleration;
-		m_velocity.y = 0.f;
-	}
 
 
+	//MoveInterpolation();
 	ApplyDeAccel();
 	ApplyVelocity();
-
-	//Collider* pGroundCol = m_pGroundRay->ShootRay(m_pCollider->GetFinalPos(),Vec2(0.f, 1.f), m_pCollider->GetScale().x + 0.1f);
-	//if(nullptr != pGroundCol)
-	//{
-	//	MoveInterpolation(pGroundCol);
-	//}
 }
 
 void Rigidbody2D::FinalUpdate()

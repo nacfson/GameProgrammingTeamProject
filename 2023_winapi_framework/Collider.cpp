@@ -6,7 +6,6 @@ UINT Collider::m_sNextID = 0;
 
 void Collider::Init()
 {
-	m_isGrounded = false;
 }
 
 Collider::Collider()
@@ -50,29 +49,17 @@ void Collider::EnterCollision(Collider* _pOther)
 {
  	++m_check;
     m_pOwner->EnterCollision(_pOther);
-
-	float fOtherPosMaxY = _pOther->GetFinalPos().y + _pOther->GetScale().y * 0.5f;
-	float fMyPosY = GetFinalPos().y - GetScale().y * 0.5f;
-
-	if(fOtherPosMaxY > fMyPosY)
-	{
-		_pOther->m_isGrounded = true;
-		
-		m_pOwner->SetPos(Vec2(GetFinalPos().x,fOtherPosMaxY + GetScale().y * 0.5f));
-	}
 }
 
 void Collider::ExitCollision(Collider* _pOther)
 {
 	--m_check;
 	m_pOwner->ExitCollision(_pOther);
-	_pOther->m_isGrounded = false;
 }
 
 void Collider::StayCollision(Collider* _pOther)
 {
 	m_pOwner->StayCollision(_pOther);
-	_pOther->m_isGrounded = true;
 }
 
 void Collider::FinalUpdate()
