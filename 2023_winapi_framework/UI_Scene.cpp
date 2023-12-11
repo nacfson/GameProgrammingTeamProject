@@ -32,11 +32,11 @@ bool UI_Scene::CanChangePrevScene()
 void UI_Scene::Render(HDC _dc)
 {
 	Scene::Render(_dc);
-	POINT pResolution = Core::GetInst()->GetResolution();
-
-	BitBlt(_dc
-		,(int)(0)
-		,(int)(0)
-		, pResolution.x,pResolution.y, m_pBackgroundTex->GetDC()
-		,0,0,SRCCOPY);
+	// POINT pResolution = Core::GetInst()->GetResolution();
+	//
+	// BitBlt(_dc
+	// 	,(int)(0)
+	// 	,(int)(0)
+	// 	, pResolution.x,pResolution.y, m_pBackgroundTex->GetDC()
+	// 	,0,0,SRCCOPY);
 }
