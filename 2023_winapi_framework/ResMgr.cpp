@@ -2,6 +2,10 @@
 #include "ResMgr.h"
 #include "PathMgr.h"
 #include "Texture.h"
+
+
+
+
 Texture* ResMgr::TexLoad(const wstring& _strKey, const wstring& _strRelativePath)
 {
     // �� ã������ �װ� �����ֱ�
@@ -100,7 +104,6 @@ void ResMgr::Play(const wstring& _strKey)
         eChannel = SOUND_CHANNEL::EFFECT;
     // ���� ��� �Լ�. &channel�� � ä���� ���� ����Ǵ��� ������ �ѱ�
     m_pSystem->playSound(ptSound->pSound, nullptr, false, &m_pChannel[(UINT)eChannel]);
-
 }
 
 void ResMgr::Stop(SOUND_CHANNEL _eChannel)

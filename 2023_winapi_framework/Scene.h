@@ -42,10 +42,15 @@ public:
 			Vec2 groundScale = Vec2(tile.width, tile.height);
 			Ground* pGround = new Ground(groundScale);
 			Vec2 tilePos = Vec2(tile.x, tile.y);
+			int iID = tile.id;
+			
+			Texture* tTex = TileMgr::GetInst()->GetTileByID(iID);
 
 			pGround->SetPos(tilePos);
 			pGround->SetObjGroup(OBJECT_GROUP::GROUND);
-
+			pGround->SetTexture(tTex);
+			pGround->SetScale(groundScale);
+			
 			AddObject(pGround, OBJECT_GROUP::GROUND);
 		}
 	}

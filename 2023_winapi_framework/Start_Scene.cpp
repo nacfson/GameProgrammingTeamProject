@@ -15,10 +15,8 @@ void Start_Scene::Init()
 {
 	PlayerMgr::GetInst()->Init();
 
-	Vec2 vResolution = Core::GetInst()->GetResolution();
-
 	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Start_Scene.json");
-
+	
 	CreateMapObjects(mapVec);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
 	SetNextScene(L"First_Scene");

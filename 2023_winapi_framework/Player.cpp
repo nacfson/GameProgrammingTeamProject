@@ -13,8 +13,6 @@
 #include "Animation.h"
 #include "Slider.h"
 #include "Rigidbody2D.h"
-#include "Raycast2D.h"
-#include "RayCollider.h"
 Player::Player()
 	: m_pTex(nullptr),
 	m_fPlusJumpPower(.3f),
@@ -22,22 +20,17 @@ Player::Player()
 	m_fMinJumpPower(0.f),
 	m_fMaxJumpPower(.8f)
 {
-	
-	//m_pTex = new Texture;
-	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
-	//strFilePath += L"Texture\\plane.bmp";
-	//m_pTex->Load(strFilePath);
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
+
 
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
-	//GetCollider()->SetScale(Vec2(5.f,10.f));
+
+
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
 	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
 	
-	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
@@ -50,15 +43,6 @@ Player::Player()
 	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
-
-	//// ������ �ǵ帮��
-	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
-	//// �ϳ���
-	//pAnim->SetFrameOffset(0, Vec2(0.f, 20.f));
-
-	//// ������ �� 
-	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
-	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
@@ -94,28 +78,20 @@ void Player::Update()
 		m_prevPressMoveKey = prevPressKey;
 	}
 	Vec2 vPos = GetPos();
-	if (KEY_PRESS(KEY_TYPE::LEFT))
-	{
-		vPos.x -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
-	}
-	if (KEY_PRESS(KEY_TYPE::RIGHT))
-	{
-		vPos.x += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
-	}
-	if (KEY_PRESS(KEY_TYPE::UP))
-	{
-		vPos.y -= 100.f * fDT;
-	}
-	if (KEY_PRESS(KEY_TYPE::DOWN))
-	{
-		vPos.y += 100.f * fDT;
-	}
-	
+
 
 	if (true == m_pRigidbody2D->IsGrounded())
 	{
+		if (KEY_PRESS(KEY_TYPE::LEFT))
+		{
+			vPos.x -= 100.f * fDT;
+			GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+		}
+		if (KEY_PRESS(KEY_TYPE::RIGHT))
+		{
+			vPos.x += 100.f * fDT;
+			GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+		}
 		if (KEY_PRESS(KEY_TYPE::SPACE))
 		{
 			if (m_fCurJumpPower <= m_fMaxJumpPower)
@@ -141,7 +117,7 @@ void Player::Update()
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
-				ResMgr::GetInst()->Play(L"Jump");
+				//ResMgr::GetInst()->Play(L"Jump");
 			}
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);

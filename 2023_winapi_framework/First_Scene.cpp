@@ -16,13 +16,11 @@ First_Scene::~First_Scene()
 void First_Scene::Init()
 {
 	Scene::Init();
-	Vec2 groundScale = Vec2(100.f, 100.f);
-	Ground* pGround = new Ground(groundScale);
-	pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
-	pGround->SetScale(groundScale);
 
-	AddObject(pGround, OBJECT_GROUP::GROUND);
+	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Map2.json");
 
+
+	CreateMapObjects(mapVec);
 	SetNextScene(L"First_Scene", L"Start_Scene");
 }
 
