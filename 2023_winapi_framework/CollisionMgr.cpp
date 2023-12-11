@@ -17,6 +17,7 @@ void CollisionMgr::Update()
 		}
 	}
 }
+
 void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight)
 {
 	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
@@ -33,6 +34,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 			if (vecRight[j]->GetCollider() == nullptr ||
 				vecLeft[i] == vecRight[j])
 				continue;
+
 			Collider* pLeftCol = vecLeft[i]->GetCollider();
 			Collider* pRightCol = vecRight[j]->GetCollider();
 			COLLIDER_ID colID;

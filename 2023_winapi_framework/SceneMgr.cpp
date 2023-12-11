@@ -3,17 +3,19 @@
 #include "Start_Scene.h"
 #include "Game_Scene.h"
 #include "First_Scene.h"
+#include "PlayerMgr.h"
+#include "UI_Scene.h"
 
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;
-	// �� ���
+	
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
 	RegisterScene(L"First_Scene", std::make_shared<First_Scene>());
-
-	// ù �� ����
-	LoadScene(L"Start_Scene");
+	RegisterScene(L"UI_Scene", std::make_shared<UI_Scene>());
+	
+	LoadScene(L"UI_Scene");
 }
 
 void SceneMgr::Update()
@@ -27,9 +29,8 @@ void SceneMgr::Render(HDC _dc)
 	m_pCurScene->Render(_dc);
 }
 
-void SceneMgr::LoadScene(const wstring& _scenename)
+void SceneMgr::LoadScene(const wstring _scenename)
 {
-	// ���� ������
 	if (m_pCurScene != nullptr)
 	{
 		m_pCurScene->Release();

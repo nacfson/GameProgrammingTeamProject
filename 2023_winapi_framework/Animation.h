@@ -26,13 +26,13 @@ public:
 	const size_t& GetMaxFrame() { return m_vecAnimFrame.size(); }
 	friend class Animator;
 private:
-	UINT   m_CurFrame; // ÇöÀç ÇÁ·¹ÀÓ
-	float  m_fAccTime; // ´©Àû ½Ã°£
-	int	   m_repeatcnt; // ¹Ýº¹ È½¼ö
-	Texture* m_pTex; // ¾Ö´Ï¸ÞÀÌ¼Ç ÅØ½ºÃ³
+	UINT   m_CurFrame; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	float  m_fAccTime; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+	int	   m_repeatcnt; // ï¿½Ýºï¿½ È½ï¿½ï¿½
+	Texture* m_pTex; // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½Ø½ï¿½Ã³
 	vector<tAnimFrame> m_vecAnimFrame;
 	wstring m_strName;
 	Animator* m_pAnimator;
-
+	
 };
 

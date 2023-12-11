@@ -6,7 +6,6 @@ UINT Collider::m_sNextID = 0;
 
 void Collider::Init()
 {
-	m_isGrounded = false;
 }
 
 Collider::Collider()
@@ -49,21 +48,18 @@ void Collider::Render(HDC _dc)
 void Collider::EnterCollision(Collider* _pOther)
 {
  	++m_check;
-	m_pOwner->EnterCollision(_pOther);
-	_pOther->m_isGrounded = true;
+    m_pOwner->EnterCollision(_pOther);
 }
 
 void Collider::ExitCollision(Collider* _pOther)
 {
 	--m_check;
 	m_pOwner->ExitCollision(_pOther);
-	_pOther->m_isGrounded = false;
 }
 
 void Collider::StayCollision(Collider* _pOther)
 {
 	m_pOwner->StayCollision(_pOther);
-	_pOther->m_isGrounded = true;
 }
 
 void Collider::FinalUpdate()

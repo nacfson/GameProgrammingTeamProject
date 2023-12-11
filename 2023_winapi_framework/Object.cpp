@@ -13,6 +13,16 @@ Object::Object()
 {
 }
 
+Object::Object(OBJECT_GROUP _eGroup)
+	: m_pCollider(nullptr)
+	, m_vPos{}
+	, m_vScale{}
+	, m_IsAlive(true)
+	, m_pAnimator(nullptr)
+	, m_eGroup(_eGroup)
+{
+}
+
 Object::~Object()
 {
 	if (nullptr != m_pCollider)
@@ -36,12 +46,7 @@ void Object::CreateAnimator()
 
 void Object::Update()
 {
-	//Vec2 vPos = m_obj.GetPos();
 
-//	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-//	if(KeyMgr::GetInst()->GetKey(KEY_TYPE::LEFT) == KEY_STATE::UP)
-
-	//m_obj.SetPos(vPos);
 }
 
 void Object::FinalUpdate()

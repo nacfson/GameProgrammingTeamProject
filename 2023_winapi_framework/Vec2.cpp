@@ -24,3 +24,4 @@ Vec2::Vec2(const Vec2& _vec)
 	, y(_vec.y)
 {}
 
+

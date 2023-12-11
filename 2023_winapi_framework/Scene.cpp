@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
+
+#include "Core.h"
 #include "PlayerMgr.h"
 #include "Object.h"
 Scene::Scene()
@@ -69,10 +71,12 @@ void Scene::Release()
 {
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
-		if (i == static_cast<UINT>(OBJECT_GROUP::PLAYER)) continue;
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+		if(i != (UINT)OBJECT_GROUP::PLAYER)
 		{
-			delete m_vecObj[i][j];
+			for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+			{
+				delete m_vecObj[i][j];
+			}
 		}
 		m_vecObj[i].clear();
 	}
@@ -80,10 +84,28 @@ void Scene::Release()
 
 bool Scene::CanChangeNextScene()
 {
-	return false;
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if (PlayerMgr::GetInst()->GetPlayer()->GetPos().y <= 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool Scene::CanChangePrevScene()
 {
-	return false;
+	auto resolution = Core::GetInst()->GetResolution();
+
+	if (PlayerMgr::GetInst()->GetPlayer()->GetPos().y >= resolution.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

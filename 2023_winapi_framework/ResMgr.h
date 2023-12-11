@@ -1,13 +1,15 @@
 #pragma once
 #include "fmod.hpp"
 #pragma comment(lib, "fmod_vc")
+
+
 enum class SOUND_CHANNEL
 {
 	BGM, EFFECT, END
 };
 struct tSoundInfo
 {
-	FMOD::Sound* pSound; // ╫га╕ ╩Г©Н╣Е ╦ч╦П╦╝
+	FMOD::Sound* pSound; // О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫ч╦О©╫
 	bool IsLoop;
 };
 class Texture;
@@ -18,12 +20,14 @@ public:
 	Texture* TexLoad(const wstring& _strKey,
 		const wstring& _strRelativePath);
 	Texture* TexFind(const wstring& _strKey);
+
+
 	void Release();
 private:
 	map<wstring, Texture*> m_mapTex;
-	FMOD::System* m_pSystem; // ╩Г©Н╣Е ╫ц╫╨еш
+	FMOD::System* m_pSystem; // О©╫О©╫О©╫О©╫ О©╫ц╫О©╫О©╫О©╫
 	map<wstring, tSoundInfo*> m_mapSod;
-	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // ©ю╣П©ю ц╓Ён
+	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // О©╫О©╫О©╫О©╫О©╫ ц╓О©╫О©╫
 public:
 	void Init();
 	void LoadSound(const wstring& _strKey, const wstring& _strReleativePath, bool _IsLoop);

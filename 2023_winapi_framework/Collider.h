@@ -1,5 +1,13 @@
 #pragma once
 class Object;
+enum class ERAY_DIR
+{
+	GROUND = 0,
+	LEFT = 1,
+	RIGHT = 2,
+	TOP = 3,
+	NONE = 99
+};
 
 class Collider
 {
@@ -14,9 +22,10 @@ public:
 	void FinalUpdate();
 	void Render(HDC _dc);
 public:
-	void EnterCollision(Collider* _pOther);
-	void ExitCollision(Collider* _pOther);
-	void StayCollision(Collider* _pOther);
+	virtual void EnterCollision(Collider* _pOther);
+	virtual void ExitCollision(Collider* _pOther);
+	virtual void StayCollision(Collider* _pOther);
+
 public:
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetOffSetPos(Vec2 _vOffsetPos) 
@@ -26,15 +35,15 @@ public:
 	const Vec2& GetFinalPos() const 
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
-	const Object* GetObj() const { return m_pOwner; }
-	const bool& IsGrounded() const { return m_isGrounded; }
+	Object* GetObj() const { return m_pOwner; }
+
+	void SetOwner(Object* _owner) {m_pOwner = _owner;}
 private:
 	UINT m_check;
 	Object* m_pOwner;
 	Vec2 m_vOffsetPos; // ������
 	Vec2 m_vFinalPos; // ���̳� ��ġ
 	Vec2 m_vScale; // ũ��
-	bool m_isGrounded;
 	friend class Object;
 	UINT m_ID; // �浹ü ID��
 	static UINT m_sNextID;

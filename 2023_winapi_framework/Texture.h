@@ -3,12 +3,13 @@
 class Texture :
     public Res
 {
-private:
+public:
     Texture();
     ~Texture();
     friend class ResMgr;
 public:
     void Load(const wstring& _strFilePath);
+    void Load(const wstring& _strFilePath,int _iStartX,int _iStartY,int _iWidth, int _iHeight);
     const LONG& GetWidth() const { return (m_bitInfo.bmWidth); }
     const LONG& GetHeight() const { return (m_bitInfo.bmHeight); }
     const HDC& GetDC() const { return m_hDC; }

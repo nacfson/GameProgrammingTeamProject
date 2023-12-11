@@ -13,49 +13,43 @@
 #include "Animation.h"
 #include "Slider.h"
 #include "Rigidbody2D.h"
+#include "Raycast2D.h"
+#include "RayCollider.h"
 Player::Player()
-	: m_pTexL(nullptr),
-	m_pTexR(nullptr),
+	: m_pTex(nullptr),
 	m_fPlusJumpPower(.3f),
 	m_fCurJumpPower(0.f),
 	m_fMinJumpPower(0.f),
-	m_fMaxJumpPower(.8f),
-	m_curDir(DIRECTION_TYPE::LEFT)
+	m_fMaxJumpPower(.8f)
 {
+	
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
-	m_pTexL = ResMgr::GetInst()->TexLoad(L"PlayerL", L"Texture\\rabbitL.bmp");
-	m_pTexR = ResMgr::GetInst()->TexLoad(L"PlayerR", L"Texture\\rabbitR.bmp");
+
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
+	//GetCollider()->SetScale(Vec2(5.f,10.f));
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
+
+	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
 	
 	// ������ �� 20�� �ФФ� ������;�ӳ���;������
 	CreateAnimator();
-
-	GetAnimator()->CreateAnim(L"RabbitL", m_pTexL, Vec2(32.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
-	GetAnimator()->CreateAnim(L"RabbitR", m_pTexR, Vec2(0.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
-	GetAnimator()->CreateAnim(L"RabbitL_Jump", m_pTexL, Vec2(0.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
-	GetAnimator()->CreateAnim(L"RabbitR_Jump", m_pTexR, Vec2(64.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
-	GetAnimator()->PlayAnim(L"RabbitL", true); 
-	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
+	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
+		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
+		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
+		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
+		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
+		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
 
 	//// ������ �ǵ帮��
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
@@ -69,11 +63,12 @@ Player::Player()
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
 	m_pRigidbody2D->Init();
+
+	m_eGroup = OBJECT_GROUP::PLAYER;
 }
 
 Player::Player(Player& player)
 {
-
 }
 
 Player::~Player()
@@ -99,26 +94,28 @@ void Player::Update()
 		m_prevPressMoveKey = prevPressKey;
 	}
 	Vec2 vPos = GetPos();
-
-
-
-	if (true == m_pCollider->IsGrounded())
+	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
-		if (KEY_PRESS(KEY_TYPE::LEFT))
-		{
-			vPos.x -= 100.f * fDT;
-			GetAnimator()->PlayAnim(L"RabbitL", true);
-			m_curDir = DIRECTION_TYPE::LEFT;
-		}
-		if (KEY_PRESS(KEY_TYPE::RIGHT))
-		{
-			vPos.x += 100.f * fDT;
-			GetAnimator()->PlayAnim(L"RabbitR", true);
-			m_curDir = DIRECTION_TYPE::RIGHT;
-		}
+		vPos.x -= 100.f * fDT;
+		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+	}
+	if (KEY_PRESS(KEY_TYPE::RIGHT))
+	{
+		vPos.x += 100.f * fDT;
+		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+	}
+	if (KEY_PRESS(KEY_TYPE::UP))
+	{
+		vPos.y -= 100.f * fDT;
+	}
+	if (KEY_PRESS(KEY_TYPE::DOWN))
+	{
+		vPos.y += 100.f * fDT;
+	}
+	
 
-
-
+	if (true == m_pRigidbody2D->IsGrounded())
+	{
 		if (KEY_PRESS(KEY_TYPE::SPACE))
 		{
 			if (m_fCurJumpPower <= m_fMaxJumpPower)
@@ -138,18 +135,14 @@ void Player::Update()
 				{
 				case KEY_TYPE::LEFT:
 					jumpDirection = Vec2(-.5f, -1.0f).Normalize();
-					GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
-					m_curDir = DIRECTION_TYPE::LEFT;
 					break;
 				case KEY_TYPE::RIGHT:
 					jumpDirection = Vec2(.5f, -1.0f).Normalize();
-					GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
-					m_curDir = DIRECTION_TYPE::RIGHT;
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
+				ResMgr::GetInst()->Play(L"Jump");
 			}
-
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);
 		}
@@ -169,19 +162,7 @@ void Player::Update()
 }
 
 
-//void Player::CreateBullet()
-//{
-//	Bullet* pBullet = new Bullet;
-//	Vec2 vBulletPos = GetPos();
-//	vBulletPos.y -= GetScale().y / 2.f;
-//	pBullet->SetPos(vBulletPos);
-//	pBullet->SetScale(Vec2(25.f,25.f));
-////	pBullet->SetDir(M_PI / 4 * 7);
-////	pBullet->SetDir(120* M_PI / 180);
-//	pBullet->SetDir(Vec2(-10.f,-15.f));
-//	pBullet->SetName(L"Player_Bullet");
-//	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
-//}
+
 
 void Player::Render(HDC _dc)
 {
@@ -220,26 +201,28 @@ void Player::Render(HDC _dc)
 	Component_Render(_dc);
 }
 
+void Player::FinalUpdate()
+{
+	Object::FinalUpdate();
+	if(m_pRigidbody2D)
+		m_pRigidbody2D->FinalUpdate();
+}
+
 void Player::EnterCollision(Collider* _pOther)
 {
-	if (m_curDir == DIRECTION_TYPE::LEFT)
-	{
-		GetAnimator()->PlayAnim(L"RabbitL", true);
-	}
-	else
-	{
-		GetAnimator()->PlayAnim(L"RabbitR", true);
-	}
+	Object::EnterCollision(_pOther);
+	m_pRigidbody2D->EnterCollision(_pOther);
 }
 
 void Player::ExitCollision(Collider* _pOther)
 {
-	if (m_curDir == DIRECTION_TYPE::LEFT) 
-	{
-		GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
-	}
-	else 
-	{
-		GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
-	}
+	Object::ExitCollision(_pOther);
+	m_pRigidbody2D->ExitCollision(_pOther);
 }
+
+void Player::StayCollision(Collider* _pOther)
+{
+	Object::StayCollision(_pOther);
+	m_pRigidbody2D->StayCollision(_pOther);
+}
+
