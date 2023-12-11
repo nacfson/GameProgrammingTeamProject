@@ -45,6 +45,7 @@ void Animation::Render(HDC _dc)
 
 	// ������ ����
 	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
+	
 	TransparentBlt(_dc
 		,(int)(vPos.x - m_vecAnimFrame[m_CurFrame].vSlice.x /2.f)
 		,(int)(vPos.y - m_vecAnimFrame[m_CurFrame].vSlice.y / 2.f)
@@ -66,5 +67,4 @@ void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
 		m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i,
 			_vSliceSize, _fDuration,{0.f,0.f} }));
 	}
-
 }

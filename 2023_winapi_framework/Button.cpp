@@ -118,7 +118,7 @@ void Button::Render(HDC _dc)
 	}
 
 	SelectGDI pen(_dc, ePen);
-	SelectGDI brush(_dc, BRUSH_TYPE::HOLLOW);
+	SelectGDI brush(_dc, BRUSH_TYPE::BLUE);
 	
 
 	//float fWidth = m_pTex->GetWidth();
