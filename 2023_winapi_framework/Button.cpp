@@ -15,11 +15,11 @@ Button::Button()
 	m_bOnTimer(false),
 	m_fTargetTime(0.3f)
 {
-	Vec2 btnScale = Vec2(100.f, 50.f);
+	Vec2 btnScale = Vec2(150.f, 50.f);
 
 	m_vScale = btnScale;
 	m_vCurScale = m_vScale;
-	m_vTargetScale = Vec2(120.f, 50.f);
+	m_vTargetScale = Vec2(180.f, 50.f);
 
 	m_pTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\StartBtn.bmp");
 
@@ -30,6 +30,7 @@ Button::Button()
 
 Button::~Button()
 {
+
 }
 
 void Button::OnMouseEnter()
@@ -81,12 +82,10 @@ void Button::Update()
 			OnMouseExit();
 		}
 	}
-
 	if (m_bOnMouse && KEY_UP(KEY_TYPE::LBUTTON))
 	{
 		OnMouseClicked();
 	}
-
 
 	if(m_bOnTimer)
 	{
@@ -121,16 +120,20 @@ void Button::Render(HDC _dc)
 	SelectGDI brush(_dc, BRUSH_TYPE::BLUE);
 	
 
-	//float fWidth = m_pTex->GetWidth();
-	//float fHeight = m_pTex->GetHeight();
-
-
-	//BitBlt(_dc
-	//,(int)(m_vPos.x - m_vCurScale.x / 2)
-	//,(int)(m_vPos.y - m_vCurScale.y / 2)
-	//, fWidth, fHeight, m_pTex->GetDC()
-	//,0,0,SRCCOPY);
+	float fWidth = m_pTex->GetWidth();
+	float fHeight = m_pTex->GetHeight();
 	RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
+
+
+	StretchBlt(_dc
+	,(int)(GetPos().x - m_vCurScale.x / 2)
+	,(int)(GetPos().y - m_vCurScale.y / 2)
+	,m_vCurScale.x
+	,m_vCurScale.y
+	,m_pTex->GetDC()
+	,0,0
+	,fWidth,fHeight
+	,SRCCOPY);
 }
 
 

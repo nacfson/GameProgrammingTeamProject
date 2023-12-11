@@ -1,22 +1,5 @@
-﻿  First_Scene.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.h(35): warning C4715: 'TileMgr::GetTileByID': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  Start_Scene.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.h(35): warning C4715: 'TileMgr::GetTileByID': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  TileMgr.cpp
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(50,21): warning C4244: '=': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-          with
-          [
-              T=float
-          ]
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(51,21): warning C4244: '=': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-          with
-          [
-              T=float
-          ]
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(55,23): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(56,22): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(58,26): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(59,27): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Rigidbody2D.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.h(31,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.cpp(12,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.cpp(13,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe

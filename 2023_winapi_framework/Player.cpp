@@ -68,32 +68,43 @@ void Player::Init()
 	m_pRigidbody2D->Init();
 	m_pCollider->Init();
 	m_pSlider = nullptr;
+	m_bCanMove = true;
 }
 
 void Player::Update()
 {
-	KEY_TYPE prevPressKey = KeyMgr::GetInst()->GetPrevKey();
-	if(prevPressKey == KEY_TYPE::LEFT || prevPressKey == KEY_TYPE::RIGHT)
+	if(m_bCanMove)
 	{
-		m_prevPressMoveKey = prevPressKey;
+		KEY_TYPE prevPressKey = KeyMgr::GetInst()->GetPrevKey();
+		if (prevPressKey == KEY_TYPE::LEFT || prevPressKey == KEY_TYPE::RIGHT)
+		{
+			m_prevPressMoveKey = prevPressKey;
+		}
 	}
+	
 	Vec2 vPos = GetPos();
 
 
 	if (true == m_pRigidbody2D->IsGrounded())
 	{
-		if (KEY_PRESS(KEY_TYPE::LEFT))
+		if(m_bCanMove)
 		{
-			vPos.x -= 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+			if (KEY_PRESS(KEY_TYPE::LEFT))
+			{
+				vPos.x -= 100.f * fDT;
+				GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+			}
+			if (KEY_PRESS(KEY_TYPE::RIGHT))
+			{
+				vPos.x += 100.f * fDT;
+				GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+			}
 		}
-		if (KEY_PRESS(KEY_TYPE::RIGHT))
-		{
-			vPos.x += 100.f * fDT;
-			GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
-		}
+
 		if (KEY_PRESS(KEY_TYPE::SPACE))
 		{
+			m_bCanMove = false;
+
 			if (m_fCurJumpPower <= m_fMaxJumpPower)
 			{
 				m_fCurJumpPower += m_fPlusJumpPower * TimeMgr::GetInst()->GetDT();
@@ -121,6 +132,8 @@ void Player::Update()
 			}
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);
+			m_bCanMove = true;
+
 		}
 	}
 

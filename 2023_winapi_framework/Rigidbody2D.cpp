@@ -37,25 +37,26 @@ void Rigidbody2D::MoveInterpolation(Collider* _pOther)
 	Vec2 vOriginScale = m_pCollider->GetScale();
 
 
-
 	Vec2 vOtherPos = _pOther->GetFinalPos();
 	Vec2 vOtherScale = _pOther->GetScale();
-
 
 
 	float fXInterpolation = m_pCollider->GetFinalPos().x;
 	float fYInterpolation = m_pCollider->GetFinalPos().y;
 
 
+	if(vOriginPos.y - vOriginScale.y * 0.5f <= vOtherPos.y - vOtherScale.y * 0.5f && m_velocity.y <= 0.f)
+	{
+		if (vOriginPos.x > vOtherPos.x && m_velocity.x < 0.f)
+		{
+			fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
+		}
+		else if (vOriginPos.x < vOtherPos.x && m_velocity.x > 0.f)
+		{
+			fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
+		}
+	}
 
-	if (vOriginPos.x > vOtherPos.x && m_velocity.x < 0.f)
-	{
-		fXInterpolation = vOtherPos.x + vOtherScale.x * 0.5f + vOriginScale.x * 0.5f;
-	}
-	else if (vOriginPos.x < vOtherPos.x && m_velocity.x > 0.f)
-	{
-		fXInterpolation = vOtherPos.x - vOtherScale.x * 0.5f - vOriginScale.x * 0.5f;
-	}
 
 	if (vOriginPos.y > vOtherPos.y && m_velocity.y < 0.f)
 	{
