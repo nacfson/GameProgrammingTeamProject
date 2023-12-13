@@ -22,6 +22,7 @@ void Slider::SetSlider(float value)
 
 void Slider::ActiveSlider(bool value)
 {
+    
 }
 
 void Slider::Render(HDC _dc)

@@ -28,9 +28,10 @@ Player::Player()
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
 	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
-	ResMgr::GetInst()->LoadSound(L"Charge",L"laserShoow.wav",true);
+	ResMgr::GetInst()->LoadSound(L"Charge",L"laserShoot.wav",true);
 	
 	CreateAnimator();
+	
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),

@@ -16,14 +16,16 @@ Turtle::Turtle() : m_pTex(nullptr), moveSpeed(10.0f)
 	GetCollider()->SetScale(Vec2(64.f, 64.f));
     
 	CreateAnimator();
+	
 	GetAnimator()->CreateAnim(L"TurtleMove", m_pTex, Vec2(64.f, 64.f),
 		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 3, 0.3f);
 	
-
+	
 	for (int i = 0; i < 3; i++) {
 		GetAnimator()->FindAnim(L"TurtleMove")->Create(m_pTex, Vec2(64.f, 64.f),
 			Vec2(64.f, 64.f), Vec2(64.f, 0.f), 3, 0.3f);
 	}
+	
 	GetAnimator()->FindAnim(L"TurtleMove")->Create(m_pTex, Vec2(0.f, 0.f),
 		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 4, 0.2f);
 	GetAnimator()->FindAnim(L"TurtleMove")->Create(m_pTex, Vec2(0.f, 64.f),
@@ -36,7 +38,7 @@ Turtle::Turtle() : m_pTex(nullptr), moveSpeed(10.0f)
 
 Turtle::~Turtle()
 {
-
+	
 }
 
 void Turtle::Update()
