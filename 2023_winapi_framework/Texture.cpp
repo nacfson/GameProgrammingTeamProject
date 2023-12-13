@@ -9,6 +9,7 @@ Texture::Texture()
 {
 }
 
+
 Texture::~Texture()
 {
 	DeleteDC(m_hDC);
@@ -28,6 +29,7 @@ void Texture::Load(const wstring& _strFilePath)
 	SelectObject(m_hDC, m_hBit);
 	GetObject(m_hBit, sizeof(BITMAP),&m_bitInfo);
 }
+
 
 void Texture::Load(const wstring& _strFilePath, int _iStartX, int _iStartY, int _iWidth, int _iHeight)
 {
@@ -51,7 +53,4 @@ void Texture::Load(const wstring& _strFilePath, int _iStartX, int _iStartY, int 
 	       , 0, 0,SRCCOPY);
 
 	GetObject(m_hBackDC,sizeof(BITMAP),&m_bitInfo);
-
-	//DeleteDC(m_hBackDC);
-	//DeleteObject(m_hbackbit);
 }

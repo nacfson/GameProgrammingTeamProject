@@ -21,17 +21,15 @@ Player::Player()
 	m_fMinJumpPower(0.f),
 	m_fMaxJumpPower(1.1f)
 {
-
-
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
-	
+
 	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
 	ResMgr::GetInst()->LoadSound(L"Charge",L"laserShoow.wav",true);
-
+	
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
