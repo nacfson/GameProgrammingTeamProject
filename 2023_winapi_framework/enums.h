@@ -50,3 +50,8 @@ enum class EVENT_TYPE
 	SCENE_CHANGE,
 	END
 };
+
+enum class DIRECTION_TYPE 
+{
+	LEFT, RIGHT,
+};
