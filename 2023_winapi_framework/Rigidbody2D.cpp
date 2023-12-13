@@ -154,16 +154,21 @@ void Rigidbody2D::ApplyGravity()
 void Rigidbody2D::ApplyVelocity()
 {
 	Vec2 curPos = m_object->GetPos();
-	//curPos.y += m_gravity * m_gravityMultiply * TimeMgr::GetInst()->GetDT();
+	
 	curPos = curPos + m_velocity;
 
-	if(curPos.x >= m_fResolutionMaxX)
+
+	float fYBouncePower = 1.f;
+	float fXBouncePower = 0.7f;
+	if(curPos.x > m_fResolutionMaxX)
 	{
 		curPos.x = m_fResolutionMaxX;
+		//AddForce(Vec2(-fXBouncePower,-fYBouncePower),1.f);
 	}
-	if((curPos.x <= 0.f))
+	if((curPos.x < 0.f))
 	{
 		curPos.x = 0.f;
+		//AddForce(Vec2(fXBouncePower,-fYBouncePower),1.f);
 	}
 	m_object->SetPos(curPos);
 }

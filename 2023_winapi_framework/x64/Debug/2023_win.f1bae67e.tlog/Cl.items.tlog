@@ -13,6 +13,7 @@ D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.cpp;D:
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\KeyMgr.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\KeyMgr.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\main.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\main.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\MapMgr.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\MapMgr.obj
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\MapScene.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\MapScene.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Monster.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Monster.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Object.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Object.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\PathMgr.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\PathMgr.obj
@@ -28,6 +29,7 @@ D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\SceneMgr.cpp;
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\SelectGDI.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\SelectGDI.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Slider.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Slider.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Start_Scene.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Start_Scene.obj
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Text.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Text.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Texture.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\Texture.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\TileMgr.obj
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TimeMgr.cpp;D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\x64\Debug\TimeMgr.obj

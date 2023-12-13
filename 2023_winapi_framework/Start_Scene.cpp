@@ -1,20 +1,13 @@
 #include "pch.h"
 #include "Start_Scene.h"
-#include "Collider.h"
-#include "Object.h"
-#include "Core.h"
 #include "CollisionMgr.h"
-#include "Ground.h"
-#include "PlayerMgr.h"
 #include "TileMgr.h"
-#include <fstream>
-#include <iostream>
 #include "tileson.hpp"
 
 void Start_Scene::Init()
 {
-	PlayerMgr::GetInst()->Init();
-
+	MapScene::Init();
+	SetMapIdx(1);
 	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Start_Scene.json");
 	
 	CreateMapObjects(mapVec);
@@ -25,26 +18,25 @@ void Start_Scene::Init()
 
 void Start_Scene::Update()
 {
-	Scene::Update();
+	MapScene::Update();
 }
 
 void Start_Scene::Render(HDC _dc)
 {
-	Scene::Render(_dc);
+	MapScene::Render(_dc);
 }
 
 void Start_Scene::Release()
 {
-	Scene::Release();
-	CollisionMgr::GetInst()->CheckReset();
+	MapScene::Release();
 }
 
 bool Start_Scene::CanChangeNextScene()
 {
-	return Scene::CanChangeNextScene();
+	return MapScene::CanChangeNextScene();
 }
 
 bool Start_Scene::CanChangePrevScene()
 {
-	return Scene::CanChangePrevScene();
+	return MapScene::CanChangePrevScene();
 }

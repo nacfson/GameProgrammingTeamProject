@@ -1,7 +1,8 @@
 #pragma once
 #include "Scene.h"
+#include "MapScene.h"
 class Start_Scene :
-    public Scene
+    public MapScene
 {
 public:
     virtual void Init() override;

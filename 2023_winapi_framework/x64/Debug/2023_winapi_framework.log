@@ -1,5 +1,63 @@
-﻿  Rigidbody2D.cpp
+﻿  Bullet.cpp
+  Button.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(123,15): warning C4244: '초기화 중': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(124,16): warning C4244: '초기화 중': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(135,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(135,3): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(132,14): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Button.cpp(131,14): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Core.cpp
+  Player.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
 D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.h(31,23): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.cpp(12,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Rigidbody2D.cpp(13,32): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ResMgr.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xstring(2728,53): warning C4244: '인수': 'wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xstring(2584,17): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xstring(3426,32): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<wchar_t*,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=wchar_t *,
+              _Alloc=std::allocator<char>
+          ]
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\ResMgr.cpp(81,8): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::assign<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(const _Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>
+          ]
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\ResMgr.cpp(81,15): message : 'ResMgr::LoadSound'에서 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::assign'에 대한 첫 번째 참조를 확인하세요.
+  Scene.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  Slider.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Slider.h(23): warning C4172: 지역 변수 또는 임시의 주소를 반환하고 있습니다.
+  TileMgr.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(50,21): warning C4244: '=': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(51,21): warning C4244: '=': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(55,23): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(56,22): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(58,26): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\TileMgr.cpp(59,27): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Turtle.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
+  UI_Scene.cpp
+D:\C++\CppStudy\GameP\GameProgrammingProject\2023_winapi_framework\Ground.h(8,13): warning C4227: 오래된 구문을 사용했습니다. 참조의 한정자가 무시됩니다.
   2023_winapi_framework.vcxproj -> D:\C++\CppStudy\GameP\GameProgrammingProject\Output\bin_debug\2023_winapi_framework.exe

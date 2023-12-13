@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "SceneMgr.h"
+
+#include "Core.h"
 #include "Start_Scene.h"
 #include "Game_Scene.h"
 #include "First_Scene.h"
 #include "PlayerMgr.h"
+#include "SelectGDI.h"
 #include "UI_Scene.h"
 
 void SceneMgr::Init()
@@ -26,6 +29,12 @@ void SceneMgr::Update()
 
 void SceneMgr::Render(HDC _dc)
 {
+	AddFontResource(L"Texture\\한국기계연구원_bold.ttf"); // 한번만 하면 되는건가
+	
+	HFONT hFont = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, L"한국기계연구원_bold");
+	SelectObject(_dc, hFont);
+	SelectGDI selectFont(_dc, hFont);
+	
 	m_pCurScene->Render(_dc);
 }
 

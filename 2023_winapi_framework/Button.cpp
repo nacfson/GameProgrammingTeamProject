@@ -7,13 +7,28 @@
 #include "SelectGDI.h"
 #include "Texture.h"
 #include "TimeMgr.h"
-
+#include "Text.h"
 
 Button::Button()
 	:m_pTex(nullptr),
 	m_fTimer(0.f),
 	m_bOnTimer(false),
-	m_fTargetTime(0.3f)
+	m_fTargetTime(0.3f),
+	m_text(nullptr)
+{
+	m_text = new Text;
+	CreateCollider();
+	GetCollider()->SetScale(GetScale());
+	GetCollider()->SetOffSetPos(Vec2(0.f, 0.f));
+}
+
+
+Button::~Button()
+{
+
+}
+
+void Button::SetScale(const Vec2& _scale, float _xExpandValue)
 {
 	Vec2 btnScale = Vec2(150.f, 50.f);
 
@@ -21,16 +36,12 @@ Button::Button()
 	m_vCurScale = m_vScale;
 	m_vTargetScale = Vec2(180.f, 50.f);
 
-	m_pTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\StartBtn.bmp");
-
-	CreateCollider();
 	GetCollider()->SetScale(btnScale);
-	GetCollider()->SetOffSetPos(Vec2(0.f, 0.f));
 }
 
-Button::~Button()
+void Button::SetText(const wstring& _text,const Vec2& _pos)
 {
-
+	m_text->SetText(_text,_pos);
 }
 
 void Button::OnMouseEnter()
@@ -60,6 +71,8 @@ void Button::OnMouseClicked()
 		Callback();
 	}
 }
+
+
 
 void Button::Update()
 {
@@ -122,7 +135,7 @@ void Button::Render(HDC _dc)
 
 	float fWidth = m_pTex->GetWidth();
 	float fHeight = m_pTex->GetHeight();
-	RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
+	//RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
 
 
 	StretchBlt(_dc
@@ -134,8 +147,9 @@ void Button::Render(HDC _dc)
 	,0,0
 	,fWidth,fHeight
 	,SRCCOPY);
-}
 
+	m_text->Render(_dc);
+}
 
 void Button::SetScaleByValue(Vec2 _startScale, Vec2 _targetScale, float _value)
 {

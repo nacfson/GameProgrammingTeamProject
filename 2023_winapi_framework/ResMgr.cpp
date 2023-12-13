@@ -106,8 +106,23 @@ void ResMgr::Play(const wstring& _strKey)
     m_pSystem->playSound(ptSound->pSound, nullptr, false, &m_pChannel[(UINT)eChannel]);
 }
 
+void ResMgr::Stop(const wstring& _strKey)
+{
+    tSoundInfo* ptSound = FindSound(_strKey);
+    if (!ptSound)
+        return;
+    m_pSystem->update(); // play�Ҷ� update�� �ֱ������� ȣ���ؾ� ���尡 �������� ����.
+    SOUND_CHANNEL eChannel = SOUND_CHANNEL::BGM;
+    if (!ptSound->IsLoop)
+        eChannel = SOUND_CHANNEL::EFFECT;
+    // ���� ��� �Լ�. &channel�� � ä���� ���� ����Ǵ��� ������ �ѱ�
+   // m_pSystem->(ptSound->pSound, nullptr, false, &m_pChannel[(UINT)eChannel]);   
+}
+
 void ResMgr::Stop(SOUND_CHANNEL _eChannel)
 {
+    //m_pChannel[(UINT)_eChannel]->isPlaying()
+
     m_pChannel[(UINT)_eChannel]->stop();
 }
 

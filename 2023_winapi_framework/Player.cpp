@@ -13,24 +13,25 @@
 #include "Animation.h"
 #include "Slider.h"
 #include "Rigidbody2D.h"
+
 Player::Player()
 	: m_pTex(nullptr),
-	m_fPlusJumpPower(.3f),
+	m_fPlusJumpPower(.4f),
 	m_fCurJumpPower(0.f),
 	m_fMinJumpPower(0.f),
-	m_fMaxJumpPower(.8f)
+	m_fMaxJumpPower(1.1f)
 {
 
 
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 
-
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
-
-	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
 	
+	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
+	ResMgr::GetInst()->LoadSound(L"Charge",L"laserShoow.wav",true);
+
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
 		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
@@ -85,6 +86,12 @@ void Player::Update()
 	Vec2 vPos = GetPos();
 
 
+	if(KEY_UP(KEY_TYPE::T))
+	{
+		vPos.y = -10.f;
+	}
+
+
 	if (true == m_pRigidbody2D->IsGrounded())
 	{
 		if(m_bCanMove)
@@ -111,6 +118,7 @@ void Player::Update()
 
 				m_pSlider->SetSlider(m_fCurJumpPower / m_fMaxJumpPower);
 			}
+			//ResMgr::GetInst()->Play(L"Charge");
 			//ResMgr::GetInst()->Play(L"Shoot");
 		}
 		if (KEY_UP(KEY_TYPE::SPACE))
@@ -130,6 +138,7 @@ void Player::Update()
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
 				//ResMgr::GetInst()->Play(L"Jump");
 			}
+			//ResMgr::GetInst()->P(L"Charge");
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);
 			m_bCanMove = true;
@@ -137,10 +146,10 @@ void Player::Update()
 		}
 	}
 
-	const Vec2 offset = Vec2(0.f, -50.f);
+	const Vec2 offset = Vec2(0.f, -40.f);
 
 	m_pSlider->SetPos(vPos + offset);
-	m_pSlider->SetScale(Vec2(50.f, 20.f));
+	m_pSlider->SetScale(Vec2(50.f, 10.f));
 
 	//if(KEY_PRESS(KEY_TYPE::CTRL))
 	//	GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
