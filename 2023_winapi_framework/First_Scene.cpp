@@ -19,11 +19,12 @@ void First_Scene::Init()
 	Scene::Init();
 	SetMapIdx(2);
 	
-	const auto mapVec = TileMgr::GetInst()->GetTileVec("Res\\Map\\Map2.json");
+	std::string path = "Res\\Map\\Map" + std::to_string(m_iMapIdx) + ".json";
+	const auto mapVec = TileMgr::GetInst()->GetTileVec(path);
 	
 	CreateMapObjects(mapVec);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
-	SetNextScene(L"First_Scene", L"Start_Scene");
+	SetNextScene(L"Second_Scene", L"Start_Scene");
 }
 
 bool First_Scene::CanChangeNextScene()

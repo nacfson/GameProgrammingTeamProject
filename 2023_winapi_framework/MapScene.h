@@ -8,7 +8,8 @@ class MapScene : public Scene
 public:
     void SetMapIdx(int _idx);
     void Render(HDC _dc) override;
-private:
+protected:
     int m_iMapIdx;
+private:
     Text* m_text;
 };

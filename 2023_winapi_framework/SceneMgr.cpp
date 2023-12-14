@@ -2,12 +2,20 @@
 #include "SceneMgr.h"
 
 #include "Core.h"
+#include "Eighth_Scene.h"
+#include "Fifth_Scene.h"
 #include "Start_Scene.h"
 #include "Game_Scene.h"
 #include "First_Scene.h"
 #include "PlayerMgr.h"
 #include "SelectGDI.h"
 #include "UI_Scene.h"
+#include "Second_Scene.h"
+#include "Third_Scene.h"
+#include "Fourth_Scene.h"
+#include "Ninth_Scene.h"
+#include "Seventh_Scene.h"
+#include "Sixth_Scene.h"
 
 void SceneMgr::Init()
 {
@@ -16,6 +24,14 @@ void SceneMgr::Init()
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
 	RegisterScene(L"First_Scene", std::make_shared<First_Scene>());
+	RegisterScene(L"Second_Scene",std::make_shared<Second_Scene>());
+	RegisterScene(L"Third_Scene",std::make_shared<Third_Scene>());
+	RegisterScene(L"Fourth_Scene",std::make_shared<Fourth_Scene>());
+	RegisterScene(L"Fifth_Scene",std::make_shared<Fifth_Scene>());
+	RegisterScene(L"Sixth_Scene",std::make_shared<Sixth_Scene>());
+	RegisterScene(L"Seventh_Scene",std::make_shared<Seventh_Scene>());
+	RegisterScene(L"Eighth_Scene",std::make_shared<Eighth_Scene>());
+	RegisterScene(L"Ninth_Scene",std::make_shared<Ninth_Scene>());
 	RegisterScene(L"UI_Scene", std::make_shared<UI_Scene>());
 	
 	LoadScene(L"UI_Scene");
