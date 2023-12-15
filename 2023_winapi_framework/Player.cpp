@@ -27,8 +27,7 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
-	ResMgr::GetInst()->LoadSound(L"Jump",L"Jump.wav",false);
-	ResMgr::GetInst()->LoadSound(L"BGM",L"BGM.wav",true);
+
 	
 	CreateAnimator();
 	

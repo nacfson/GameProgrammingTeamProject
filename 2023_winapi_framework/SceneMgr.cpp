@@ -14,6 +14,7 @@
 #include "Third_Scene.h"
 #include "Fourth_Scene.h"
 #include "Ninth_Scene.h"
+#include "PathMgr.h"
 #include "Seventh_Scene.h"
 #include "Sixth_Scene.h"
 
@@ -45,10 +46,10 @@ void SceneMgr::Update()
 
 void SceneMgr::Render(HDC _dc)
 {
-	AddFontResource(L"Texture\\한국기계연구원_bold.ttf"); // 한번만 하면 되는건가
+	int test = AddFontResource(L"Res\\Texture\\한국기계연구원_bold.ttf"); // 한번만 하면 되는건가
 	
 	HFONT hFont = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, L"한국기계연구원_bold");
-	SelectObject(_dc, hFont);
+	//SelectObject(_dc, hFont);
 	SelectGDI selectFont(_dc, hFont);
 	
 	m_pCurScene->Render(_dc);

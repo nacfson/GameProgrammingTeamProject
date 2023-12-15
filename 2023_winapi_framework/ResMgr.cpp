@@ -3,9 +3,6 @@
 #include "PathMgr.h"
 #include "Texture.h"
 
-
-
-
 Texture* ResMgr::TexLoad(const wstring& _strKey, const wstring& _strRelativePath)
 {
     // �� ã������ �װ� �����ֱ�
