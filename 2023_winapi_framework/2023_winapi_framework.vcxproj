@@ -186,6 +186,8 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game_Scene.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="HurtTrap.h" />
+    <ClInclude Include="JumpTrap.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Last_Scene.h" />
     <ClInclude Include="MapMgr.h" />
@@ -197,6 +199,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMgr.h" />
+    <ClInclude Include="Poop.h" />
+    <ClInclude Include="PoopTrap.h" />
     <ClInclude Include="Raycast2D.h" />
     <ClInclude Include="RayCollider.h" />
     <ClInclude Include="Res.h" />
@@ -237,6 +241,8 @@
     <ClCompile Include="Fourth_Scene.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
     <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="HurtTrap.cpp" />
+    <ClCompile Include="JumpTrap.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="Last_Scene.cpp" />
     <ClCompile Include="main.cpp" />
@@ -248,6 +254,8 @@
     <ClCompile Include="PathMgr.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMgr.cpp" />
+    <ClCompile Include="Poop.cpp" />
+    <ClCompile Include="PoopTrap.cpp" />
     <ClCompile Include="Raycast2D.cpp" />
     <ClCompile Include="RayCollider.cpp" />
     <ClCompile Include="Res.cpp" />

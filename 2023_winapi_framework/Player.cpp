@@ -16,12 +16,17 @@
 
 Player::Player()
 	: m_pTex(nullptr),
+	m_pTexL(nullptr),
+	m_pTexR(nullptr),
 	m_fPlusJumpPower(.4f),
 	m_fCurJumpPower(0.f),
 	m_fMinJumpPower(0.f),
-	m_fMaxJumpPower(1.1f)
+	m_fMaxJumpPower(1.1f),
+	m_curDir(DIRECTION_TYPE::LEFT)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
+	m_pTexL = ResMgr::GetInst()->TexLoad(L"PlayerL", L"Texture\\rabbitL.bmp");
+	m_pTexR = ResMgr::GetInst()->TexLoad(L"PlayerR", L"Texture\\rabbitR.bmp");
 	CreateCollider();
 
 	GetCollider()->SetScale(Vec2(20.f,30.f));
@@ -32,17 +37,26 @@ Player::Player()
 	
 	CreateAnimator();
 	
-	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
+	GetAnimator()->CreateAnim(L"RabbitL", m_pTexL, Vec2(32.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitR", m_pTexR, Vec2(0.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitL_Jump", m_pTexL, Vec2(0.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	GetAnimator()->CreateAnim(L"RabbitR_Jump", m_pTexR, Vec2(64.f, 0.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	GetAnimator()->PlayAnim(L"RabbitL", true);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
