@@ -112,12 +112,16 @@ void Player::Update()
 			if (KEY_PRESS(KEY_TYPE::LEFT))
 			{
 				vPos.x -= 100.f * fDT;
-				GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+				//GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+				GetAnimator()->PlayAnim(L"RabbitL", true);
+				m_curDir = DIRECTION_TYPE::LEFT;
 			}
 			if (KEY_PRESS(KEY_TYPE::RIGHT))
 			{
 				vPos.x += 100.f * fDT;
-				GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+				//GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+				GetAnimator()->PlayAnim(L"RabbitR", true);
+				m_curDir = DIRECTION_TYPE::RIGHT;
 			}
 		}
 
@@ -143,9 +147,13 @@ void Player::Update()
 				{
 				case KEY_TYPE::LEFT:
 					jumpDirection = Vec2(-.5f, -1.0f).Normalize();
+					GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
+					m_curDir = DIRECTION_TYPE::LEFT;
 					break;
 				case KEY_TYPE::RIGHT:
 					jumpDirection = Vec2(.5f, -1.0f).Normalize();
+					GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
+					m_curDir = DIRECTION_TYPE::RIGHT;
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
@@ -223,17 +231,47 @@ void Player::EnterCollision(Collider* _pOther)
 {
 	Object::EnterCollision(_pOther);
 	m_pRigidbody2D->EnterCollision(_pOther);
+	if (m_curDir == DIRECTION_TYPE::LEFT)
+	{
+		GetAnimator()->PlayAnim(L"RabbitL", true);
+	}
+	else
+	{
+		GetAnimator()->PlayAnim(L"RabbitR", true);
+	}
 }
 
 void Player::ExitCollision(Collider* _pOther)
 {
 	Object::ExitCollision(_pOther);
 	m_pRigidbody2D->ExitCollision(_pOther);
+	if (m_curDir == DIRECTION_TYPE::LEFT)
+	{
+		GetAnimator()->PlayAnim(L"RabbitL_Jump", true);
+	}
+	else
+	{
+		GetAnimator()->PlayAnim(L"RabbitR_Jump", true);
+	}
 }
 
 void Player::StayCollision(Collider* _pOther)
 {
 	Object::StayCollision(_pOther);
 	m_pRigidbody2D->StayCollision(_pOther);
+}
+
+void Player::SetPower(Vec2 dir, float power)
+{
+	m_pRigidbody2D->AddForce(dir, power);
+}
+
+void Player::GetHit()
+{
+	float jumpDir = .5f;
+	if (m_curDir == DIRECTION_TYPE::LEFT)
+		jumpDir *= -1;
+	
+	m_pRigidbody2D->AddForce(Vec2(jumpDir, -1.0f), 0.2f);
 }
 
