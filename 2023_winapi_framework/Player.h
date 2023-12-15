@@ -44,6 +44,9 @@ private:
     void CreateBullet();
 private:
     Texture* m_pTex;
+    Texture* m_pTexL;
+    Texture* m_pTexR;
+
     Rigidbody2D* m_pRigidbody2D;
     Slider* m_pSlider;
 
@@ -56,5 +59,6 @@ private:
     float m_fCurJumpPower;
 
     KEY_TYPE m_prevPressMoveKey;
+    DIRECTION_TYPE m_curDir;
 };
 
