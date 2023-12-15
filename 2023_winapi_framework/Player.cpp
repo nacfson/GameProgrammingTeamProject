@@ -27,8 +27,8 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
-	ResMgr::GetInst()->LoadSound(L"Jump",L"laserShoot.wav",false);
-	ResMgr::GetInst()->LoadSound(L"Charge",L"laserShoot.wav",true);
+	ResMgr::GetInst()->LoadSound(L"Jump",L"Jump.wav",false);
+	ResMgr::GetInst()->LoadSound(L"BGM",L"BGM.wav",true);
 	
 	CreateAnimator();
 	
@@ -49,6 +49,9 @@ Player::Player()
 	m_pRigidbody2D->Init();
 
 	m_eGroup = OBJECT_GROUP::PLAYER;
+
+	ResMgr::GetInst()->Play(L"BGM");
+
 }
 
 Player::Player(Player& player)
@@ -135,7 +138,8 @@ void Player::Update()
 					break;
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
-				//ResMgr::GetInst()->Play(L"Jump");
+				ResMgr::GetInst()->Play(L"Jump");
+				
 			}
 			//ResMgr::GetInst()->P(L"Charge");
 			m_fCurJumpPower = 0.f;
