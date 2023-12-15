@@ -123,7 +123,6 @@ void Rigidbody2D::Update()
 	if(m_bIsGrounded)
 	{
 		m_fApplyDeAcceleration = m_fGroundedDeAcceleration;
-
 	}
 	else
 	{
