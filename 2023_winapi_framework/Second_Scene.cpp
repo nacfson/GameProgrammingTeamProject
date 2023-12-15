@@ -3,6 +3,24 @@
 
 #include "CollisionMgr.h"
 
+Second_Scene::Second_Scene()
+{
+}
+
+Second_Scene::~Second_Scene()
+{
+}
+
+bool Second_Scene::CanChangeNextScene()
+{
+    return MapScene::CanChangeNextScene();
+}
+
+bool Second_Scene::CanChangePrevScene()
+{
+    return MapScene::CanChangePrevScene();
+}
+
 void Second_Scene::Init()
 {
     MapScene::Init();

@@ -16,3 +16,13 @@ void Sixth_Scene::Init()
     CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
     SetNextScene(L"Seventh_Scene", L"Fifth_Scene");
 }
+
+bool Sixth_Scene::CanChangeNextScene()
+{
+	return MapScene::CanChangeNextScene();
+}
+
+bool Sixth_Scene::CanChangePrevScene()
+{
+	return MapScene::CanChangePrevScene();
+}
