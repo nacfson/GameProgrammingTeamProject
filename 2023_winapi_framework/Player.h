@@ -32,7 +32,8 @@ public:
     void StayCollision(Collider* _pOther,  ERAY_DIR _dir) ;
 
     //void 
-
+    void SetPower(Vec2 dir, float power);
+    void GetHit();
     void SetSlider(Slider* _pSlider)
     {
         m_pSlider = _pSlider;
