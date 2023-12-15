@@ -2,12 +2,14 @@
 #include "Last_Scene.h"
 #include "PlayerMgr.h"
 #include "CollisionMgr.h"
+#include "ResMgr.h"
 
 void Last_Scene::Init()
 {
     //MapScene::Init();
 	PlayerMgr::GetInst()->Release();
     SetMapIdx(11);
+	m_pBackgroundTex = ResMgr::GetInst()->TexLoad(L"Finish",L"Texture\\Finish.bmp");
 	
     //std::string path = "Res\\Map\\Map" + std::to_string(m_iMapIdx) + ".json";
     //const auto mapVec = TileMgr::GetInst()->GetTileVec(path);

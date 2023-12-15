@@ -28,14 +28,20 @@ Player::Player()
 	m_pTexL = ResMgr::GetInst()->TexLoad(L"PlayerL", L"Texture\\rabbitL.bmp");
 	m_pTexR = ResMgr::GetInst()->TexLoad(L"PlayerR", L"Texture\\rabbitR.bmp");
 	CreateCollider();
+	
 
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
+	
+	ResMgr::GetInst()->LoadSound(L"Jump",L"Jump.wav",false);
+	ResMgr::GetInst()->LoadSound(L"Charge", L"laserShoot.wav", true);
+	ResMgr
 
-	
+
 	CreateAnimator();
-	
+
+
 	GetAnimator()->CreateAnim(L"RabbitL", m_pTexL, Vec2(32.f, 0.f),
 		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
 	GetAnimator()->CreateAnim(L"RabbitR", m_pTexR, Vec2(0.f, 0.f),
@@ -45,26 +51,14 @@ Player::Player()
 	GetAnimator()->CreateAnim(L"RabbitR_Jump", m_pTexR, Vec2(64.f, 0.f),
 		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
 	GetAnimator()->PlayAnim(L"RabbitL", true);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
+
 
 	m_pRigidbody2D = new Rigidbody2D(this, GetCollider());
 	m_pRigidbody2D->SetGravityMultiply(0.1f);
 	m_pRigidbody2D->Init();
 
+
 	m_eGroup = OBJECT_GROUP::PLAYER;
-
-	ResMgr::GetInst()->Play(L"BGM");
-
 }
 
 Player::Player(Player& player)
@@ -75,8 +69,6 @@ Player::~Player()
 {
 	delete m_pSlider;
 	delete m_pRigidbody2D;
-	//if (nullptr != m_pTex)
-	//	delete m_pTex;
 }
 
 void Player::Init()
@@ -103,7 +95,7 @@ void Player::Update()
 
 	if(KEY_UP(KEY_TYPE::T))
 	{
-		vPos.y = -10.f;
+		vPos.y = -50.f;
 	}
 
 
@@ -114,14 +106,12 @@ void Player::Update()
 			if (KEY_PRESS(KEY_TYPE::LEFT))
 			{
 				vPos.x -= 100.f * fDT;
-				//GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
 				GetAnimator()->PlayAnim(L"RabbitL", true);
 				m_curDir = DIRECTION_TYPE::LEFT;
 			}
 			if (KEY_PRESS(KEY_TYPE::RIGHT))
 			{
 				vPos.x += 100.f * fDT;
-				//GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
 				GetAnimator()->PlayAnim(L"RabbitR", true);
 				m_curDir = DIRECTION_TYPE::RIGHT;
 			}
@@ -137,8 +127,6 @@ void Player::Update()
 
 				m_pSlider->SetSlider(m_fCurJumpPower / m_fMaxJumpPower);
 			}
-			//ResMgr::GetInst()->Play(L"Charge");
-			//ResMgr::GetInst()->Play(L"Shoot");
 		}
 		if (KEY_UP(KEY_TYPE::SPACE))
 		{
@@ -160,9 +148,7 @@ void Player::Update()
 				}
 				m_pRigidbody2D->AddForce(jumpDirection, m_fCurJumpPower);
 				ResMgr::GetInst()->Play(L"Jump");
-				
 			}
-			//ResMgr::GetInst()->P(L"Charge");
 			m_fCurJumpPower = 0.f;
 			m_pSlider->SetSlider(0.f);
 			m_bCanMove = true;
@@ -170,14 +156,14 @@ void Player::Update()
 		}
 	}
 
+	
 	const Vec2 offset = Vec2(0.f, -40.f);
 
+	
 	m_pSlider->SetPos(vPos + offset);
 	m_pSlider->SetScale(Vec2(50.f, 10.f));
 
-	//if(KEY_PRESS(KEY_TYPE::CTRL))
-	//	GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
-
+	
 	SetPos(vPos);
 	GetAnimator()->Update();
 	m_pRigidbody2D->Update();
@@ -192,29 +178,29 @@ void Player::Render(HDC _dc)
 	//Vec2 vScale = GetScale();
 	//int Width = m_pTex->GetWidth();
 	//int Height = m_pTex->GetHeight();                
-	//// 1. �⺻ �ű��
+	//// 1.  ⺻  ű  
 	//BitBlt(_dc
 	//	,(int)(vPos.x - vScale.x /2)
 	//	,(int)(vPos.y - vScale.y /2)
 	//	, Width,Height, m_pTex->GetDC()
 	//	,0,0,SRCCOPY);
 
-	//// 2. ���� �Ⱦ��
+	//// 2.       Ⱦ  
 	//TransparentBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width,Height, RGB(255,0,255));
 
-	//// 3. Ȯ�� �� ���
+	//// 3. Ȯ         
 	//StretchBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width ,Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, SRCCOPY);
 
-	// 4. ȸ��
-	// �ﰢ�Լ�, ȸ�����
+	// 4. ȸ  
+	//  ﰢ Լ , ȸ     
 	//Plgblt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
@@ -277,4 +263,3 @@ void Player::GetHit()
 	
 	m_pRigidbody2D->AddForce(Vec2(jumpDir, -1.0f), 0.2f);
 }
-

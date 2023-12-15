@@ -22,7 +22,7 @@ public:
     void Update() override;
     void Render(HDC _dc) override;
     void FinalUpdate() override;
-    
+
     void EnterCollision(Collider* _pOther) override;
     void ExitCollision(Collider* _pOther) override;
     void StayCollision(Collider* _pOther) override;
@@ -62,4 +62,3 @@ private:
     KEY_TYPE m_prevPressMoveKey;
     DIRECTION_TYPE m_curDir;
 };
-
