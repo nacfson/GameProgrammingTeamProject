@@ -5,8 +5,6 @@
 #include "tileson.hpp"
 #include "Turtle.h"
 
-
-
 void Start_Scene::Init()
 {
 	MapScene::Init();
@@ -18,8 +16,9 @@ void Start_Scene::Init()
 	Turtle* turtle = new Turtle;
 	turtle->SetPos(Vec2(300.f,700.f));
 	AddObject(turtle,OBJECT_GROUP::MONSTER);
+
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
-	SetNextScene(L"First_Scene");
+	SetNextScene(L"First_Scene",L"First_Scene");
 }
 
 
