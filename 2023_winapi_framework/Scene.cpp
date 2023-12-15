@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Scene.h"
-
+#include "CollisionMgr.h"
 #include "Core.h"
 #include "PlayerMgr.h"
 #include "Object.h"
+#include "ResMgr.h"
+
 Scene::Scene()
 {
 
@@ -17,6 +19,7 @@ Scene::~Scene()
 void Scene::Init()
 {
 	PlayerMgr::GetInst()->Init();
+	m_pBackgroundTex = ResMgr::GetInst()->TexLoad(L"BackGround", L"Texture\\Background_1.bmp");
 }
 
 void Scene::SetNextScene(wstring _nextSceneName, wstring _prevSceneName)
@@ -51,6 +54,18 @@ void Scene::FinalUpdate()
 
 void Scene::Render(HDC _dc)
 {
+	if(m_pBackgroundTex != nullptr)
+	{
+		POINT ptResolution = Core::GetInst()->GetResolution();
+
+		BitBlt(_dc
+			, 0
+			, 0
+			, ptResolution.x, ptResolution.y, m_pBackgroundTex->GetDC()
+			, 0, 0, SRCCOPY);
+	}
+
+
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size();)
@@ -64,6 +79,9 @@ void Scene::Render(HDC _dc)
 				m_vecObj[i].erase(m_vecObj[i].begin() + j);
 		}
 	}
+
+
+
 }
 
 
@@ -80,6 +98,7 @@ void Scene::Release()
 		}
 		m_vecObj[i].clear();
 	}
+	CollisionMgr::GetInst()->CheckReset();
 }
 
 bool Scene::CanChangeNextScene()

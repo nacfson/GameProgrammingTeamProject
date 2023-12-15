@@ -3,6 +3,7 @@
 //#include "Object.h"
 class Object;
 #include "TileMgr.h"
+
 class Scene
 {
 public:
@@ -38,14 +39,19 @@ public:
 	{
 		for(const Tile& tile : _tileVec)
 		{
-			//Vec2 groundScale = Vec2(100, 100);
 			Vec2 groundScale = Vec2(tile.width, tile.height);
 			Ground* pGround = new Ground(groundScale);
 			Vec2 tilePos = Vec2(tile.x, tile.y);
+			int iID = tile.id;
+			
+			Texture* tTex = TileMgr::GetInst()->GetTileByID(iID);
+
 
 			pGround->SetPos(tilePos);
 			pGround->SetObjGroup(OBJECT_GROUP::GROUND);
-
+			pGround->SetTexture(tTex);
+			pGround->SetScale(groundScale);
+			
 			AddObject(pGround, OBJECT_GROUP::GROUND);
 		}
 	}

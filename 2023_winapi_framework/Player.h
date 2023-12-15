@@ -47,6 +47,8 @@ private:
     Rigidbody2D* m_pRigidbody2D;
     Slider* m_pSlider;
 
+    bool m_bCanMove;
+
 
     float m_fMinJumpPower;
     float m_fMaxJumpPower;

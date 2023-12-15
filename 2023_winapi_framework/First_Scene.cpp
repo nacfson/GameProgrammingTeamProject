@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "First_Scene.h"
+#include "CollisionMgr.h"
 #include "Ground.h"
 #include "Core.h"
 
@@ -16,14 +17,14 @@ First_Scene::~First_Scene()
 void First_Scene::Init()
 {
 	Scene::Init();
-	Vec2 groundScale = Vec2(100.f, 100.f);
-	Ground* pGround = new Ground(groundScale);
-	pGround->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2.f, 600.f));
-	pGround->SetScale(groundScale);
-
-	AddObject(pGround, OBJECT_GROUP::GROUND);
-
-	SetNextScene(L"First_Scene", L"Start_Scene");
+	SetMapIdx(2);
+	
+	std::string path = "Res\\Map\\Map" + std::to_string(m_iMapIdx) + ".json";
+	const auto mapVec = TileMgr::GetInst()->GetTileVec(path);
+	
+	CreateMapObjects(mapVec);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
+	SetNextScene(L"Second_Scene", L"Start_Scene");
 }
 
 bool First_Scene::CanChangeNextScene()

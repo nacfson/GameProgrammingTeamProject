@@ -9,10 +9,13 @@ Texture::Texture()
 {
 }
 
+
 Texture::~Texture()
 {
 	DeleteDC(m_hDC);
 	DeleteObject(m_hBit);
+	DeleteDC(m_hBackDC);
+	DeleteObject(m_hBackBit);
 }
 
 void Texture::Load(const wstring& _strFilePath)
@@ -27,24 +30,27 @@ void Texture::Load(const wstring& _strFilePath)
 	GetObject(m_hBit, sizeof(BITMAP),&m_bitInfo);
 }
 
+
 void Texture::Load(const wstring& _strFilePath, int _iStartX, int _iStartY, int _iWidth, int _iHeight)
 {
 	m_hBit = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str(), IMAGE_BITMAP
-	, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION); // 340 x 340 
-
+	, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION); // 320 x 192     //가로 10 세로 6
+									
+	
 	assert(m_hBit);
 	m_hDC = CreateCompatibleDC(Core::GetInst()->GetMainDC());
 	SelectObject(m_hDC, m_hBit);
 
-	HDC tempDC = CreateCompatibleDC(Core::GetInst()->GetMainDC());
-
-	HBITMAP m_hbackbit = CreateCompatibleBitmap(m_hDC,340,340);
-	SelectObject(tempDC,m_hbackbit);	
-	BitBlt(tempDC
-		,(int)(_iStartX)
-		,(int)(_iStartY)
-		, _iWidth,_iHeight, m_hDC
-		,0,0,SRCCOPY);
+	m_hBackDC = CreateCompatibleDC(m_hDC);
+	m_hBackBit = CreateCompatibleBitmap(m_hDC,340,340);
 	
-	GetObject(m_hbackbit,sizeof(BITMAP),&m_bitInfo);
+	SelectObject(m_hBackDC, m_hBackBit);
+
+	BitBlt(m_hBackDC
+	       , (int)(_iStartX)
+	       , (int)(_iStartY)
+	       , _iWidth, _iHeight, m_hDC
+	       , 0, 0,SRCCOPY);
+
+	GetObject(m_hBackDC,sizeof(BITMAP),&m_bitInfo);
 }

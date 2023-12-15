@@ -34,9 +34,6 @@ Collider::~Collider()
 
 void Collider::Render(HDC _dc)
 {
-	//Core::GetInst()->GetPen(PEN_TYPE::GREEN);
-	//Core::GetInst()->GetBrush(BRUSH_TYPE::HOLLOW);
-	//SelectObject();
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
 	if (m_check)
 		ePen = PEN_TYPE::RED;

@@ -5,17 +5,11 @@
 #include "tileson.hpp"
 #include "ResMgr.h"
 #include "WinUser.h"
+#include "Texture.h"
+#define TILECNT 60
 void TileMgr::Init()
 {
-
-	
-	// m_mapTileset[] = til
-	// m_pTex = _pTex;
-	// for (int i = 0; i < _framecount; ++i)
-	// {
-	// 	m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i,
-	// 		_vSliceSize, _fDuration,{0.f,0.f} }));
-	// }
+	LoadTilesetTex();
 }
 
 std::vector<Tile> TileMgr::GetTileVec(const std::string& _path)
@@ -38,51 +32,45 @@ std::vector<Tile> TileMgr::GetTileVec(const std::string& _path)
 	}
 
 
+	int size=   map->getLayers().size();
 	for(tson::Layer layer : map->getLayers())
 	{
-		if(layer.getName() == "Ground")
+		Tile tile;
+		int size = layer.getTileObjects().size();
+		//int a = 3;
+		for (auto& [pos, tileObject] : layer.getTileObjects())
 		{
-			Tile tile;
-			int size = layer.getTileObjects().size();
-			//int a = 3;
-			for (auto& [pos, tileObject] : layer.getTileObjects())
-			{
-				tson::Rect drawingRect = tileObject.getDrawingRect();
-				tson::Vector2f position = tileObject.getPosition();
-				//tson::Vector2i imageSize = tileset->getImageSize();
-				tson::Tileset* tileset = tileObject.getTile()->getTileset();
-				
-				tson::Tile* d = tileObject.getTile();
-				//auto id = d->getId();
-				//auto a= d->getAnimation().getFrames()[0];
-				int id = d->getGid() - tileset->getFirstgid(); 
-                               
-				tile.x = position.x;
-				tile.y = position.y;
+			tson::Rect drawingRect = tileObject.getDrawingRect();
+			tson::Vector2f position = tileObject.getPosition();
+			tson::Tileset* tileset = tileObject.getTile()->getTileset();
 
-				int cnt = tileset->getTileCount();
+			tson::Tile* d = tileObject.getTile();
+			int id = d->getGid() - tileset->getFirstgid();
 
-				m_iHeightCnt = pow(cnt,2);
-				m_iWidthCnt = pow(cnt,2);
-								
-				m_fWidth = drawingRect.width;
-				m_fHeight = drawingRect.height;
+			tile.x = position.x;
+			tile.y = position.y;
 
-				tile.width =  drawingRect.width;
-				tile.height = drawingRect.height;
+			int cnt = tileset->getTileCount();
 
-				tile.bHasCollider = true;
-				tile.eImage_type = EIMAGE_TYPE::NORMAL;
-				returnTilemap.push_back(tile);
-			}
+			m_iHeightCnt = sqrt(cnt);
+			m_iWidthCnt = sqrt(cnt);
+
+			m_fWidth = drawingRect.width;
+			m_fHeight = drawingRect.height;
+
+			tile.width = drawingRect.width;
+			tile.height = drawingRect.height;
+
+			tile.bHasCollider = true;
+
+			std::string layerName = layer.getName();
+			layerName.replace(layerName.find("Ground"), 6, "");
+			tile.id = std::stoi(layerName);
+			returnTilemap.push_back(tile);
 		}
 	}
 
 	m_mapTile.insert({ _path,returnTilemap });
-
-	LoadTilesetTex();
-
-
 	return returnTilemap;
 }
 
@@ -90,17 +78,17 @@ void TileMgr::LoadTilesetTex()
 {
 	if(false == m_mapTileset.empty()) return;
 	
-	//Texture* tilesetTex = ResMgr::GetInst()->TexLoad(L"Tileset",L"Texture\\tileset.bmp");
-	//Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, int _framecount, float _fDuration;
-	
-	for(int i = 0; i < m_iWidthCnt * m_iHeightCnt; i++)
+	for(int i = 1; i <= TILECNT; i++)
 	{
 		Texture* pTex = new Texture;
-		wstring _strFilePath = 		PathMgr::GetInst()->GetResPath();
-		_strFilePath += L"Texture\\tileset.bmp";
 
-		pTex->Load(_strFilePath,i * m_fWidth, i * m_fHeight,m_fWidth,m_fHeight);
+
+		wstring _strFilePath = PathMgr::GetInst()->GetResPath();
+		_strFilePath += L"Texture\\Tileset\\Tile_";
+		_strFilePath += std::to_wstring(i) + L".bmp";
+
+		pTex->Load(_strFilePath);
+
 		m_mapTileset.insert({i,pTex});
 	}
 }
-

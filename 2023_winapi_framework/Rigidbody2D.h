@@ -32,7 +32,7 @@ public:
 	void AddForce(Vec2&& direction, float power);
 	void AddForce(Vec2& direction, float power);
 
-	void MoveInterpolation();
+	void MoveInterpolation(Collider* _pOther);
 	
 	const Vec2& GetVelocity() const { return m_velocity; }
 	const bool& IsGrounded() const {return m_bIsGrounded;}
@@ -40,7 +40,6 @@ public:
 	void EnterCollision(Collider* _pOther);
 	void ExitCollision(Collider* _pOther);
 	void StayCollision(Collider* _pOther);
-
 
 	
 	Rigidbody2D(Object* _object, Collider* _collider);

@@ -15,7 +15,7 @@ struct Tile
 	int width;
 	int height;
 
-	EIMAGE_TYPE eImage_type;
+	int id;
 	bool bHasCollider;
 };
 class TileMgr
@@ -26,6 +26,13 @@ public:
 	void Init();
 	std::vector<Tile> GetTileVec(const std::string& _path);
 	void LoadTilesetTex();
+	Texture* GetTileByID(const int _id)
+	{
+		if(m_mapTileset.find(_id) != m_mapTileset.end())
+		{
+			return m_mapTileset[_id];
+		}
+	}
 private:
 	std::map<std::string,std::vector<Tile>> m_mapTile;
 	std::map<int,Texture*> m_mapTileset;

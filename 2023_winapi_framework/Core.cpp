@@ -8,6 +8,7 @@
 #include "CollisionMgr.h"
 #include "EventMgr.h"
 #include "MapMgr.h"
+#include "SelectGDI.h"
 #include "TileMgr.h"
 
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
@@ -38,9 +39,8 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	SceneMgr::GetInst()->Init();
 	TileMgr::GetInst()->Init();
 	//MapMgr::GetInst()->Init();
+	
 
-	HFONT hFont = CreateFont(20, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, L"한국기계연구원_bold");
-	SelectObject(m_hDC, hFont);
 
 	return true;
 }

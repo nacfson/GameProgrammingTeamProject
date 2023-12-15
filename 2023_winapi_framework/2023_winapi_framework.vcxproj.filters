@@ -175,10 +175,7 @@
     <ClInclude Include="MapMgr.h" />
     <ClInclude Include="Raycast2D.h" />
     <ClInclude Include="RayCollider.h" />
-    <ClInclude Include="JumpTrap.h" />
-    <ClInclude Include="HurtTrap.h" />
-    <ClInclude Include="PoopTrap.h" />
-    <ClInclude Include="Poop.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -278,9 +275,6 @@
     <ClCompile Include="MapMgr.cpp" />
     <ClCompile Include="Raycast2D.cpp" />
     <ClCompile Include="RayCollider.cpp" />
-    <ClCompile Include="JumpTrap.cpp" />
-    <ClCompile Include="HurtTrap.cpp" />
-    <ClCompile Include="PoopTrap.cpp" />
-    <ClCompile Include="Poop.cpp" />
+    <ClCompile Include="Text.cpp" />
   </ItemGroup>
 </Project>

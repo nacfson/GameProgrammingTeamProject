@@ -5,7 +5,7 @@
 
 enum class SOUND_CHANNEL
 {
-	BGM, EFFECT, END
+	BGM, EFFECT,JUMP, END
 };
 struct tSoundInfo
 {
@@ -32,10 +32,11 @@ public:
 	void Init();
 	void LoadSound(const wstring& _strKey, const wstring& _strReleativePath, bool _IsLoop);
 	void Play(const wstring& _strKey);
+	void Stop(const wstring& _strKey);
 	void Stop(SOUND_CHANNEL _eChannel);
 	void Volume(SOUND_CHANNEL _eChannel, float _fVol);
 	void Pause(SOUND_CHANNEL _eChannel, bool _Ispause);
 private:
-	tSoundInfo* FindSound(const wstring& _strKey);
+	tSoundInfo* FindSound(const wstring& _strKey);	
 };
 

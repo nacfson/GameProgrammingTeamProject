@@ -7,29 +7,41 @@
 #include "SelectGDI.h"
 #include "Texture.h"
 #include "TimeMgr.h"
-
+#include "Text.h"
 
 Button::Button()
 	:m_pTex(nullptr),
 	m_fTimer(0.f),
 	m_bOnTimer(false),
-	m_fTargetTime(0.3f)
+	m_fTargetTime(0.3f),
+	m_text(nullptr)
 {
-	Vec2 btnScale = Vec2(100.f, 50.f);
-
-	m_vScale = btnScale;
-	m_vCurScale = m_vScale;
-	m_vTargetScale = Vec2(120.f, 50.f);
-
-	m_pTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\StartBtn.bmp");
-
+	m_text = new Text;
 	CreateCollider();
-	GetCollider()->SetScale(btnScale);
+	GetCollider()->SetScale(GetScale());
 	GetCollider()->SetOffSetPos(Vec2(0.f, 0.f));
 }
 
+
 Button::~Button()
 {
+
+}
+
+void Button::SetScale(const Vec2& _scale, float _xExpandValue)
+{
+	Vec2 btnScale = Vec2(150.f, 50.f);
+
+	m_vScale = btnScale;
+	m_vCurScale = m_vScale;
+	m_vTargetScale = Vec2(180.f, 50.f);
+
+	GetCollider()->SetScale(btnScale);
+}
+
+void Button::SetText(const wstring& _text,const Vec2& _pos)
+{
+	m_text->SetText(_text,_pos);
 }
 
 void Button::OnMouseEnter()
@@ -60,6 +72,8 @@ void Button::OnMouseClicked()
 	}
 }
 
+
+
 void Button::Update()
 {
 	POINT mousePos = KeyMgr::GetInst()->GetMousePos();
@@ -81,12 +95,10 @@ void Button::Update()
 			OnMouseExit();
 		}
 	}
-
 	if (m_bOnMouse && KEY_UP(KEY_TYPE::LBUTTON))
 	{
 		OnMouseClicked();
 	}
-
 
 	if(m_bOnTimer)
 	{
@@ -121,18 +133,23 @@ void Button::Render(HDC _dc)
 	SelectGDI brush(_dc, BRUSH_TYPE::BLUE);
 	
 
-	//float fWidth = m_pTex->GetWidth();
-	//float fHeight = m_pTex->GetHeight();
+	float fWidth = m_pTex->GetWidth();
+	float fHeight = m_pTex->GetHeight();
+	//RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
 
 
-	//BitBlt(_dc
-	//,(int)(m_vPos.x - m_vCurScale.x / 2)
-	//,(int)(m_vPos.y - m_vCurScale.y / 2)
-	//, fWidth, fHeight, m_pTex->GetDC()
-	//,0,0,SRCCOPY);
-	RECT_RENDER(m_vPos.x, m_vPos.y, m_vCurScale.x, m_vCurScale.y, _dc);
+	StretchBlt(_dc
+	,(int)(GetPos().x - m_vCurScale.x / 2)
+	,(int)(GetPos().y - m_vCurScale.y / 2)
+	,m_vCurScale.x
+	,m_vCurScale.y
+	,m_pTex->GetDC()
+	,0,0
+	,fWidth,fHeight
+	,SRCCOPY);
+
+	m_text->Render(_dc);
 }
-
 
 void Button::SetScaleByValue(Vec2 _startScale, Vec2 _targetScale, float _value)
 {

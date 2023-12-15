@@ -1,7 +1,8 @@
 #pragma once
 #include "Scene.h"
+#include "MapScene.h"
 
-class First_Scene : public Scene
+class First_Scene : public MapScene
 {
 public:
 	First_Scene();
