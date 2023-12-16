@@ -11,13 +11,13 @@
 
 void UI_Scene::Init()
 {
-
-
 	Button* btn = new Button();
 	Button* exitBtn = new Button();
 
 	auto startBtnTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\BackBtn.bmp");
 	auto exitBtnTex = ResMgr::GetInst()->TexLoad(L"NormalBtn",L"Texture\\BackBtn.bmp");
+
+	ResMgr::GetInst()->LoadSound(L"Start", L"Sound\\Start.wav", false);
 
 	HWND hWnd = Core::GetInst()->GetHwnd();
 	Vec2 btnScale = Vec2(120.f,70.f);
@@ -40,6 +40,8 @@ void UI_Scene::Init()
 	m_pBackgroundTex = ResMgr::GetInst()->TexLoad(L"UI_Back",L"Texture\\rabbitAndTurtle.bmp");
 	AddObject(btn, OBJECT_GROUP::UI);
 	AddObject(exitBtn, OBJECT_GROUP::UI);
+
+	ResMgr::GetInst()->Play(L"Start");
 }
 
 bool UI_Scene::CanChangeNextScene()

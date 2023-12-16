@@ -32,10 +32,24 @@ public:
 	void Init();
 	void LoadSound(const wstring& _strKey, const wstring& _strReleativePath, bool _IsLoop);
 	void Play(const wstring& _strKey);
-	void Stop(const wstring& _strKey);
 	void Stop(SOUND_CHANNEL _eChannel);
 	void Volume(SOUND_CHANNEL _eChannel, float _fVol);
 	void Pause(SOUND_CHANNEL _eChannel, bool _Ispause);
+
+	void Stop(const wstring& _strKey)
+	{
+		tSoundInfo* pSoundInfo = FindSound(_strKey);
+		if (pSoundInfo)
+		{
+			// 해당 사운드에 대한 채널을 가져온다.
+			FMOD::Channel* pChannel = m_pChannel[(UINT)SOUND_CHANNEL::EFFECT];
+			if (pChannel)
+			{
+				// 채널을 멈춘다.
+				pChannel->stop();
+			}
+		}
+	}
 private:
 	tSoundInfo* FindSound(const wstring& _strKey);	
 };

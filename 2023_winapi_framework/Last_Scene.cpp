@@ -20,9 +20,9 @@ void Last_Scene::Init()
     Button* pButton = new Button;
 	pButton->SetPos(Vec2(300.f, 750.f));
 	pButton->SetScale(btnScale);
-	pButton->SetBtnAction([hWnd]() { SceneMgr::GetInst()->LoadScene(L"UI_Scene"); });
+	pButton->SetBtnAction([hWnd]() { SendMessage(hWnd, WM_CLOSE, 0, 0); });
 	pButton->SetTexture(exitBtnTex);
-	pButton->SetText(L"MAIN", Vec2(300.f - btnScale.x * 0.35f, 750.f - btnScale.y * 0.25f));
+	pButton->SetText(L"EXIT", Vec2(300.f - btnScale.x * 0.25f, 750.f - btnScale.y * 0.25f));
     //std::string path = "Res\\Map\\Map" + std::to_string(m_iMapIdx) + ".json";
     //const auto mapVec = TileMgr::GetInst()->GetTileVec(path);
 	

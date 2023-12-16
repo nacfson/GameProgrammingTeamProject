@@ -25,31 +25,33 @@ Player::Player()
 	m_fMaxJumpPower(1.1f),
 	m_curDir(DIRECTION_TYPE::LEFT)
 {
+	//auto channel = ResMgr::GetInst()->FindSound(L"Start");
+	ResMgr::GetInst()->Stop(L"Start");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	m_pTexL = ResMgr::GetInst()->TexLoad(L"PlayerL", L"Texture\\rabbitL.bmp");
 	m_pTexR = ResMgr::GetInst()->TexLoad(L"PlayerR", L"Texture\\rabbitR.bmp");
 	CreateCollider();
-	
 
-	GetCollider()->SetScale(Vec2(20.f,30.f));
-	GetCollider()->SetOffSetPos(Vec2(0.f,0.f));
 
-	
-	ResMgr::GetInst()->LoadSound(L"Jump",L"Jump.wav",false);
-	ResMgr::GetInst()->LoadSound(L"Charge", L"laserShoot.wav", true);
+	GetCollider()->SetScale(Vec2(20.f, 30.f));
+	GetCollider()->SetOffSetPos(Vec2(0.f, 0.f));
 
+
+	ResMgr::GetInst()->LoadSound(L"Jump", L"Sound\\Jump.wav", false);
+	//ResMgr::GetInst()->LoadSound(L"Charge", L"Res\\Sound\\laserShoot.wav", true);
+	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\BGM.wav", true);
 
 	CreateAnimator();
 
 
 	GetAnimator()->CreateAnim(L"RabbitL", m_pTexL, Vec2(32.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	                          Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
 	GetAnimator()->CreateAnim(L"RabbitR", m_pTexR, Vec2(0.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
+	                          Vec2(32.f, 32.f), Vec2(32.f, 0.f), 2, 0.2f);
 	GetAnimator()->CreateAnim(L"RabbitL_Jump", m_pTexL, Vec2(0.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	                          Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
 	GetAnimator()->CreateAnim(L"RabbitR_Jump", m_pTexR, Vec2(64.f, 0.f),
-		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
+	                          Vec2(32.f, 32.f), Vec2(32.f, 0.f), 1, 0.2f);
 	GetAnimator()->PlayAnim(L"RabbitL", true);
 
 
@@ -59,7 +61,9 @@ Player::Player()
 
 
 	m_eGroup = OBJECT_GROUP::PLAYER;
+	ResMgr::GetInst()->Play(L"BGM");
 }
+
 
 Player::Player(Player& player)
 {
