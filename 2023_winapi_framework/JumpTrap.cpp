@@ -33,6 +33,6 @@ void JumpTrap::EnterCollision(Collider* _pOther)
 {
 	if (_pOther->GetObj()->GetObjectGroup() == OBJECT_GROUP::PLAYER) 
 	{
-		PlayerMgr::GetInst()->GetPlayer()->SetPower(m_jumpDir,m_jumpPower);
+		PlayerMgr::GetInst()->GetPlayer()->SetPower(m_jumpDir,m_jumpPower * 1.5f);
 	}
 }

@@ -36,6 +36,7 @@ void Second_Scene::Init()
     SetNextScene(L"Third_Scene", L"First_Scene");
 
     CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::Trap);
+
     JumpTrap* trap = new JumpTrap();
     trap->SetTrapInfo(1.f, Vec2(-.5f, -.5f));
     trap->SetPos(Vec2(150.f, 500.f));
