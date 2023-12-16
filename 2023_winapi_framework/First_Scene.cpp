@@ -3,6 +3,8 @@
 #include "CollisionMgr.h"
 #include "Ground.h"
 #include "Core.h"
+#include "JumpTrap.h"
+#include "HurtTrap.h"
 
 First_Scene::First_Scene()
 {
@@ -24,7 +26,11 @@ void First_Scene::Init()
 	
 	CreateMapObjects(mapVec);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::Trap);
+
 	SetNextScene(L"Second_Scene", L"Start_Scene");
+
+
 }
 
 bool First_Scene::CanChangeNextScene()

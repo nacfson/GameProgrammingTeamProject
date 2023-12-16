@@ -27,6 +27,7 @@ enum class OBJECT_GROUP
 	BULLET,
 	MONSTER,
 	GROUND,
+	Trap,
 	UI,
 	END = 30
 };

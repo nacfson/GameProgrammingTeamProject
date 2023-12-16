@@ -2,7 +2,7 @@
 #include "Seventh_Scene.h"
 
 #include "CollisionMgr.h"
-
+#include "JumpTrap.h"
 void Seventh_Scene::Init()
 {
     MapScene::Init();

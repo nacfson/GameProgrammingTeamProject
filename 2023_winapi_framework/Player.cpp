@@ -271,9 +271,9 @@ void Player::SetPower(Vec2 dir, float power)
 
 void Player::GetHit()
 {
-	float jumpDir = .5f;
+	float jumpDir = -.5f;
 	if (m_curDir == DIRECTION_TYPE::LEFT)
-		jumpDir *= -1;
+		jumpDir *= -1.f;
 	
 	m_pRigidbody2D->AddForce(Vec2(jumpDir, -1.0f), 0.2f);
 }
