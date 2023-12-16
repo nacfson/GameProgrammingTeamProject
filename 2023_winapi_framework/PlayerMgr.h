@@ -19,6 +19,7 @@ public:
 		IsChanged = true;
 	}
 	bool IsChanged = false;
+	bool IsGameEnd = false;
 private:
 	Player* m_pPlayer;
 };

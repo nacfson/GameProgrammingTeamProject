@@ -21,6 +21,8 @@ void UI_Scene::Init()
 
 	HWND hWnd = Core::GetInst()->GetHwnd();
 	Vec2 btnScale = Vec2(120.f,70.f);
+
+
 	                                     
 	btn->SetPos(Vec2(300.f, 450.f));
 	btn->SetScale(btnScale);

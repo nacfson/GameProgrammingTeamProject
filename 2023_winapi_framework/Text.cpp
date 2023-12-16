@@ -23,11 +23,11 @@ Text::~Text()
 
 void Text::Render(HDC _dc)
 {
-
-    
-    const Vec2 pos = m_vStartPos;
-    SetBkMode(_dc, TRANSPARENT);
-    SetTextColor(_dc, RGB(255,255,255));
-    TextOut(_dc,pos.x,pos.y,m_text.c_str(),m_text.length());
+	const Vec2 pos = m_vStartPos;
+	SetBkMode(_dc, TRANSPARENT);
+	//SetTextColor(_dc, RGB(255,255,255));
+    SetTextColor(_dc, RGB(0, 0, 0));
+	TextOut(_dc, pos.x, pos.y, m_text.c_str(), m_text.length());
 }
+
 

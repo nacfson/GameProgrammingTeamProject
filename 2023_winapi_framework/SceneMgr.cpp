@@ -13,6 +13,7 @@
 #include "Second_Scene.h"
 #include "Third_Scene.h"
 #include "Fourth_Scene.h"
+#include "Last_Scene.h"
 #include "Ninth_Scene.h"
 #include "PathMgr.h"
 #include "Seventh_Scene.h"
@@ -33,6 +34,7 @@ void SceneMgr::Init()
 	RegisterScene(L"Seventh_Scene",std::make_shared<Seventh_Scene>());
 	RegisterScene(L"Eighth_Scene",std::make_shared<Eighth_Scene>());
 	RegisterScene(L"Ninth_Scene",std::make_shared<Ninth_Scene>());
+	RegisterScene(L"Last_Scene", std::make_shared<Last_Scene>());
 	RegisterScene(L"UI_Scene", std::make_shared<UI_Scene>());
 	
 	LoadScene(L"UI_Scene");

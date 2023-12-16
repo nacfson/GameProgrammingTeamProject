@@ -16,7 +16,8 @@ void PlayerMgr::Init()
 	}
 
 	m_pPlayer->Init();
-
+	IsGameEnd = false;
+	
 	Slider* pSlider = new Slider;
 
 	m_pPlayer->SetSlider(pSlider);
@@ -60,7 +61,7 @@ void PlayerMgr::Update()
 
 void PlayerMgr::Release()
 {
-	if (m_pPlayer != nullptr)
-		delete m_pPlayer;
+	IsGameEnd = true;
+	//delete m_pPlayer;
 }
 

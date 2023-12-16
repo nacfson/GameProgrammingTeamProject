@@ -27,9 +27,6 @@ public:
     void ExitCollision(Collider* _pOther) override;
     void StayCollision(Collider* _pOther) override;
 
-    void EnterCollision(Collider* _pOther, ERAY_DIR _dir ) ;
-    void ExitCollision(Collider* _pOther,  ERAY_DIR _dir) ;
-    void StayCollision(Collider* _pOther,  ERAY_DIR _dir) ;
 
     //void 
     void SetPower(Vec2 dir, float power);

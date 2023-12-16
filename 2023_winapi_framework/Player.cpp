@@ -11,6 +11,7 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "PlayerMgr.h"
 #include "Slider.h"
 #include "Rigidbody2D.h"
 
@@ -36,7 +37,6 @@ Player::Player()
 	
 	ResMgr::GetInst()->LoadSound(L"Jump",L"Jump.wav",false);
 	ResMgr::GetInst()->LoadSound(L"Charge", L"laserShoot.wav", true);
-	ResMgr
 
 
 	CreateAnimator();
@@ -67,7 +67,8 @@ Player::Player(Player& player)
 
 Player::~Player()
 {
-	delete m_pSlider;
+	//delete m_pSlider;
+	m_pRigidbody2D = nullptr;
 	delete m_pRigidbody2D;
 }
 
@@ -81,6 +82,7 @@ void Player::Init()
 
 void Player::Update()
 {
+	if (PlayerMgr::GetInst()->IsGameEnd) return;
 	if(m_bCanMove)
 	{
 		KEY_TYPE prevPressKey = KeyMgr::GetInst()->GetPrevKey();
@@ -97,7 +99,15 @@ void Player::Update()
 	{
 		vPos.y = -50.f;
 	}
+	if(KEY_UP(KEY_TYPE::Y))
+	{
+		SceneMgr::GetInst()->LoadScene(L"Last_Scene");
+	}
 
+	if (m_pRigidbody2D == nullptr)
+	{
+		return;
+	}
 
 	if (true == m_pRigidbody2D->IsGrounded())
 	{
