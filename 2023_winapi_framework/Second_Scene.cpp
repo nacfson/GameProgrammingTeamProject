@@ -2,6 +2,8 @@
 #include "Second_Scene.h"
 
 #include "CollisionMgr.h"
+#include "JumpTrap.h"
+#include "HurtTrap.h"
 
 Second_Scene::Second_Scene()
 {
@@ -32,4 +34,12 @@ void Second_Scene::Init()
     CreateMapObjects(mapVec);
     CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::GROUND);
     SetNextScene(L"Third_Scene", L"First_Scene");
+
+    CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::Trap);
+    JumpTrap* trap = new JumpTrap();
+    trap->SetTrapInfo(1.f, Vec2(-.5f, -.5f));
+    trap->SetPos(Vec2(150.f, 500.f));
+    trap->SetScale(Vec2(30.f, 30.f));
+    AddObject(trap, OBJECT_GROUP::Trap);
+
 }

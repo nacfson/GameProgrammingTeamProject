@@ -6,7 +6,7 @@ class PlayerMgr
 	SINGLE(PlayerMgr);
 
 public:
-	const Player* GetPlayer() const { return m_pPlayer; }
+	Player* GetPlayer() const { return m_pPlayer; }
 
 	void Init();
 	void Update();

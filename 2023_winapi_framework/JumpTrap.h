@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Collider.h"
+class Texture;
 class JumpTrap :
     public Object
 {
@@ -18,6 +19,7 @@ public:
         m_jumpDir = dir;
     }
 private:
+    Texture* m_pTex;
     Vec2 m_jumpDir;
     float m_jumpPower;
 };
